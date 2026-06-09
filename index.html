@@ -149,9 +149,24 @@ footer{background:#060612;border-top:1px solid rgba(124,58,237,.2);padding:3rem 
 <body>
 
 <!-- NAV -->
-<nav>
+<div style="display:flex;align-items:center"><div style="display:flex;align-items:center;gap:12px">
+<svg width="45" height="45" viewBox="0 0 45 45" style="overflow:visible">
+<style>
+@keyframes os1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes os2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+.or1{transform-origin:22px 22px;animation:os1 7s linear infinite}
+.or2{transform-origin:22px 22px;animation:os2 5s linear infinite}
+</style>
+<g class="or1"><ellipse cx="22" cy="22" rx="20" ry="7" fill="none" stroke="#7c3aed" stroke-width="1.5"/></g>
+<g class="or2"><ellipse cx="22" cy="22" rx="16" ry="16" fill="none" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3 3"/></g>
+<circle cx="22" cy="22" r="7" fill="#7c3aed" opacity="0.9"/>
+<circle cx="22" cy="22" r="4" fill="#06b6d4"/>
+<circle cx="22" cy="22" r="1.5" fill="#fff"/>
+</svg>
+<span style="font-family:Orbitron,sans-serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">ORBIT AI</span>
+</div></div><nav>
   <div class="nav-inner">
-    <span class="logo"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
+    <span class="logo" style="display:none"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Servicios</a></li>
       <li><a href="#stats">Impacto</a></li>
@@ -340,10 +355,50 @@ footer{background:#060612;border-top:1px solid rgba(124,58,237,.2);padding:3rem 
 </section>
 
 <!-- FOOTER -->
+
+<section id="branding" style="padding:80px 5%;background:#0f0f2a;border-top:1px solid rgba(124,58,237,.15)">
+  <div style="max-width:1200px;margin:0 auto;text-align:center">
+    <span style="font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:#06b6d4">// Identidad</span>
+    <h2 style="font-family:Orbitron,sans-serif;font-size:2rem;font-weight:700;color:#fff;margin:10px 0">Nuestra <span style="background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Marca</span></h2>
+    <p style="color:#94a3b8;margin-bottom:50px;max-width:500px;margin-left:auto;margin-right:auto">Soluciones digitales con identidad propia. Automatización, bots e inteligencia artificial para tu negocio.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:40px">
+      <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">🤖</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">Automatizaciones IA</div>
+        <div style="color:#94a3b8;font-size:.85rem">Flujos inteligentes 24/7</div>
+      </div>
+      <div style="background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">💬</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">Chat Bots IA</div>
+        <div style="color:#94a3b8;font-size:.85rem">Conversaciones naturales</div>
+      </div>
+      <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">📱</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">WhatsApp Bots</div>
+        <div style="color:#94a3b8;font-size:.85rem">Atención automática</div>
+      </div>
+      <div style="background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">🌐</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">Páginas Web</div>
+        <div style="color:#94a3b8;font-size:.85rem">Diseño profesional</div>
+      </div>
+      <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">⚡</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">Agentes Autónomos</div>
+        <div style="color:#94a3b8;font-size:.85rem">IA que trabaja sola</div>
+      </div>
+      <div style="background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:25px;text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">📧</div>
+        <div style="color:#fff;font-weight:600;margin-bottom:6px">Email Marketing IA</div>
+        <div style="color:#94a3b8;font-size:.85rem">Campañas automatizadas</div>
+      </div>
+    </div>
+  </div>
+</section>
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="logo"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
+      <span class="logo" style="display:none"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
       <p>Agencia especializada en inteligencia artificial. Transformamos empresas con soluciones IA innovadoras y escalables.</p>
       <div class="social-links">
         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
