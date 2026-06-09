@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbit AI – Agencia de Inteligencia Artificial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#7c3aed;--c:#06b6d4;--bg:#0a0a1a;--bg2:#0f0f2a;--txt:#e2e8f0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(10,10,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.2);padding:1rem 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--txt);text-decoration:none;font-size:.9rem;transition:.3s}
+.nav-links a:hover{color:var(--c)}
+.nav-cta{background:linear-gradient(135deg,var(--p),var(--c));border:none;color:#fff;padding:.5rem 1.4rem;border-radius:50px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:600;transition:.3s}
+.nav-cta:hover{opacity:.85;transform:scale(1.04)}
+.hamburger{display:none;background:none;border:none;color:var(--c);font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 5% 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+/* Grid lines */
+.hero-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(124,58,237,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(124,58,237,.07) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite}
+@keyframes gridMove{0%{background-position:0 0}100%{background-position:60px 60px}}
+/* Orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 8s ease-in-out infinite}
+.orb1{width:400px;height:400px;background:rgba(124,58,237,.25);top:-10%;left:-10%;animation-delay:0s}
+.orb2{width:300px;height:300px;background:rgba(6,182,212,.2);bottom:0;right:-5%;animation-delay:3s}
+.orb3{width:200px;height:200px;background:rgba(124,58,237,.15);bottom:20%;left:20%;animation-delay:5s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.4);padding:.4rem 1rem;border-radius:50px;font-size:.8rem;color:var(--c);margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);font-weight:900;line-height:1.1;margin-bottom:1.2rem;animation:fadeUp .8s .2s ease both}
+.gradient-text{background:linear-gradient(135deg,var(--p),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.1rem;color:#94a3b8;max-width:580px;margin:0 auto 2.5rem;line-height:1.7;animation:fadeUp .8s .4s ease both}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .6s ease both}
+.btn-primary{background:linear-gradient(135deg,var(--p),var(--c));color:#fff;padding:.85rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(124,58,237,.4)}
+.btn-outline{border:1px solid rgba(6,182,212,.5);color:var(--c);padding:.85rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s}
+.btn-outline:hover{background:rgba(6,182,212,.1);transform:translateY(-3px)}
+/* Rotating ring */
+.ring-wrap{margin-top:4rem;display:flex;justify-content:center;animation:fadeUp .8s .8s ease both}
+.ring{width:180px;height:180px;position:relative;display:flex;align-items:center;justify-content:center}
+.ring::before,.ring::after{content:'';position:absolute;border-radius:50%;border:2px solid transparent}
+.ring::before{inset:0;border-top-color:var(--p);border-right-color:var(--p);animation:spin 3s linear infinite}
+.ring::after{inset:12px;border-bottom-color:var(--c);border-left-color:var(--c);animation:spin 2s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring-icon{font-size:3rem;background:linear-gradient(135deg,var(--p),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION BASE */
+section{padding:5rem 5%}
+.section-label{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--c);margin-bottom:.8rem}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem}
+.section-sub{color:#94a3b8;font-size:1rem;line-height:1.7;max-width:600px}
+.text-center{text-align:center}
+.mx-auto{margin:0 auto}
+
+/* SERVICES */
+#services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.2);border-radius:16px;padding:2rem;transition:.4s;cursor:default;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));opacity:0;transition:.4s}
+.card:hover{border-color:var(--p);transform:translateY(-6px);box-shadow:0 20px 50px rgba(124,58,237,.2)}
+.card:hover::before{opacity:1}
+.card-icon{width:56px;height:56px;background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(6,182,212,.2));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.4rem;color:var(--c)}
+.card h3{font-family:'Orbitron',sans-serif;font-size:1rem;margin-bottom:.7rem;color:#fff}
+.card p{color:#94a3b8;font-size:.9rem;line-height:1.6}
+
+/* STATS */
+#stats{background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(6,182,212,.05));border-top:1px solid rgba(124,58,237,.15);border-bottom:1px solid rgba(124,58,237,.15)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
+.stat-num{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:#94a3b8;font-size:.9rem;margin-top:.3rem}
+
+/* PROCESS */
+#process{background:var(--bg)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.step{text-align:center;padding:2rem 1.5rem;position:relative}
+.step-num{font-family:'Orbitron',sans-serif;font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--p),var(--c));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:1rem}
+.step h3{font-family:'Orbitron',sans-serif;font-size:.95rem;margin-bottom:.7rem}
+.step p{color:#94a3b8;font-size:.88rem;line-height:1.6}
+
+/* CONTACT */
+#contact{background:var(--bg2)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.info-item{display:flex;align-items:center;gap:1rem;padding:1.2rem;background:rgba(255,255,255,.03);border:1px solid rgba(124,58,237,.2);border-radius:12px}
+.info-item i{font-size:1.2rem;color:var(--c);width:24px;text-align:center}
+.info-item span{font-size:.9rem}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-group label{font-size:.85rem;color:#94a3b8}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,.05);border:1px solid rgba(124,58,237,.3);color:var(--txt);padding:.85rem 1rem;border-radius:10px;font-family:'Inter',sans-serif;font-size:.9rem;transition:.3s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--c);box-shadow:0 0 0 3px rgba(6,182,212,.1)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-group select option{background:var(--bg2)}
+.btn-send{background:linear-gradient(135deg,var(--p),var(--c));color:#fff;padding:.9rem;border:none;border-radius:10px;cursor:pointer;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;transition:.3s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.btn-send:hover{opacity:.85;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:#060612;border-top:1px solid rgba(124,58,237,.2);padding:3rem 5% 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-brand .logo{font-size:1.2rem;display:block;margin-bottom:1rem}
+.footer-brand p{color:#64748b;font-size:.87rem;line-height:1.7;max-width:300px}
+.social-links{display:flex;gap:.8rem;margin-top:1.2rem}
+.social-links a{width:36px;height:36px;border:1px solid rgba(124,58,237,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;text-decoration:none;transition:.3s;font-size:.9rem}
+.social-links a:hover{border-color:var(--c);color:var(--c);background:rgba(6,182,212,.1)}
+.footer-col h4{font-family:'Orbitron',sans-serif;font-size:.85rem;margin-bottom:1rem;color:var(--c)}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul a{color:#64748b;text-decoration:none;font-size:.87rem;transition:.3s}
+.footer-col ul a:hover{color:var(--c)}
+.footer-bottom{border-top:1px solid rgba(124,58,237,.15);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{color:#475569;font-size:.82rem}
+
+/* WHATSAPP */
+.wa-btn{position:fixed;bottom:2rem;right:2rem;z-index:998;width:58px;height:58px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;text-decoration:none;box-shadow:0 8px 25px rgba(37,211,102,.4);animation:pulse 2.5s ease-in-out infinite;transition:.3s}
+.wa-btn:hover{transform:scale(1.1)}
+@keyframes pulse{0%,100%{box-shadow:0 8px 25px rgba(37,211,102,.4)}50%{box-shadow:0 8px 40px rgba(37,211,102,.7)}}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;width:100%;background:rgba(10,10,26,.97);padding:1.5rem 5%;gap:1.2rem;border-bottom:1px solid rgba(124,58,237,.2)}
+  .contact-wrap{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-title{font-size:1.9rem}
+  section{padding:3.5rem 5%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#stats">Impacto</a></li>
+      <li><a href="#process">Proceso</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Empezar</button>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="badge"><i class="fa-solid fa-circle-dot" style="color:var(--p)"></i> Inteligencia Artificial de Nueva Generación</div>
+    <h1 class="hero-title">Transforma tu negocio con <span class="gradient-text">IA Avanzada</span></h1>
+    <p class="hero-sub">Soluciones de inteligencia artificial personalizadas que automatizan procesos, potencian decisiones y aceleran el crecimiento de tu empresa.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary"><i class="fa-solid fa-rocket"></i> Iniciar Proyecto</a>
+      <a href="#services" class="btn-outline"><i class="fa-solid fa-play"></i> Ver Servicios</a>
+    </div>
+    <div class="ring-wrap">
+      <div class="ring">
+        <span class="ring-icon"><i class="fa-solid fa-brain"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="text-center">
+    <span class="section-label">// Servicios</span>
+    <h2 class="section-title">Lo que <span class="gradient-text">hacemos</span></h2>
+    <p class="section-sub mx-auto">Soluciones IA diseñadas para resolver desafíos reales de negocio con tecnología de vanguardia.</p>
+  </div>
+  <div class="services-grid">
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+      <h3>Automatización IA</h3>
+      <p>Automatiza tareas repetitivas con agentes inteligentes que aprenden y optimizan continuamente tus flujos de trabajo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+      <h3>Chatbots & Asistentes</h3>
+      <p>Chatbots conversacionales con LLMs avanzados para atención al cliente 24/7 con respuestas precisas y naturales.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Analítica Predictiva</h3>
+      <p>Modelos de machine learning que predicen tendencias, demanda y comportamiento del cliente con alta precisión.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+      <h3>Visión por Computadora</h3>
+      <p>Sistemas de reconocimiento visual para inspección de calidad, seguridad y análisis de imágenes en tiempo real.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+      <h3>Procesamiento de Datos</h3>
+      <p>Pipelines inteligentes de datos que transforman información cruda en insights accionables para tu organización.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+      <h3>IA Personalizada</h3>
+      <p>Desarrollo de modelos y APIs de IA a medida, integrados directamente en tus sistemas y plataformas existentes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">+150</div>
+      <div class="stat-label">Proyectos Completados</div>
+    </div>
+    <div>
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Satisfacción del Cliente</div>
+    </div>
+    <div>
+      <div class="stat-num">+40%</div>
+      <div class="stat-label">Eficiencia Promedio</div>
+    </div>
+    <div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Soporte Continuo</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="text-center">
+    <span class="section-label">// Metodología</span>
+    <h2 class="section-title">Cómo <span class="gradient-text">trabajamos</span></h2>
+    <p class="section-sub mx-auto">Un proceso ágil y transparente para llevar tu proyecto de la idea a la implementación.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Diagnóstico</h3>
+      <p>Analizamos tu negocio, identificamos oportunidades y definimos el alcance del proyecto con claridad.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Diseño IA</h3>
+      <p>Arquitectamos la solución óptima seleccionando los modelos y tecnologías más adecuados para tu caso.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Desarrollo</h3>
+      <p>Construimos e iteramos con sprints ágiles, manteniendo comunicación constante y entregables claros.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Despliegue</h3>
+      <p>Implementamos en producción con monitoreo continuo, optimización y soporte técnico especializado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="text-center">
+    <span class="section-label">// Contacto</span>
+    <h2 class="section-title">Hablemos de tu <span class="gradient-text">proyecto</span></h2>
+    <p class="section-sub mx-auto">Cuéntanos tu desafío y te proponemos una solución de IA en menos de 24 horas.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="info-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>614 057 443</span>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-envelope"></i>
+        <span>bigtecgigalnvest@gmail.com</span>
+      </div>
+      <div class="info-item">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>WhatsApp disponible 24/7</span>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-clock"></i>
+        <span>Respuesta en menos de 2 horas</span>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-globe"></i>
+        <span>Servicio disponible en toda España</span>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Servicio de interés</label>
+        <select>
+          <option value="">Selecciona un servicio</option>
+          <option>Automatización IA</option>
+          <option>Chatbots & Asistentes</option>
+          <option>Analítica Predictiva</option>
+          <option>Visión por Computadora</option>
+          <option>IA Personalizada</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div>
+      <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> Enviar Mensaje</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo"><i class="fa-solid fa-atom"></i> ORBIT AI</span>
+      <p>Agencia especializada en inteligencia artificial. Transformamos empresas con soluciones IA innovadoras y escalables.</p>
+      <div class="social-links">
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/614057443" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#services">Automatización IA</a></li>
+        <li><a href="#services">Chatbots</a></li>
+        <li><a href="#services">Analítica Predictiva</a></li>
+        <li><a href="#services">Visión Artificial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#process">Metodología</a></li>
+        <li><a href="#stats">Resultados</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a href="mailto:bigtecgigalnvest@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Orbit AI. Todos los derechos reservados.</p>
+    <p>Hecho con <i class="fa-solid fa-heart" style="color:var(--p)"></i> y mucha IA</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/614057443?text=Hola%2C%20me%20interesa%20una%20soluci%C3%B3n%20de%20IA" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+// Hamburger
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('navLinks');
+ham.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  ham.innerHTML = nav.classList.contains('open')
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  ham.innerHTML = '<i class="fa-solid fa-bars"></i>';
+}));
+
+// Counter animation
+const counters = document.querySelectorAll('.stat-num');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting && !e.target.dataset.done){
+      e.target.dataset.done = true;
+      const txt = e.target.textContent;
+      const num = parseFloat(txt.replace(/[^0-9.]/g,''));
+      const prefix = txt.match(/^[^0-9]*/)[0];
+      const suffix = txt.replace(/^[^0-9]*[0-9.]+/,'');
+      let start = 0; const dur = 1800;
+      const step = ts => {
+        if(!start) start = ts;
+        const p = Math.min((ts - start)/dur, 1);
+        const val = Math.floor(p * num * (p < 1 ? 1 : 1));
+        e.target.textContent = prefix + Math.round(p * num) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+  });
+}, {threshold:.5});
+counters.forEach(c => observer.observe(c));
+
+// Form
+function handleForm(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-send');
+  btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Mensaje enviado!';
+  btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Enviar Mensaje';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.borderBottomColor =
+    window.scrollY > 50 ? 'rgba(124,58,237,.4)' : 'rgba(124,58,237,.2)';
+});
+</script>
+</body>
+</html>
