@@ -41,13 +41,13 @@ nav { position:fixed; top:0; left:0; right:0; z-index:998; background:rgba(0,0,0
 .hero-glow { position:absolute; top:-20%; right:-10%; width:60%; height:80%; background:radial-gradient(circle,rgba(79,124,255,.25) 0%,transparent 70%); filter:blur(60px); animation:pulse 8s ease-in-out infinite alternate; }
 .hero-glow2 { position:absolute; bottom:-20%; left:-10%; width:50%; height:60%; background:radial-gradient(circle,rgba(155,111,255,.2) 0%,transparent 70%); filter:blur(60px); animation:pulse 10s ease-in-out infinite alternate-reverse; }
 @keyframes pulse { from{transform:scale(1);opacity:.8;} to{transform:scale(1.3);opacity:1;} }
-.hero-content { position:relative; z-index:2; max-width:720px; }
-.hero-eyebrow { display:inline-flex; align-items:center; gap:.5rem; font-size:.75rem; font-weight:600; letter-spacing:.05em; color:var(--cyan); background:rgba(63,224,208,.1); border:1px solid rgba(63,224,208,.25); padding:.4rem 1rem; border-radius:100px; margin-bottom:1.5rem; }
+.hero-content { position:relative; z-index:2; max-width:720px; margin:0 auto; text-align:center; }
+.hero-eyebrow { display:inline-flex; margin-left:auto; margin-right:auto; align-items:center; gap:.5rem; font-size:.75rem; font-weight:600; letter-spacing:.05em; color:var(--cyan); background:rgba(63,224,208,.1); border:1px solid rgba(63,224,208,.25); padding:.4rem 1rem; border-radius:100px; margin-bottom:1.5rem; }
 .hero-eyebrow .pulse-dot { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:blink 1.8s infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 #inicio h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.6rem,5.5vw,4.4rem); font-weight:700; line-height:1.08; margin-bottom:1.4rem; letter-spacing:-.02em; }
-.hero-sub { font-size:1.05rem; color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:2.4rem; font-weight:300; }
-.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+.hero-sub { font-size:1.05rem; color:var(--muted); max-width:560px; line-height:1.7; margin:0 auto 2.4rem; font-weight:300; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
 .btn-primary { display:inline-flex; align-items:center; gap:.5rem; background:var(--blue); color:#fff; padding:.9rem 1.9rem; border-radius:8px; font-size:.88rem; font-weight:600; text-decoration:none; border:none; cursor:pointer; transition:all .25s; }
 .btn-primary:hover { background:var(--purple); transform:translateY(-2px); box-shadow:0 8px 30px rgba(155,111,255,.4); }
 .btn-secondary { display:inline-flex; align-items:center; gap:.5rem; background:transparent; color:#fff; border:1px solid var(--border); padding:.9rem 1.9rem; border-radius:8px; font-size:.88rem; font-weight:500; text-decoration:none; transition:all .25s; }
@@ -194,6 +194,17 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+.process-grid { display:block; max-width:760px; margin:3rem auto 0; position:relative; }
+.process-grid::before { content:''; position:absolute; left:23px; top:24px; bottom:24px; width:1px; background:linear-gradient(180deg,#8B5FE0,#3FE0D0); }
+.process-step { display:flex; gap:1.8rem; align-items:flex-start; background:transparent; border:none; border-radius:0; padding:0 0 2.8rem; position:relative; transition:transform .3s ease; }
+.process-step:last-child { padding-bottom:0; }
+.process-step:hover { transform:translateX(6px); }
+.step-num { flex-shrink:0; width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#8B5FE0,#3FE0D0); display:flex; align-items:center; justify-content:center; font-size:1.05rem; font-weight:700; color:#fff; position:relative; z-index:2; box-shadow:0 0 0 6px #000; transition:transform .3s ease; }
+.process-step:hover .step-num { transform:scale(1.12); }
+.process-step h3 { font-size:1.15rem; margin-bottom:.4rem; padding-top:.6rem; }
+.process-step p { font-size:.9rem; }
+
+
 .marquee-wrap { overflow:hidden; background:#050505; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1.4rem 0; }
 .marquee-track { display:flex; gap:3.5rem; width:max-content; animation:marqueeScroll 28s linear infinite; }
 .marquee-track span { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:600; color:var(--muted); white-space:nowrap; opacity:.55; letter-spacing:.03em; }
@@ -339,10 +350,10 @@ body { background:#000000; }
 <h2 class="section-title" data-t="proc_t">Cómo trabajamos</h2>
 <p class="section-desc" data-t="proc_d">Un proceso ágil y transparente para llevar tu proyecto de la idea a la implementación.</p>
 <div class="process-grid">
-<div class="process-step"><div class="step-num">01</div><h3 data-t="p1t">Diagnóstico</h3><p data-t="p1d">Analizamos tu negocio, identificamos oportunidades y definimos el alcance del proyecto con claridad.</p></div>
-<div class="process-step"><div class="step-num">02</div><h3 data-t="p2t">Diseño IA</h3><p data-t="p2d">Arquitectamos la solución óptima seleccionando los modelos y tecnologías más adecuados para tu caso.</p></div>
-<div class="process-step"><div class="step-num">03</div><h3 data-t="p3t">Desarrollo</h3><p data-t="p3d">Construimos e iteramos con sprints ágiles, manteniendo comunicación constante y entregables claros.</p></div>
-<div class="process-step"><div class="step-num">04</div><h3 data-t="p4t">Despliegue</h3><p data-t="p4d">Implementamos en producción con monitoreo continuo, optimización y soporte técnico especializado.</p></div>
+<div class="process-step"><div class="step-num">1</div><div><h3 data-t="p1t">Diagnóstico</h3><p data-t="p1d">Analizamos tu negocio, identificamos oportunidades y definimos el alcance del proyecto con claridad.</p></div></div>
+<div class="process-step"><div class="step-num">2</div><div><h3 data-t="p2t">Diseño IA</h3><p data-t="p2d">Arquitectamos la solución óptima seleccionando los modelos y tecnologías más adecuados para tu caso.</p></div></div>
+<div class="process-step"><div class="step-num">3</div><div><h3 data-t="p3t">Desarrollo</h3><p data-t="p3d">Construimos e iteramos con sprints ágiles, manteniendo comunicación constante y entregables claros.</p></div></div>
+<div class="process-step"><div class="step-num">4</div><div><h3 data-t="p4t">Despliegue</h3><p data-t="p4d">Implementamos en producción con monitoreo continuo, optimización y soporte técnico especializado.</p></div></div>
 </div>
 </div></section>
 
