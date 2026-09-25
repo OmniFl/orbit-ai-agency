@@ -12,7 +12,7 @@ html { scroll-behavior:smooth; }
 body { font-family:'Inter',sans-serif; color:#E8ECF4; background:#0A0E1A; overflow-x:hidden; }
 img { display:block; max-width:100%; }
 :root { --bg:#000000; --bg2:#0A0A0A; --card:#111111; --text:#FFFFFF; --muted:#A8A8A8; --border:rgba(255,255,255,.12); --blue:#FFFFFF; --purple:#FFFFFF; --cyan:#FFFFFF; --green:#25D366; --wave1:#B33FE0; --wave2:#FF4F8B; --wave3:#FF9B4F; --wave4:#FFD24F; }
-.grad-primary { background:linear-gradient(135deg,var(--blue),var(--purple)); }
+.grad-primary { background:linear-gradient(135deg,#8B5FE0,#3FE0D0); }
 .grad-text { color:#FFFFFF; }
 .lang-bar { display:none; }
 nav { position:fixed; top:0; left:0; right:0; z-index:998; background:rgba(0,0,0,.85); backdrop-filter:blur(16px); display:flex; align-items:center; justify-content:space-between; padding:1.1rem 2.5rem; border-bottom:1px solid var(--border); }
@@ -116,7 +116,10 @@ h2.section-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9re
 .process-step p { font-size:.85rem; color:var(--muted); line-height:1.6; font-weight:300; }
 .brand-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:2.5rem; }
 .brand-item { background:var(--bg2); padding:2rem 1.5rem; text-align:center; transition:background .2s; }
-.brand-item:hover { background:var(--card); }
+.brand-item:hover { background:var(--card); transform:translateY(-4px); }
+.brand-item { transition:transform .3s ease, background .3s ease; cursor:default; }
+.brand-icon { transition:transform .4s ease; }
+.brand-item:hover .brand-icon { transform:scale(1.15) rotate(8deg); }
 .brand-icon { width:48px; height:48px; margin:0 auto 1rem; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
 .brand-item h4 { font-size:.95rem; font-weight:600; margin-bottom:.4rem; }
 .brand-item p { font-size:.8rem; color:var(--muted); font-weight:300; }
@@ -190,11 +193,26 @@ body { background:#000000; }
 
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
+
+.marquee-wrap { overflow:hidden; background:#050505; border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1.4rem 0; }
+.marquee-track { display:flex; gap:3.5rem; width:max-content; animation:marqueeScroll 28s linear infinite; }
+.marquee-track span { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:600; color:var(--muted); white-space:nowrap; opacity:.55; letter-spacing:.03em; }
+.marquee-track span.hl { color:#3FE0D0; opacity:.9; }
+@keyframes marqueeScroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+.brand-visual { position:relative; height:120px; margin-top:1.5rem; }
+
+
+.btn-primary,.btn-secondary,.btn-book,.btn-wa,.btn-photos,.nav-btn,.form-submit,.modal-submit,.wa-contact,.wa-float { transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, background .25s ease, border-color .25s ease; }
+.btn-primary:hover,.nav-btn:hover,.form-submit:hover,.modal-submit:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 10px 28px rgba(139,95,224,.45); }
+.btn-secondary:hover,.btn-book:hover,.btn-photos:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 8px 22px rgba(63,224,208,.3); }
+.btn-wa:hover,.wa-contact:hover,.wa-float:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 10px 26px rgba(37,211,102,.5); }
+.btn-primary:active,.btn-secondary:active,.btn-book:active,.nav-btn:active,.form-submit:active,.modal-submit:active { transform:translateY(-1px) scale(0.98); }
+
 </style>
 </head>
 <body>
 <nav>
-<a href="#inicio" class="nav-logo"><span class="dot"></span>ORBIT AI</a>
+<a href="#inicio" class="nav-logo"><svg width="20" height="20" viewBox="0 0 24 24" style="overflow:visible"><defs><radialGradient id="orbCore" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#BFA6FF"/><stop offset="45%" stop-color="#8B5FE0"/><stop offset="100%" stop-color="#5A2FB8"/></radialGradient></defs><ellipse cx="12" cy="12" rx="11" ry="4.4" fill="none" stroke="#3FE0D0" stroke-width="1" opacity="0.55" transform="rotate(-24 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.4" fill="none" stroke="#8B5FE0" stroke-width="1" opacity="0.4" transform="rotate(24 12 12)"/><circle cx="12" cy="12" r="4.3" fill="url(#orbCore)"/><circle cx="12" cy="12" r="1.6" fill="#fff" opacity="0.9"/><circle cx="21.5" cy="9.3" r="1.15" fill="#3FE0D0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="6s" repeatCount="indefinite"/></circle><circle cx="2.6" cy="15.2" r="0.9" fill="#8B5FE0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="-360 12 12" dur="8s" repeatCount="indefinite"/></circle></svg> ORBIT AI</a>
 <div class="nav-center" id="nav-links">
 <a href="#services" data-t="nav_serv" onclick="closeMobileMenu()">Servicios</a>
 <a href="#stats" data-t="nav_impact" onclick="closeMobileMenu()">Impacto</a>
@@ -332,14 +350,31 @@ body { background:#000000; }
 <p class="eyebrow" data-t="brand_ey">Identidad</p>
 <h2 class="section-title" data-t="brand_t">Nuestra Marca</h2>
 <p class="section-desc" data-t="brand_d">Soluciones digitales con identidad propia. Automatización, bots e inteligencia artificial para tu negocio.</p>
-<div class="brand-grid">
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div><h4 data-t="br1t">Automatizaciones IA</h4><p data-t="br1d">Flujos inteligentes 24/7</p></div>
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 data-t="br2t">Chat Bots IA</h4><p data-t="br2d">Conversaciones naturales</p></div>
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h4 data-t="br3t">WhatsApp Bots</h4><p data-t="br3d">Atención automática</p></div>
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4 data-t="br4t">Páginas Web</h4><p data-t="br4d">Diseño profesional</p></div>
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4 data-t="br5t">Agentes Autónomos</h4><p data-t="br5d">IA que trabaja sola</p></div>
-<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div><h4 data-t="br6t">Email Marketing IA</h4><p data-t="br6d">Campañas automatizadas</p></div>
+<div class="brand-visual">
+<svg viewBox="0 0 500 120" width="100%" height="120" style="overflow:visible">
+<defs><radialGradient id="bvGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#8B5FE0" stop-opacity="0.35"/><stop offset="100%" stop-color="#8B5FE0" stop-opacity="0"/></radialGradient></defs>
+<circle cx="250" cy="60" r="70" fill="url(#bvGlow)"/>
+<circle cx="60" cy="30" r="2.4" fill="#3FE0D0"><animate attributeName="cy" values="30;90;30" dur="4.5s" repeatCount="indefinite"/></circle>
+<circle cx="150" cy="95" r="1.8" fill="#8B5FE0"><animate attributeName="cy" values="95;20;95" dur="6s" repeatCount="indefinite"/></circle>
+<circle cx="350" cy="25" r="2" fill="#8B5FE0"><animate attributeName="cy" values="25;85;25" dur="5.2s" repeatCount="indefinite"/></circle>
+<circle cx="440" cy="70" r="1.6" fill="#3FE0D0"><animate attributeName="cy" values="70;15;70" dur="3.8s" repeatCount="indefinite"/></circle>
+<line x1="60" y1="30" x2="150" y2="95" stroke="#3FE0D0" stroke-width="0.6" opacity="0.35"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="4s" repeatCount="indefinite"/></line>
+<line x1="150" y1="95" x2="350" y2="25" stroke="#8B5FE0" stroke-width="0.6" opacity="0.3"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="5s" repeatCount="indefinite"/></line>
+<line x1="350" y1="25" x2="440" y2="70" stroke="#3FE0D0" stroke-width="0.6" opacity="0.35"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="4.5s" repeatCount="indefinite"/></line>
+<ellipse cx="250" cy="60" rx="90" ry="24" fill="none" stroke="#8B5FE0" stroke-width="0.8" opacity="0.5" transform="rotate(-10 250 60)"/>
+<circle cx="250" cy="60" r="10" fill="#8B5FE0" opacity="0.85"/>
+<circle cx="250" cy="60" r="4" fill="#fff"/>
+</svg>
 </div>
+<div class="brand-grid">
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div><h4 data-t="br1t">Automatizaciones IA</h4><p data-t="br1d">Flujos inteligentes 24/7</p><p data-t="br1d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">Sin intervencion manual</p></div>
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 data-t="br2t">Chat Bots IA</h4><p data-t="br2d">Conversaciones naturales</p><p data-t="br2d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">Entrenados con LLMs</p></div>
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h4 data-t="br3t">WhatsApp Bots</h4><p data-t="br3d">Atención automática</p><p data-t="br3d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">API oficial de WhatsApp</p></div>
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4 data-t="br4t">Páginas Web</h4><p data-t="br4d">Diseño profesional</p><p data-t="br4d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">Rapidas y responsivas</p></div>
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4 data-t="br5t">Agentes Autónomos</h4><p data-t="br5d">IA que trabaja sola</p><p data-t="br5d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">Decisiones en tiempo real</p></div>
+<div class="brand-item"><div class="brand-icon grad-primary"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div><h4 data-t="br6t">Email Marketing IA</h4><p data-t="br6d">Campañas automatizadas</p><p data-t="br6d2" style="font-size:.72rem;color:var(--muted);opacity:.7;margin-top:.3rem">Segmentacion inteligente</p></div>
+</div>
+<div class="marquee-wrap"><div class="marquee-track"><span class="hl">Claude</span><span class="">GPT-4</span><span class="">WhatsApp Business API</span><span class="hl">Make.com</span><span class="">Zapier</span><span class="">n8n</span><span class="hl">Python</span><span class="">PostgreSQL</span><span class="">TensorFlow</span><span class="hl">LangChain</span><span class="hl">Claude</span><span class="">GPT-4</span><span class="">WhatsApp Business API</span><span class="hl">Make.com</span><span class="">Zapier</span><span class="">n8n</span><span class="hl">Python</span><span class="">PostgreSQL</span><span class="">TensorFlow</span><span class="hl">LangChain</span></div></div>
 </div></section>
 
 <section id="founder" class="section"><div class="wrap"><p class="eyebrow" data-t="crea_ey">Quiénes somos</p><h2 class="section-title" data-t="crea_t">La Agencia</h2><div class="founder-grid"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#4F7CFF,#9B6FFF);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:#fff"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-25 12 12)"/><circle cx="20.5" cy="8.2" r="1.1" fill="#fff" stroke="none"/></svg></div><div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.3rem">Orbit AI</h3><p style="color:var(--cyan);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem" data-t="crea_rol">Agencia de Inteligencia Artificial</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem" data-t="crea_bio">Somos una agencia con más de 15 años de trayectoria creando proyectos e implementando herramientas tecnológicas novedosas e ingeniosas para el sector público y privado.</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem;margin-top:.8rem" data-t="crea_bio2">Aplicamos inteligencia artificial a problemas reales de negocio: automatización inteligente de procesos, agentes autónomos, chatbots conversacionales, analítica predictiva y visión por computadora. Nuestro enfoque une la experiencia tecnológica acumulada durante más de una década con las capacidades de la IA de última generación, para construir soluciones que trabajan solas, aprenden de cada ciclo y escalan con tu negocio.</p><div class="svc-stats" style="margin-top:1rem"><span class="svc-stat-badge" data-t="crea_b1">+15 años de experiencia</span><span class="svc-stat-badge" data-t="crea_b2">Sector público y privado</span><span class="svc-stat-badge" data-t="crea_b3">Proyectos innovadores</span></div></div></div></div></section>
@@ -378,7 +413,7 @@ body { background:#000000; }
 </div></div></section>
 
 <footer><div class="footer-wrap"><div class="footer-top">
-<div><div class="footer-logo"><span class="dot" style="width:8px;height:8px;border-radius:50%;background:#3FE0D0"></span>ORBIT AI</div><p class="footer-desc" data-t="foot_d">Agencia especializada en inteligencia artificial. Transformamos empresas con soluciones IA innovadoras y escalables.</p></div>
+<div><div class="footer-logo"><svg width="20" height="20" viewBox="0 0 24 24" style="overflow:visible"><defs><radialGradient id="orbCore" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#BFA6FF"/><stop offset="45%" stop-color="#8B5FE0"/><stop offset="100%" stop-color="#5A2FB8"/></radialGradient></defs><ellipse cx="12" cy="12" rx="11" ry="4.4" fill="none" stroke="#3FE0D0" stroke-width="1" opacity="0.55" transform="rotate(-24 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.4" fill="none" stroke="#8B5FE0" stroke-width="1" opacity="0.4" transform="rotate(24 12 12)"/><circle cx="12" cy="12" r="4.3" fill="url(#orbCore)"/><circle cx="12" cy="12" r="1.6" fill="#fff" opacity="0.9"/><circle cx="21.5" cy="9.3" r="1.15" fill="#3FE0D0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="6s" repeatCount="indefinite"/></circle><circle cx="2.6" cy="15.2" r="0.9" fill="#8B5FE0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="-360 12 12" dur="8s" repeatCount="indefinite"/></circle></svg> ORBIT AI</div><p class="footer-desc" data-t="foot_d">Agencia especializada en inteligencia artificial. Transformamos empresas con soluciones IA innovadoras y escalables.</p></div>
 <div class="footer-col"><h4 data-t="foot_h1">Servicios</h4><a href="#services" data-t="t1n">Automatización IA</a><a href="#services" data-t="t2n">Chatbots</a><a href="#services" data-t="t3n">Analítica Predictiva</a><a href="#services" data-t="t4n">Visión Artificial</a></div>
 <div class="footer-col"><h4 data-t="foot_h2">Empresa</h4><a href="#process" data-t="proc_t">Metodología</a><a href="#stats" data-t="nav_impact">Resultados</a><a href="#contact" data-t="nav_con">Contacto</a><a href="mailto:bigtecgigalnvest@gmail.com">Email</a></div>
 </div>
