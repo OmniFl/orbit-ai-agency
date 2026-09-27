@@ -211,6 +211,33 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+@keyframes metalShine { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+#inicio h1, h2.section-title {
+  background: linear-gradient(135deg, #ffffff 0%, #b8b8bd 20%, #ffffff 40%, #d4d4d8 60%, #ffffff 80%, #a8a8ad 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 22px rgba(255,255,255,.45)) drop-shadow(0 0 45px rgba(255,255,255,.2));
+  animation: metalShine 5s ease-in-out infinite;
+}
+.btn-primary, .btn-secondary, .nav-btn, .btn-book, .form-submit, .modal-submit {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 16px rgba(255,255,255,.45), 0 0 32px rgba(255,255,255,.2);
+}
+.btn-primary::before, .btn-secondary::before, .nav-btn::before, .btn-book::before, .form-submit::before, .modal-submit::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.75), transparent);
+  animation: metalSweep 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes metalSweep { 0%{left:-150%;} 60%,100%{left:150%;} }
+
+
 #orbitSplash { position:fixed; inset:0; z-index:99999; background:#050507; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 1s ease; }
 #orbitSplash.hide { opacity:0; pointer-events:none; }
 #splashCanvas { width:280px; height:280px; }
