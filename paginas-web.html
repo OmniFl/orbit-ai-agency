@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Páginas Web con IA — Orbit AI</title>
+<meta name="description" content="Webs diseñadas y construidas con inteligencia artificial: rápidas, a medida, listas en semanas. Mira cómo nace una web en tiempo real.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:#050507; color:#F5F5F7; overflow-x:hidden; }
+:root {
+  --bg:#050507; --panel:#0D0D12; --text:#F5F5F7; --muted:#7A7A85;
+  --purple:#8B5FE0; --cyan:#3FE0D0; --border:rgba(255,255,255,.09);
+}
+
+/* fondo de plano arquitectonico */
+.blueprint-bg { position:fixed; inset:0; z-index:0; opacity:.5; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(139,95,224,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,95,224,.07) 1px, transparent 1px);
+  background-size:56px 56px;
+  animation:gridDrift 40s linear infinite;
+}
+@keyframes gridDrift { from{background-position:0 0;} to{background-position:56px 56px;} }
+
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(5,5,7,.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); padding:1.1rem 2.5rem; display:flex; align-items:center; justify-content:space-between; }
+.nav-logo { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; color:#fff; text-decoration:none; }
+.nav-back { color:var(--muted); text-decoration:none; font-size:.85rem; display:flex; align-items:center; gap:.4rem; transition:color .2s; }
+.nav-back:hover { color:#fff; }
+
+main { position:relative; z-index:1; }
+
+/* HERO */
+.hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:140px 2rem 4rem; text-align:center; }
+.hero-kicker { font-size:.95rem; color:var(--cyan); margin-bottom:1.1rem; font-weight:500; }
+.hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:700; line-height:1.12; letter-spacing:-.02em; max-width:780px; margin-bottom:1.3rem; }
+.hero-sub { color:var(--muted); font-size:1.05rem; max-width:520px; line-height:1.7; margin-bottom:3rem; font-weight:300; }
+
+/* EL CONSTRUCTOR EN VIVO */
+.builder { display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:980px; width:100%; border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,.5); margin-bottom:3rem; }
+.code-pane { background:var(--panel); padding:1.6rem 1.7rem; text-align:left; min-height:340px; position:relative; }
+.code-pane::before { content:'index.html'; position:absolute; top:0; left:0; right:0; padding:.6rem 1.2rem; font-size:.7rem; color:var(--muted); border-bottom:1px solid var(--border); font-family:'JetBrains Mono',monospace; }
+.code-lines { margin-top:2.2rem; font-family:'JetBrains Mono',monospace; font-size:.82rem; line-height:1.85; white-space:pre-wrap; word-break:break-word; }
+.code-tag { color:#7C93FF; } .code-attr { color:#3FE0D0; } .code-str { color:#F4C761; } .code-txt { color:#D8D8DE; }
+.code-cursor { display:inline-block; width:7px; height:15px; background:var(--cyan); vertical-align:middle; animation:blink 0.9s steps(2) infinite; }
+@keyframes blink { 50%{opacity:0;} }
+.preview-pane { background:#0A0A0F; padding:1.6rem; min-height:340px; position:relative; display:flex; flex-direction:column; }
+.preview-pane::before { content:'Vista previa'; position:absolute; top:0; left:0; right:0; padding:.6rem 1.2rem; font-size:.7rem; color:var(--muted); border-bottom:1px solid var(--border); font-family:'JetBrains Mono',monospace; }
+.preview-inner { margin-top:2.2rem; flex:1; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:.9rem; padding:0 .3rem; }
+.pv-h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.5rem; opacity:0; transform:translateY(8px); transition:all .5s ease; }
+.pv-h1.on { opacity:1; transform:translateY(0); }
+.pv-p { color:var(--muted); font-size:.85rem; max-width:280px; opacity:0; transform:translateY(8px); transition:all .5s ease; }
+.pv-p.on { opacity:1; transform:translateY(0); }
+.pv-btn { margin-top:.4rem; background:linear-gradient(135deg,#8B5FE0,#3FE0D0); color:#050507; font-weight:600; font-size:.82rem; padding:.65rem 1.3rem; border-radius:7px; opacity:0; transform:scale(.85); transition:all .45s cubic-bezier(.34,1.56,.64,1); }
+.pv-btn.on { opacity:1; transform:scale(1); }
+@media (max-width:760px) { .builder { grid-template-columns:1fr; } .code-pane { border-bottom:1px solid var(--border); } }
+
+/* BOTONES MAGNETICOS */
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+.mag-btn { position:relative; display:inline-flex; align-items:center; gap:.5rem; padding:.95rem 2rem; border-radius:9px; font-size:.9rem; font-weight:600; cursor:pointer; text-decoration:none; transition:transform .15s ease-out; will-change:transform; }
+.mag-primary { background:#fff; color:#050507; }
+.mag-secondary { background:transparent; color:#fff; border:1px solid var(--border); }
+
+/* SECCIONES QUIETAS */
+.section { padding:5rem 2rem; max-width:980px; margin:0 auto; }
+.section-quiet-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.7rem,3vw,2.3rem); font-weight:700; margin-bottom:2.6rem; text-align:center; letter-spacing:-.01em; }
+.benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:2.4rem; }
+.benefit h3 { font-size:1.05rem; font-weight:600; margin-bottom:.6rem; }
+.benefit p { color:var(--muted); font-size:.88rem; line-height:1.7; font-weight:300; }
+@media (max-width:760px) { .benefits { grid-template-columns:1fr; gap:2rem; } }
+
+.process-list { display:flex; flex-direction:column; gap:0; max-width:640px; margin:0 auto; }
+.proc-item { display:flex; gap:1.5rem; padding:1.6rem 0; border-bottom:1px solid var(--border); }
+.proc-item:last-child { border-bottom:none; }
+.proc-num { font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:700; color:var(--purple); flex-shrink:0; width:32px; }
+.proc-item h4 { font-size:1rem; font-weight:600; margin-bottom:.35rem; }
+.proc-item p { color:var(--muted); font-size:.85rem; line-height:1.6; font-weight:300; }
+
+.cta-final { text-align:center; padding:5rem 2rem 7rem; }
+.cta-final h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:700; margin-bottom:1rem; letter-spacing:-.01em; }
+.cta-final p { color:var(--muted); margin-bottom:2.2rem; }
+</style>
+</head>
+<body>
+<div class="blueprint-bg"></div>
+<nav>
+<a href="index.html" class="nav-logo">ORBIT AI</a>
+<a href="index.html#services" class="nav-back">← Volver a todos los servicios</a>
+</nav>
+
+<main>
+<section class="hero">
+<p class="hero-kicker">Páginas Web con IA</p>
+<h1>Tu web no se diseña.<br>Se construye mientras la ves.</h1>
+<p class="hero-sub">Así de rápido pasa el código a algo real. Esto es exactamente lo que hacemos por ti, en días, no en meses.</p>
+
+<div class="builder">
+<div class="code-pane">
+<div class="code-lines" id="codeLines"></div>
+</div>
+<div class="preview-pane">
+<div class="preview-inner">
+<div class="pv-h1" id="pvH1">Bienvenido a tu negocio</div>
+<div class="pv-p" id="pvP">Una web que trabaja para ti, disponible siempre, diseñada para convertir.</div>
+<div class="pv-btn" id="pvBtn">Contactar ahora</div>
+</div>
+</div>
+</div>
+
+<div class="hero-actions">
+<a href="index.html#contact" class="mag-btn mag-primary" data-magnetic>Quiero mi web</a>
+<a href="https://wa.me/34614057443?text=Hola%2C%20me%20interesa%20una%20p%C3%A1gina%20web" class="mag-btn mag-secondary" data-magnetic>Hablar por WhatsApp</a>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-quiet-title">Por qué una web construida con IA es distinta</h2>
+<div class="benefits">
+<div class="benefit"><h3>Se adapta desde el primer día</h3><p>El contenido, la estructura y el diseño se ajustan a tu negocio real, no a una plantilla genérica reutilizada mil veces.</p></div>
+<div class="benefit"><h3>Lista en días, no en meses</h3><p>Lo que a un desarrollo tradicional le toma semanas de ida y vuelta, aquí se resuelve en un ciclo corto de iteración real.</p></div>
+<div class="benefit"><h3>Pensada para convertir</h3><p>Cada sección tiene un propósito: llevar a quien te visita a escribirte, comprar, o agendar — no solo a mirar.</p></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-quiet-title">Cómo se construye tu web</h2>
+<div class="process-list">
+<div class="proc-item"><span class="proc-num">1</span><div><h4>Nos cuentas tu negocio</h4><p>Qué vendes, a quién, y qué quieres que pase cuando alguien entre a tu web.</p></div></div>
+<div class="proc-item"><span class="proc-num">2</span><div><h4>Construimos la primera versión</h4><p>Con IA generamos estructura, textos y diseño ajustados a tu marca, listos para revisar.</p></div></div>
+<div class="proc-item"><span class="proc-num">3</span><div><h4>Ajustamos contigo</h4><p>Cambios rápidos, sin esperar semanas entre una revisión y la siguiente.</p></div></div>
+<div class="proc-item"><span class="proc-num">4</span><div><h4>Publicamos y queda funcionando</h4><p>Tu web en vivo, con dominio propio, lista para recibir visitas desde el primer día.</p></div></div>
+</div>
+</section>
+
+<section class="cta-final">
+<h2>¿Empezamos con la tuya?</h2>
+<p>Cuéntanos tu negocio y te mostramos una primera versión antes de que decidas nada.</p>
+<a href="index.html#contact" class="mag-btn mag-primary" data-magnetic style="display:inline-flex">Empezar mi web</a>
+</section>
+</main>
+
+<script>
+// Constructor de codigo en vivo -> vista previa
+const codeSteps = [
+  {html:'&lt;<span class="code-tag">h1</span>&gt;', reveal:'pvH1', delay:40},
+  {html:'  Bienvenido a tu negocio\n', reveal:null, delay:15},
+  {html:'&lt;/<span class="code-tag">h1</span>&gt;\n', reveal:null, delay:20},
+  {html:'&lt;<span class="code-tag">p</span>&gt;', reveal:'pvP', delay:40},
+  {html:'  Una web que trabaja para ti...\n', reveal:null, delay:12},
+  {html:'&lt;/<span class="code-tag">p</span>&gt;\n', reveal:null, delay:20},
+  {html:'&lt;<span class="code-tag">button</span> <span class="code-attr">class</span>=<span class="code-str">"cta"</span>&gt;', reveal:'pvBtn', delay:35},
+  {html:'  Contactar ahora\n', reveal:null, delay:15},
+  {html:'&lt;/<span class="code-tag">button</span>&gt;', reveal:null, delay:20},
+];
+const codeEl = document.getElementById('codeLines');
+let full = '';
+function typeStep(i){
+  if(i >= codeSteps.length){
+    codeEl.innerHTML = full + '<span class="code-cursor"></span>';
+    setTimeout(()=>{ full=''; codeEl.innerHTML=''; document.querySelectorAll('.pv-h1,.pv-p,.pv-btn').forEach(e=>e.classList.remove('on')); setTimeout(()=>typeStep(0), 900); }, 3200);
+    return;
+  }
+  const step = codeSteps[i];
+  const chars = step.html.split(/(<[^>]+>)/g).filter(Boolean);
+  let ci = 0;
+  function typeChar(){
+    if(ci < chars.length){
+      full += chars[ci];
+      codeEl.innerHTML = full + '<span class="code-cursor"></span>';
+      ci++;
+      setTimeout(typeChar, step.delay);
+    } else {
+      if(step.reveal) document.getElementById(step.reveal).classList.add('on');
+      setTimeout(()=>typeStep(i+1), 90);
+    }
+  }
+  typeChar();
+}
+typeStep(0);
+
+// Botones magneticos
+document.querySelectorAll('[data-magnetic]').forEach(btn=>{
+  btn.addEventListener('mousemove', e=>{
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top - r.height/2;
+    btn.style.transform = `translate(${x*0.25}px, ${y*0.35}px)`;
+  });
+  btn.addEventListener('mouseleave', ()=>{ btn.style.transform = 'translate(0,0)'; });
+});
+</script>
+</body>
+</html>
