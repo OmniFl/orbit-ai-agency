@@ -209,6 +209,20 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+@keyframes dashFlow { to { stroke-dashoffset:-16; } }
+@keyframes circPulse { 0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.18); opacity:.75;} }
+@keyframes barGrow { 0%,100%{transform:scaleY(1);} 50%{transform:scaleY(1.08);} }
+@keyframes ringSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.illust path[stroke-dasharray] { animation:dashFlow 1.2s linear infinite; }
+.illust circle[fill]:not([fill="none"]) { transform-origin:center; transform-box:fill-box; animation:circPulse 2.4s ease-in-out infinite; }
+.illust rect[fill]:not([fill="#141B30"]) { transform-origin:bottom; transform-box:fill-box; animation:barGrow 2s ease-in-out infinite; }
+.illust ellipse { transform-origin:center; transform-box:fill-box; animation:ringSpin 10s linear infinite; }
+.illust circle:nth-of-type(2n) { animation-delay:.3s; }
+.illust circle:nth-of-type(3n) { animation-delay:.6s; }
+.illust rect:nth-of-type(2n) { animation-delay:.25s; }
+.illust rect:nth-of-type(3n) { animation-delay:.5s; }
+
+
 @keyframes iconFloat { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-6px) rotate(4deg);} }
 @keyframes iconPulseGlow { 0%,100%{box-shadow:0 0 0 rgba(139,95,224,0);} 50%{box-shadow:0 0 18px rgba(139,95,224,.55);} }
 .svc-icon { animation:iconFloat 3.2s ease-in-out infinite, iconPulseGlow 3.2s ease-in-out infinite; }
