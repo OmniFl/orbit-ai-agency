@@ -211,6 +211,32 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+.sectors-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+.sector-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.8rem; transition:transform .3s ease, border-color .3s ease; }
+.sector-card:hover { transform:translateY(-6px); border-color:#8B5FE0; }
+.sector-card h4 { font-size:1.05rem; margin-bottom:.5rem; color:#fff; }
+.sector-card p { font-size:.85rem; color:var(--muted); line-height:1.6; }
+@media (max-width:760px) { .sectors-grid { grid-template-columns:1fr; } }
+
+.faq-list { max-width:760px; margin:3rem auto 0; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q { padding:1.3rem 0; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-size:1rem; font-weight:600; color:#fff; }
+.faq-q::after { content:'+'; font-size:1.4rem; color:var(--muted); transition:transform .3s ease; }
+.faq-item.open .faq-q::after { transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.faq-item.open .faq-a { max-height:200px; }
+.faq-a p { padding-bottom:1.3rem; color:var(--muted); font-size:.9rem; line-height:1.7; }
+
+.roi-calc { max-width:820px; margin:3rem auto 0; background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2.5rem; }
+.roi-inputs { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem; }
+.roi-field label { display:block; font-size:.8rem; color:var(--muted); margin-bottom:.5rem; }
+.roi-field input[type=range] { width:100%; }
+.roi-field .roi-val { color:#fff; font-weight:700; font-size:1.2rem; margin-top:.3rem; }
+.roi-result { text-align:center; padding-top:1.5rem; border-top:1px solid var(--border); }
+.roi-result .roi-amount { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,5vw,3.2rem); font-weight:700; color:#fff; }
+.roi-result p { color:var(--muted); font-size:.85rem; margin-top:.3rem; }
+
+
 .svc-icon, .brand-icon { transform-style:preserve-3d; perspective:600px; transition:transform .15s ease-out, box-shadow .2s ease; }
 .svc-icon.tilt-active, .brand-icon.tilt-active { animation:none !important; box-shadow:0 12px 28px rgba(139,95,224,.5); }
 
@@ -481,6 +507,47 @@ body { background:#000000; }
 </div></section>
 
 <section id="founder" class="section"><div class="wrap"><p class="eyebrow" data-t="crea_ey">Quiénes somos</p><h2 class="section-title" data-t="crea_t">La Agencia</h2><div class="founder-grid"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#4F7CFF,#9B6FFF);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:#fff"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-25 12 12)"/><circle cx="20.5" cy="8.2" r="1.1" fill="#fff" stroke="none"/></svg></div><div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.3rem">Orbit AI</h3><p style="color:var(--cyan);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem" data-t="crea_rol">Agencia de Inteligencia Artificial</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem" data-t="crea_bio">Somos una agencia especializada en implementar herramientas tecnológicas novedosas e ingeniosas para el sector público y privado.</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem;margin-top:.8rem" data-t="crea_bio2">Aplicamos inteligencia artificial a problemas reales de negocio: automatización inteligente de procesos, agentes autónomos, chatbots conversacionales, analítica predictiva y visión por computadora. Nuestro enfoque une la experiencia tecnológica acumulada durante más de una década con las capacidades de la IA de última generación, para construir soluciones que trabajan solas, aprenden de cada ciclo y escalan con tu negocio.</p><div class="svc-stats" style="margin-top:1rem"><span class="svc-stat-badge" data-t="crea_b2">Sector público y privado</span><span class="svc-stat-badge" data-t="crea_b3">Proyectos innovadores</span></div></div></div></div></section>
+<section class="section" id="sectors"><div class="wrap">
+<p class="eyebrow">Sectores</p>
+<h2 class="section-title">A quién ayudamos</h2>
+<p class="section-desc">Trabajamos con negocios de sectores muy distintos. Esto es lo que suele pedirnos cada uno.</p>
+<div class="sectors-grid">
+<div class="sector-card"><h4>Inmobiliarias</h4><p>Chatbot que responde consultas de propiedades 24/7 y agenda visitas sin que nadie lo gestione a mano.</p></div>
+<div class="sector-card"><h4>Restaurantes y hostelería</h4><p>Reservas automáticas por WhatsApp y respuestas a las preguntas más comunes sobre horarios y menú.</p></div>
+<div class="sector-card"><h4>Clínicas y salud</h4><p>Gestión automática de citas, recordatorios y respuestas a dudas frecuentes de pacientes.</p></div>
+<div class="sector-card"><h4>Comercio y tiendas online</h4><p>Recuperación de carritos abandonados y atención al cliente automatizada en cualquier horario.</p></div>
+<div class="sector-card"><h4>Servicios profesionales</h4><p>Cualificación automática de leads antes de que lleguen a tu equipo comercial.</p></div>
+<div class="sector-card"><h4>Educación y formación</h4><p>Atención a alumnos y matrículas automatizada, disponible fuera del horario de oficina.</p></div>
+</div>
+</div></section>
+
+<section class="section section-alt" id="faq"><div class="wrap">
+<p class="eyebrow">Preguntas frecuentes</p>
+<h2 class="section-title">Lo que la gente nos pregunta</h2>
+<div class="faq-list">
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Cuánto cuesta un proyecto con Orbit?</div><div class="faq-a"><p>Depende del servicio: desde 997€ para automatizaciones y chatbots, hasta proyectos a medida que se cotizan según el alcance. Pídenos un presupuesto sin compromiso.</p></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Cuánto tiempo tarda en estar listo?</div><div class="faq-a"><p>La mayoría de proyectos están funcionando entre 1 y 3 semanas, dependiendo de la complejidad y de qué tan rápido nos des la información que necesitamos.</p></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Qué pasa si no estoy satisfecho con el resultado?</div><div class="faq-a"><p>Ajustamos contigo hasta que el sistema funcione como lo necesitas. La primera consulta y el diagnóstico inicial no tienen coste.</p></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Necesito conocimientos técnicos para usarlo?</div><div class="faq-a"><p>No. Diseñamos todo para que lo uses sin fricciones, y te explicamos cómo funciona antes de entregarlo.</p></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Mis datos están seguros?</div><div class="faq-a"><p>Sí. No compartimos tu información con terceros y usamos las mismas medidas de seguridad que cualquier plataforma profesional seria.</p></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">¿Ofrecen soporte después de la entrega?</div><div class="faq-a"><p>Sí, quedamos disponibles para ajustes y dudas una vez el sistema está en marcha.</p></div></div>
+</div>
+</div></section>
+
+<section class="section" id="roi"><div class="wrap">
+<p class="eyebrow">Calculadora</p>
+<h2 class="section-title">¿Cuánto puedes ahorrar automatizando?</h2>
+<p class="section-desc">Mueve los valores y mira el ahorro mensual estimado.</p>
+<div class="roi-calc">
+<div class="roi-inputs">
+<div class="roi-field"><label>Veces por semana</label><input type="range" id="roiFreq" min="1" max="50" value="10" oninput="updateRoi()"><div class="roi-val" id="roiFreqVal">10</div></div>
+<div class="roi-field"><label>Minutos por tarea</label><input type="range" id="roiTime" min="1" max="120" value="20" oninput="updateRoi()"><div class="roi-val" id="roiTimeVal">20 min</div></div>
+<div class="roi-field"><label>Coste por hora (€)</label><input type="range" id="roiCost" min="5" max="80" value="20" oninput="updateRoi()"><div class="roi-val" id="roiCostVal">20€</div></div>
+</div>
+<div class="roi-result"><div class="roi-amount" id="roiResult">289€</div><p>Ahorro mensual estimado</p></div>
+</div>
+</div></section>
+
 <section id="contact" class="section section-alt"><div class="wrap"><div class="contact-grid">
 <div>
 <p class="eyebrow" data-t="con_ey">Contacto</p>
@@ -834,6 +901,21 @@ els.forEach(function(el){ob.observe(el);});
   attachTilt('.svc-icon', 22);
   attachTilt('.brand-icon', 22);
 })();
+</script>
+
+<script>
+function updateRoi(){
+  const freq = parseInt(document.getElementById('roiFreq').value);
+  const time = parseInt(document.getElementById('roiTime').value);
+  const cost = parseInt(document.getElementById('roiCost').value);
+  document.getElementById('roiFreqVal').textContent = freq;
+  document.getElementById('roiTimeVal').textContent = time + ' min';
+  document.getElementById('roiCostVal').textContent = cost + '€';
+  const monthlyMinutes = freq * time * 4.33;
+  const monthlySaving = Math.round((monthlyMinutes / 60) * cost);
+  document.getElementById('roiResult').textContent = monthlySaving.toLocaleString('es-ES') + '€';
+}
+document.addEventListener('DOMContentLoaded', updateRoi);
 </script>
 </body>
 </html>
