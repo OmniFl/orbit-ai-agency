@@ -209,6 +209,17 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+@keyframes iconFloat { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-6px) rotate(4deg);} }
+@keyframes iconPulseGlow { 0%,100%{box-shadow:0 0 0 rgba(139,95,224,0);} 50%{box-shadow:0 0 18px rgba(139,95,224,.55);} }
+.svc-icon { animation:iconFloat 3.2s ease-in-out infinite, iconPulseGlow 3.2s ease-in-out infinite; }
+.svc-card:nth-child(2n) .svc-icon { animation-delay:.4s, .4s; }
+.svc-card:nth-child(3n) .svc-icon { animation-delay:.8s, .8s; }
+.brand-icon.grad-primary { animation:iconFloat 3.6s ease-in-out infinite; }
+.brand-item:nth-child(2n) .brand-icon { animation-delay:.5s; }
+.brand-item:nth-child(3n) .brand-icon { animation-delay:1s; }
+.orbit-o svg circle[fill="#3FE0D0"], .orbit-o svg circle[fill="#8B5FE0"] { animation:none; }
+
+
 .process-grid { display:block; max-width:760px; margin:3rem auto 0; position:relative; }
 .process-grid::before { content:''; position:absolute; left:23px; top:24px; bottom:24px; width:1px; background:linear-gradient(180deg,#8B5FE0,#3FE0D0); }
 .process-step { display:flex; gap:1.8rem; align-items:flex-start; background:transparent; border:none; border-radius:0; padding:0 0 2.8rem; position:relative; transition:transform .3s ease; }
