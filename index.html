@@ -211,6 +211,19 @@ body { background:#000000; }
 .svc-visual svg.illust { position:absolute; inset:0; width:100%; height:100%; }
 .svc-visual { background:#141B30; }
 
+.sound-toggle { background:transparent; border:1px solid var(--border); color:var(--muted); width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-right:.8rem; transition:all .25s ease; }
+.sound-toggle:hover { border-color:#8B5FE0; color:#fff; transform:scale(1.1); }
+.sound-toggle.on { color:#3FE0D0; border-color:#3FE0D0; }
+
+
+@keyframes btnGlowPulse { 0%,100%{box-shadow:0 0 0 rgba(139,95,224,0);} 50%{box-shadow:0 0 14px rgba(139,95,224,.65);} }
+@keyframes btnGlowPulseGreen { 0%,100%{box-shadow:0 0 0 rgba(37,211,102,0);} 50%{box-shadow:0 0 12px rgba(37,211,102,.6);} }
+.btn-book { animation:btnGlowPulse 2.2s ease-in-out infinite; }
+.btn-wa { animation:btnGlowPulseGreen 2.2s ease-in-out infinite; }
+.btn-photos { animation:btnGlowPulse 2.6s ease-in-out infinite; animation-delay:.3s; }
+.nav-btn { animation:btnGlowPulse 2.4s ease-in-out infinite; }
+
+
 @keyframes dashFlow { to { stroke-dashoffset:-16; } }
 @keyframes circPulse { 0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.18); opacity:.75;} }
 @keyframes barGrow { 0%,100%{transform:scaleY(1);} 50%{transform:scaleY(1.08);} }
@@ -304,6 +317,7 @@ body { background:#000000; }
 <button onclick="setLang('ko')">한국어</button><span class="nav-lang-sep">|</span>
 <button onclick="setLang('ja')">日本語</button>
 </div>
+<button class="sound-toggle" id="soundToggle" onclick="toggleSound()" title="Activar sonido" aria-label="Activar sonido"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line id="soundLine1" x1="15" y1="9" x2="20" y2="15" style="display:none"/><line id="soundLine2" x1="20" y1="9" x2="15" y2="15" style="display:none"/><path id="soundWave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path id="soundWave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></button>
 <a href="#contact" class="nav-btn" data-t="nav_btn" id="nav-btn-desktop">Empezar</a>
 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
 </nav>
@@ -451,7 +465,7 @@ body { background:#000000; }
 <div class="marquee-wrap"><div class="marquee-track"><span class="hl">Claude</span><span class="">GPT-4</span><span class="">WhatsApp Business API</span><span class="hl">Make.com</span><span class="">Zapier</span><span class="">n8n</span><span class="hl">Python</span><span class="">PostgreSQL</span><span class="">TensorFlow</span><span class="hl">LangChain</span><span class="hl">Claude</span><span class="">GPT-4</span><span class="">WhatsApp Business API</span><span class="hl">Make.com</span><span class="">Zapier</span><span class="">n8n</span><span class="hl">Python</span><span class="">PostgreSQL</span><span class="">TensorFlow</span><span class="hl">LangChain</span></div></div>
 </div></section>
 
-<section id="founder" class="section"><div class="wrap"><p class="eyebrow" data-t="crea_ey">Quiénes somos</p><h2 class="section-title" data-t="crea_t">La Agencia</h2><div class="founder-grid"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#4F7CFF,#9B6FFF);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:#fff"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-25 12 12)"/><circle cx="20.5" cy="8.2" r="1.1" fill="#fff" stroke="none"/></svg></div><div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.3rem">Orbit AI</h3><p style="color:var(--cyan);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem" data-t="crea_rol">Agencia de Inteligencia Artificial</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem" data-t="crea_bio">Somos una agencia con más de 15 años de trayectoria creando proyectos e implementando herramientas tecnológicas novedosas e ingeniosas para el sector público y privado.</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem;margin-top:.8rem" data-t="crea_bio2">Aplicamos inteligencia artificial a problemas reales de negocio: automatización inteligente de procesos, agentes autónomos, chatbots conversacionales, analítica predictiva y visión por computadora. Nuestro enfoque une la experiencia tecnológica acumulada durante más de una década con las capacidades de la IA de última generación, para construir soluciones que trabajan solas, aprenden de cada ciclo y escalan con tu negocio.</p><div class="svc-stats" style="margin-top:1rem"><span class="svc-stat-badge" data-t="crea_b1">+15 años de experiencia</span><span class="svc-stat-badge" data-t="crea_b2">Sector público y privado</span><span class="svc-stat-badge" data-t="crea_b3">Proyectos innovadores</span></div></div></div></div></section>
+<section id="founder" class="section"><div class="wrap"><p class="eyebrow" data-t="crea_ey">Quiénes somos</p><h2 class="section-title" data-t="crea_t">La Agencia</h2><div class="founder-grid"><div style="width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#4F7CFF,#9B6FFF);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;color:#fff"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(-25 12 12)"/><circle cx="20.5" cy="8.2" r="1.1" fill="#fff" stroke="none"/></svg></div><div><h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.3rem">Orbit AI</h3><p style="color:var(--cyan);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem" data-t="crea_rol">Agencia de Inteligencia Artificial</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem" data-t="crea_bio">Somos una agencia especializada en implementar herramientas tecnológicas novedosas e ingeniosas para el sector público y privado.</p><p style="color:var(--muted);line-height:1.75;font-size:.92rem;margin-top:.8rem" data-t="crea_bio2">Aplicamos inteligencia artificial a problemas reales de negocio: automatización inteligente de procesos, agentes autónomos, chatbots conversacionales, analítica predictiva y visión por computadora. Nuestro enfoque une la experiencia tecnológica acumulada durante más de una década con las capacidades de la IA de última generación, para construir soluciones que trabajan solas, aprenden de cada ciclo y escalan con tu negocio.</p><div class="svc-stats" style="margin-top:1rem"><span class="svc-stat-badge" data-t="crea_b2">Sector público y privado</span><span class="svc-stat-badge" data-t="crea_b3">Proyectos innovadores</span></div></div></div></div></section>
 <section id="contact" class="section section-alt"><div class="wrap"><div class="contact-grid">
 <div>
 <p class="eyebrow" data-t="con_ey">Contacto</p>
@@ -671,6 +685,49 @@ t.addEventListener('animationend',function(){t.style.animation='';t.style.opacit
 ob.unobserve(t);
 }});},{threshold:0.12});
 els.forEach(function(el){ob.observe(el);});
+})();
+</script>
+
+<script>
+(function(){
+  let soundOn = false;
+  let actx = null;
+  function ensureCtx(){ if(!actx){ actx = new (window.AudioContext||window.webkitAudioContext)(); } return actx; }
+  function tone(freq, dur, type, startGain, delay){
+    if(!soundOn) return;
+    const ctx = ensureCtx();
+    const t0 = ctx.currentTime + (delay||0);
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.setValueAtTime(freq, t0);
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(startGain||0.12, t0+0.015);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0+dur);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(t0); osc.stop(t0+dur+0.02);
+  }
+  function playWarmOn(){ tone(392,0.28,'sine',0.13,0); tone(494,0.32,'sine',0.09,0.05); }
+  function playAscend(){ tone(440,0.11,'sine',0.11,0); tone(659,0.16,'sine',0.13,0.09); }
+  function playTick(){ tone(720,0.045,'triangle',0.08,0); }
+  window.toggleSound = function(){
+    soundOn = !soundOn;
+    const btn = document.getElementById('soundToggle');
+    btn.classList.toggle('on', soundOn);
+    document.getElementById('soundLine1').style.display = soundOn ? 'none' : 'block';
+    document.getElementById('soundLine2').style.display = soundOn ? 'none' : 'block';
+    document.getElementById('soundWave1').style.display = soundOn ? 'block' : 'none';
+    document.getElementById('soundWave2').style.display = soundOn ? 'block' : 'none';
+    if(soundOn){ ensureCtx(); playWarmOn(); }
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.btn-primary, .btn-book, .form-submit, .modal-submit, .nav-btn, .wa-contact').forEach(el=>{
+      el.addEventListener('click', playAscend);
+    });
+    document.querySelectorAll('.btn-secondary, .btn-photos, .btn-wa, .nav-lang button, .mobile-menu-btn').forEach(el=>{
+      el.addEventListener('click', playTick);
+    });
+  });
 })();
 </script>
 </body>
