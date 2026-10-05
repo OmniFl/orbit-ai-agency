@@ -132,7 +132,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
 <body>
 <canvas id="water" aria-hidden="true"></canvas><canvas id="lines" aria-hidden="true"></canvas>
 
-<nav><div class="wrap"><a class="logo" href="#inicio"><i></i>ORBIT AI</a>
+<nav><div class="wrap"><a class="notranslate logo" href="#inicio"><i></i>ORBIT AI</a>
 <ul class="menu">
  <li><button class="mb" aria-haspopup="true">Servicios</button><div class="dd"><a href="#servicios">Automatización IA</a><a href="#servicios">Chatbots y asistentes</a><a href="#servicios">Páginas web con IA</a><a href="#servicios">Visibilidad en IA</a><a href="#servicios">Pasarelas de pago</a><a href="#servicios">Analítica predictiva</a><a href="#servicios">Visión por computadora</a><a href="#servicios">Procesamiento de datos</a><a href="#servicios">IA personalizada</a></div></li>
  <li><button class="mb" aria-haspopup="true">Propuesta</button><div class="dd"><a href="#propuesta">Propuesta en tiempo real</a><a href="#propuesta">Pago fraccionado</a><a href="#propuesta">Código QR de pago</a></div></li>
@@ -140,6 +140,53 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
  <li><button class="mb" aria-haspopup="true">Agencia</button><div class="dd"><a href="#ias">IAs que usamos</a><a href="#proceso">Cómo trabajamos</a><a href="#compromiso">Compromiso</a><a href="#casos">Casos y reseñas</a><a href="#video">Vídeo</a></div></li>
  <li><button class="mb" aria-haspopup="true">Ayuda</button><div class="dd"><a href="#faq">Preguntas frecuentes</a><a href="#contacto">Contacto</a></div></li>
 </ul>
+
+<div class="lng" id="lng">
+  <button type="button" class="lng-btn" id="lngBtn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma"><img id="lngCur" src="" alt="" width="22" height="16"><span id="lngCode">ES</span></button>
+  <div class="lng-dd" id="lngDd" role="menu">
+    <button type="button" data-l="es" data-f="es">Español</button>
+    <button type="button" data-l="en" data-f="gb">English</button>
+    <button type="button" data-l="fr" data-f="fr">Français</button>
+    <button type="button" data-l="it" data-f="it">Italiano</button>
+    <button type="button" data-l="pt" data-f="pt">Português</button>
+    <button type="button" data-l="sq" data-f="al">Shqip</button>
+    <button type="button" data-l="ja" data-f="jp">日本語</button>
+    <button type="button" data-l="zh-CN" data-f="cn">中文</button>
+  </div>
+</div>
+<div id="google_translate_element" style="display:none"></div>
+<style>
+.lng{position:relative;margin-left:8px}
+.lng-btn{display:flex;align-items:center;gap:7px;border:1px solid rgba(160,220,255,.22);background:rgba(255,255,255,.04);color:#fff;border-radius:10px;padding:7px 10px;cursor:pointer;font:600 13px 'Inter',sans-serif}
+.lng-btn img,.lng-dd img{border-radius:3px;display:block;object-fit:cover}
+.lng-dd{position:absolute;right:0;top:calc(100% + 8px);min-width:180px;background:rgba(1,8,16,.97);border:1px solid rgba(160,220,255,.22);border-radius:14px;padding:6px;display:none;z-index:50;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.lng.open .lng-dd{display:grid}
+.lng-dd button{display:flex;align-items:center;gap:10px;border:0;background:none;color:#E8ECF4;text-align:left;padding:9px 10px;border-radius:9px;cursor:pointer;font:500 14px 'Inter',sans-serif}
+.lng-dd button:hover,.lng-dd button[aria-current="true"]{background:rgba(127,231,242,.12);color:#fff}
+/* ocultar la barra de Google Translate */
+.goog-te-banner-frame,.skiptranslate>iframe,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+body{top:0!important}
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+@media(max-width:700px){.lng{margin-left:4px}.lng-btn span{display:none}}
+</style>
+<script>
+(function(){
+var FLAGS={es:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyMCI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjQUExNTFCIi8+PHJlY3QgeT0iNSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRjFCRjAwIi8+PC9zdmc+',gb:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PGNsaXBQYXRoIGlkPSJjIj48cGF0aCBkPSJNMCAwdjMwaDYwVjB6Ii8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9InQiPjxwYXRoIGQ9Ik0zMCAxNWgzMHYxNXp2MTVIMHpIMFYwelYwaDMweiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI2MpIj48cGF0aCBkPSJNMCAwdjMwaDYwVjB6IiBmaWxsPSIjMDEyMTY5Ii8+PHBhdGggZD0iTTAgMGw2MCAzMG0wLTMwTDAgMzAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTAgMGw2MCAzMG0wLTMwTDAgMzAiIGNsaXAtcGF0aD0idXJsKCN0KSIgc3Ryb2tlPSIjQzgxMDJFIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMzAgMHYzME0wIDE1aDYwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJNMzAgMHYzME0wIDE1aDYwIiBzdHJva2U9IiNDODEwMkUiIHN0cm9rZS13aWR0aD0iNiIvPjwvZz48L3N2Zz4=',fr:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDI2NTQiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0NFMTEyNiIvPjwvc3ZnPg==',it:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjIiIGZpbGw9IiMwMDkyNDYiLz48cmVjdCB4PSIxIiB3aWR0aD0iMSIgaGVpZ2h0PSIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMiIgd2lkdGg9IjEiIGhlaWdodD0iMiIgZmlsbD0iI0NFMkIzNyIvPjwvc3ZnPg==',pt:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyMCI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjRkYwMDAwIi8+PHJlY3Qgd2lkdGg9IjEyIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDA2NjAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMCIgcj0iNC4yIiBmaWxsPSIjRkZDQzAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMCIgcj0iMi42IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNGRjAwMDAiIHN0cm9rZS13aWR0aD0iMS4yIi8+PC9zdmc+',al:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyMSI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIxIiBmaWxsPSIjRTQxRTIwIi8+PHBhdGggZD0iTTE1IDRsMS42IDIuMiAyLjQtMS42LS40IDIuNiAzLS42LTEuNiAyLjQgMi42IDEtMi44IDEuMiAxLjQgMi40LTIuOC0uNC4yIDIuOEwxNSAxNC42bC0yLjYgMS44LjItMi44LTIuOC40IDEuNC0yLjQtMi44LTEuMiAyLjYtMS0xLjYtMi40IDMgLjYtLjQtMi42IDIuNCAxLjZ6IiBmaWxsPSIjMDAwIi8+PC9zdmc+',jp:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyMCI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTUiIGN5PSIxMCIgcj0iNiIgZmlsbD0iI0JDMDAyRCIvPjwvc3ZnPg==',cn:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyMCI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjREUyOTEwIi8+PHBhdGggZD0iTTUgMi41bDEuMSAzLjRIOS43TDYuOCA4bDEuMSAzLjRMNSA5LjMgMi4xIDExLjQgMy4yIDggLjMgNS45aDMuNnoiIGZpbGw9IiNGRkRFMDAiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjIiIHI9Ii44IiBmaWxsPSIjRkZERTAwIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI0IiByPSIuOCIgZmlsbD0iI0ZGREUwMCIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iLjgiIGZpbGw9IiNGRkRFMDAiLz48Y2lyY2xlIGN4PSIxMCIgY3k9IjkiIHI9Ii44IiBmaWxsPSIjRkZERTAwIi8+PC9zdmc+'};
+var root=document.getElementById('lng'),btn=document.getElementById('lngBtn'),dd=document.getElementById('lngDd');
+dd.querySelectorAll('button').forEach(function(b){var i=document.createElement('img');i.src=FLAGS[b.dataset.f];i.width=22;i.height=16;i.alt='';b.prepend(i)});
+function cur(){var m=document.cookie.match(/googtrans=\/es\/([^;]+)/);return m?decodeURIComponent(m[1]):'es'}
+function setCookie(v){var h=location.hostname,parts=h.split('.'),dom=parts.length>1?'.'+parts.slice(-2).join('.'):h;
+ [';path=/',';path=/;domain='+h,';path=/;domain='+dom].forEach(function(s){document.cookie='googtrans='+v+s+(v?'':';expires=Thu, 01 Jan 1970 00:00:00 GMT')})}
+var c=cur(),b0=dd.querySelector('[data-l="'+c+'"]')||dd.querySelector('[data-l="es"]');
+document.getElementById('lngCur').src=FLAGS[b0.dataset.f];document.getElementById('lngCode').textContent=c==='zh-CN'?'ZH':c.toUpperCase();b0.setAttribute('aria-current','true');
+document.documentElement.lang=c==='zh-CN'?'zh':c;
+btn.onclick=function(e){e.stopPropagation();var o=root.classList.toggle('open');btn.setAttribute('aria-expanded',o)};
+document.addEventListener('click',function(){root.classList.remove('open');btn.setAttribute('aria-expanded','false')});
+dd.querySelectorAll('button').forEach(function(b){b.onclick=function(){var l=b.dataset.l;if(l==='es')setCookie('');else setCookie('/es/'+l);location.reload()}});
+window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,fr,it,pt,sq,ja,zh-CN,es',autoDisplay:false},'google_translate_element')};
+if(c!=='es'){var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.head.appendChild(s)}
+})();
+</script>
 <a class="cta" href="https://wa.me/34614057443">Hablemos</a></div></nav>
 
 <main>
@@ -198,7 +245,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
       <div class="modes" role="group" aria-label="Forma de pago"><button data-m="2" aria-pressed="true">50/50</button><button data-m="3" aria-pressed="false">3 pagos</button><button data-m="6" aria-pressed="false">6 cuotas</button><button data-m="12" aria-pressed="false">12 cuotas</button></div>
       <div class="plan" id="plan"></div>
       <div class="qrbox"><div id="qr" role="img" aria-label="Código QR para recibir tu propuesta y pagar"></div><div class="small">Escanea con el móvil para recibir tu propuesta y el <b style="color:#fff">enlace de pago seguro</b> (tarjeta, Apple Pay o Google Pay).</div></div>
-      <a class="btn main" id="wa" href="#" style="text-align:center">Recibir propuesta por WhatsApp</a>
+      <a class="btn main" id="payNow" href="#" target="_blank" rel="noopener" style="text-align:center" hidden>Pagar la reserva con tarjeta</a><a class="btn main" id="wa" href="#" style="text-align:center">Recibir propuesta por WhatsApp</a>
       <span class="small">Precios orientativos de partida. La propuesta final se confirma tras la videollamada de diagnóstico. Cuotas sujetas a aprobación cuando haya financiación.</span>
     </aside>
   </div>
@@ -303,6 +350,7 @@ var STRIPE_LINK='';
 var PHONE='34614057443';
 var SERV=[['Automatización IA','Agentes que hacen las tareas repetitivas',997],['Chatbots y asistentes','Web y WhatsApp',997],['Páginas web con IA','Diseño a medida con pagos',1290],['Visibilidad en IA','Google, ChatGPT y Gemini',490],['Pasarelas de pago','Tarjeta, plazos y financiación',490],['Asesoramiento por videollamada','Por sesión',90],['Analítica predictiva','Previsión de demanda',1497],['Visión por computadora','Reconocimiento de imágenes',1997],['Procesamiento de datos','Paneles e informes',1297],['IA personalizada','A medida',0]];
 var sel=new Set([0,1]),m=2;
+try{var U=new URLSearchParams(location.search);if(U.get('p')){sel=new Set(U.get('p').split(',').map(Number).filter(function(i){return i>=0&&i<SERV.length}))}if([2,3,6,12].indexOf(+U.get('m'))>-1){m=+U.get('m');setTimeout(function(){document.querySelectorAll('.modes button').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.m===m)})},0)}}catch(e){}
 var box=document.getElementById('opts');
 box.innerHTML=SERV.map(function(x,i){return '<label class="opt" for="o'+i+'"><input type="checkbox" id="o'+i+'" data-i="'+i+'"'+(sel.has(i)?' checked':'')+'><span class="n"><b>'+x[0]+'</b><span>'+x[1]+'</span></span><span class="p">'+(x[2]?'desde '+eur(x[2]):'a consultar')+'</span></label>'}).join('');
 function eur(v){return v.toLocaleString('es-ES',{maximumFractionDigits:2,minimumFractionDigits:v%1?2:0})+' €'}
@@ -320,7 +368,7 @@ function draw(){
  var msg='Hola Orbit AI, quiero mi propuesta: '+items.map(function(x){return x[0]}).join(', ')+'. Precio de partida: '+eur(tot)+' + IVA. Pago: '+modo+'.';
  var wa='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg);
  document.getElementById('wa').href=wa;
- var target=STRIPE_LINK||wa;
+ var target=STRIPE_LINK||wa;var pn=document.getElementById('payNow');if(pn){pn.hidden=!STRIPE_LINK;pn.href=STRIPE_LINK||'#'}
  try{var q=qrcode(0,'M');q.addData(target);q.make();document.getElementById('qr').innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true});}catch(err){document.getElementById('qr').textContent='QR no disponible';}
 }
 draw();
