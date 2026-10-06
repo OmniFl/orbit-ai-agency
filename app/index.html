@@ -190,12 +190,15 @@ addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter')hide
 <nav><div class="wrap"><a class="notranslate logo kf" href="#inicio" aria-label="Kalifai, inicio"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:30px;height:30px;margin-right:8px;align-self:center"><path d="M22 92 C22 60, 30 44, 50 44 C70 44, 78 60, 78 92" fill="none" stroke="#E07A52" stroke-width="11" stroke-linecap="round"/><circle cx="50" cy="24" r="13" fill="#E07A52"/><path d="M38 92 C38 74, 42 66, 50 66 C58 66, 62 74, 62 92" fill="none" stroke="#9DB083" stroke-width="6" stroke-linecap="round"/></svg><span style="font-family:Cormorant Garamond,Georgia,serif;font-weight:600;font-size:28px;letter-spacing:0">Kalifai</span></a>
 <ul class="menu">
  <li><button class="mb" aria-haspopup="true">Servicios</button><div class="dd"><a href="#servicios">Automatización IA</a><a href="#servicios">Chatbots y asistentes</a><a href="#servicios">Páginas web con IA</a><a href="#servicios">Visibilidad en IA</a><a href="#servicios">Pasarelas de pago</a><a href="#servicios">Analítica predictiva</a><a href="#servicios">Visión por computadora</a><a href="#servicios">Procesamiento de datos</a><a href="#servicios">IA personalizada</a></div></li>
- <li><button class="mb" aria-haspopup="true">Escáner IA</button><div class="dd"><a href="#escaner">Diagnóstico gratis en 60 s</a><a href="#escaner">Gemelo IA de tu negocio</a></div></li>
+ <li><button class="mb" aria-haspopup="true">Escáner IA</button><div class="dd"><a href="#escaner">Diagnóstico gratis en 60 s</a><a href="#panel">Tu IA trabajando</a><a href="#garantia">Garantía de resultados</a><a href="#escaner">Gemelo IA de tu negocio</a></div></li>
  <li><button class="mb" aria-haspopup="true">Propuesta</button><div class="dd"><a href="#propuesta">Propuesta en tiempo real</a><a href="#propuesta">Pago fraccionado</a><a href="#propuesta">Código QR de pago</a></div></li>
  <li><button class="mb" aria-haspopup="true">Videollamada</button><div class="dd"><a href="#videollamada">Cómo funciona</a><a href="https://wa.me/34614057443?text=Hola%2C%20quiero%20reservar%20una%20videollamada%20con%20Kalifai">Reservar ahora</a></div></li>
  <li><button class="mb" aria-haspopup="true">Agencia</button><div class="dd"><a href="#ias">IAs que usamos</a><a href="#proceso">Cómo trabajamos</a><a href="#compromiso">Compromiso</a><a href="#casos">Casos y reseñas</a><a href="#video">Vídeo</a></div></li>
  <li><button class="mb" aria-haspopup="true">Ayuda</button><div class="dd"><a href="#faq">Preguntas frecuentes</a><a href="#contacto">Contacto</a></div></li>
 </ul>
+
+
+
 
 <div class="lng" id="lng">
   <button type="button" class="lng-btn" id="lngBtn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma"><img id="lngCur" src="" alt="" width="22" height="16"><span id="lngCode">ES</span></button>
@@ -240,6 +243,7 @@ btn.onclick=function(e){e.stopPropagation();var o=root.classList.toggle('open');
 document.addEventListener('click',function(){root.classList.remove('open');btn.setAttribute('aria-expanded','false')});
 dd.querySelectorAll('button').forEach(function(b){b.onclick=function(){var l=b.dataset.l;if(l==='es')setCookie('');else setCookie('/es/'+l);location.reload()}});
 window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,fr,it,pt,sq,ja,zh-CN,es',autoDisplay:false},'google_translate_element')};
+var vmap={en:'en',fr:'fr',it:'it',pt:'pt',sq:'sq',ja:'ja','zh-CN':'zh'};if(vmap[c])document.addEventListener('DOMContentLoaded',function(){var vv=document.querySelector('#video video');if(vv&&/kalifai-servicios/.test(vv.getAttribute('src')||'')){var es=vv.getAttribute('src');vv.onerror=function(){vv.onerror=null;vv.src=es};vv.src=(location.pathname.indexOf('/app/')>-1?'../':'')+'kalifai-servicios-'+vmap[c]+'.mp4'}});
 if(c!=='es'){var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.head.appendChild(s)}
 })();
 </script>
@@ -364,6 +368,97 @@ R();
   <div class="btns"><a class="btn main" href="https://wa.me/34614057443?text=Hola%2C%20quiero%20reservar%20una%20videollamada%20con%20Kalifai">Reservar videollamada</a></div>
 </section>
 
+<section class="wrap" id="panel">
+  <div class="sec-head"><span class="ey"><i></i>Tu IA trabajando</span><h2>Ves cada hora que <span class="grad">te devuelve la IA</span></h2><p class="lead">Cada cliente de Kalifai tiene su panel en esta app: mensajes atendidos, citas, ventas y horas ahorradas, al día. Sin informes que nadie lee.</p></div>
+  <div class="kp-box">
+    <div class="kp-top"><span class="kp-demo">Ejemplo con datos de muestra · así verás tu panel</span><span class="kp-live"><i></i>En directo</span></div>
+    <div class="kp-k">
+      <div><b data-to="1284">0</b><span>mensajes atendidos este mes</span></div>
+      <div><b data-to="96">0</b><span>citas o reservas cerradas</span></div>
+      <div><b data-to="41" data-suf=" h">0</b><span>horas ahorradas a tu equipo</span></div>
+      <div><b data-to="7420" data-suf=" €">0</b><span>ventas atribuidas a la IA</span></div>
+    </div>
+    <svg class="kp-chart" viewBox="0 0 300 70" preserveAspectRatio="none" aria-label="Evolución de horas ahorradas en 30 días"><defs><linearGradient id="kpg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7FE7F2" stop-opacity=".45"/><stop offset="1" stop-color="#7FE7F2" stop-opacity="0"/></linearGradient></defs><path d="M0 62 L20 58 L40 60 L60 52 L80 50 L100 44 L120 46 L140 38 L160 34 L180 36 L200 28 L220 22 L240 24 L260 16 L280 12 L300 8 L300 70 L0 70Z" fill="url(#kpg)"/><path class="kp-line" pathLength="1" d="M0 62 L20 58 L40 60 L60 52 L80 50 L100 44 L120 46 L140 38 L160 34 L180 36 L200 28 L220 22 L240 24 L260 16 L280 12 L300 8" fill="none" stroke="#7FE7F2" stroke-width="2.5"/></svg>
+    <ul class="kp-feed">
+      <li><em>09:42</em>Reserva para 4 personas confirmada por WhatsApp</li>
+      <li><em>09:15</em>Presupuesto enviado y pagado en 3 cuotas</li>
+      <li><em>08:03</em>Consulta fuera de horario resuelta y cita agendada</li>
+      <li><em>07:30</em>Caso delicado pasado a una persona del equipo, con resumen</li>
+    </ul>
+  </div>
+
+  <div class="kg-box" id="garantia">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 L40 10 V23 C40 33 33 40 24 44 C15 40 8 33 8 23 V10Z" fill="none" stroke="#7FE7F2" stroke-width="2.5"/><path d="M16 24 l6 6 l11 -12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><h3>Garantía Kalifai de resultados</h3>
+    <p>Si en los primeros <b>30 días</b> tu asistente no te ahorra al menos <b>10 horas al mes</b>, medidas en tu panel, te devolvemos el importe de la implantación. Sin letra pequeña escondida: las condiciones están en las condiciones de venta.</p></div>
+  </div>
+</section>
+<style>
+#panel{scroll-margin-top:90px}
+.kp-box,.kg-box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;backdrop-filter:blur(8px)}
+.kp-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px;font-size:13px;color:var(--muted)}
+.kp-demo{border:1px dashed var(--line);border-radius:999px;padding:5px 11px}
+.kp-live{display:inline-flex;align-items:center;gap:7px}.kp-live i{width:8px;height:8px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:kpP 1.8s infinite}
+@keyframes kpP{70%{box-shadow:0 0 0 10px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}
+.kp-k{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kp-k div{background:rgba(1,8,16,.45);border:1px solid var(--line);border-radius:16px;padding:14px}
+.kp-k b{display:block;font:700 30px var(--display);color:#fff}.kp-k span{display:block;font-size:13px;line-height:1.35;color:var(--muted);margin-top:4px}
+.kp-chart{width:100%;height:90px;margin:16px 0 6px}
+.kp-line{stroke-dasharray:1;stroke-dashoffset:1}.kp-on .kp-line{animation:kDraw 1.6s ease forwards}
+.kp-feed{list-style:none;display:grid;gap:8px;margin:8px 0 0;padding:0;font-size:14px}
+.kp-feed li{display:flex;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03)}.kp-feed em{font-style:normal;color:var(--cyan);font-weight:600;min-width:44px}
+.kg-box{display:flex;gap:18px;align-items:center;margin-top:16px}.kg-box svg{width:56px;height:56px;flex:none}
+.kg-box h3{font-family:var(--display);font-size:22px;margin:0 0 6px}.kg-box p{margin:0;color:var(--muted)}.kg-box b{color:#fff}
+@keyframes kDraw{to{stroke-dashoffset:0}}
+/* Voz y humano en el chat de Orbi */
+.bt-hd .kv{background:rgba(255,255,255,.12);border:0;color:#fff;border-radius:999px;padding:7px 10px;font:600 12px Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.bt-hd .kv[aria-pressed="true"]{background:#7FE7F2;color:#060B1C}
+.bt-hd .x{margin-left:0!important}.bt-hd .kv:first-of-type{margin-left:auto}
+.bt-in .kmic{background:#7FE7F2!important;color:#060B1C!important;padding:0 13px!important;font-size:18px!important}
+.bt-in .kmic.rec{background:#C0613E!important;color:#fff!important;animation:kpP 1.2s infinite}
+.bt-hum{align-self:stretch;text-align:center;font:600 13px Inter,system-ui,sans-serif;color:#0B1530;background:#fff;border:1.5px dashed #0B1530;border-radius:12px;padding:9px;text-decoration:none}
+@media (max-width:560px){.bt-hd small{display:none}.bt-hd{gap:8px;padding:12px 14px}.bt-hd .kv{padding:6px 8px}.bt-hd b{font-size:14px}.kg-box{flex-direction:column;text-align:center}}
+</style>
+<script>
+(function(){
+/* ---- Panel: contadores animados al entrar en pantalla ---- */
+var box=document.querySelector('.kp-box');
+function count(){box.classList.add('kp-on');box.querySelectorAll('[data-to]').forEach(function(b){var to=+b.dataset.to,suf=b.dataset.suf||'',t0=performance.now();(function f(t){var p=Math.min((t-t0)/1400,1),v=Math.round(to*(1-Math.pow(1-p,3)));b.textContent=v.toLocaleString('es-ES')+suf;if(p<1)requestAnimationFrame(f)})(t0)})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();count()}},{threshold:.3});io.observe(box)}else count();
+
+/* ---- Idioma activo (del selector de banderas) ---- */
+var m=document.cookie.match(/googtrans=\/[^\/]+\/([^;]+)/),L=(m?m[1]:'es');
+var BCP={es:'es-ES',en:'en-US',fr:'fr-FR',it:'it-IT',pt:'pt-PT',sq:'sq-AL',ja:'ja-JP','zh-CN':'zh-CN'}[L]||'es-ES';
+var TX={es:['Voz','Persona','Hablar con una persona del equipo (le llega todo el resumen)','Escuchando…'],en:['Voice','Human','Talk to a person on our team (they get the full summary)','Listening…'],fr:['Voix','Humain','Parler à une personne de l’équipe (elle reçoit le résumé)','J’écoute…'],it:['Voce','Persona','Parla con una persona del team (riceve il riepilogo)','Ascolto…'],pt:['Voz','Pessoa','Falar com uma pessoa da equipa (recebe o resumo)','A ouvir…'],sq:['Zë','Njeri','Fol me një person të ekipit (merr përmbledhjen)','Po dëgjoj…'],ja:['音声','担当者','チームの担当者と話す（要約が届きます）','聞いています…'],'zh-CN':['语音','真人','与团队真人沟通（对方会收到摘要）','正在聆听…']}[L]||['Voz','Persona','Hablar con una persona del equipo (le llega todo el resumen)','Escuchando…'];
+
+function init(){
+ var w=document.querySelector('.bt-win');if(!w)return setTimeout(init,300);
+ var hd=w.querySelector('.bt-hd'),body=w.querySelector('.bt-body'),form=w.querySelector('form'),inp=form.querySelector('input'),x=hd.querySelector('.x');
+ /* Botón Voz: Orbi lee sus respuestas con la voz más natural del dispositivo */
+ var voiceOn=false,vb=document.createElement('button');vb.type='button';vb.className='kv notranslate';vb.setAttribute('aria-pressed','false');vb.textContent='🔊 '+TX[0];
+ /* Botón Persona: pasa a un humano por WhatsApp con el resumen de la conversación */
+ var hb=document.createElement('button');hb.type='button';hb.className='kv notranslate';hb.title=TX[2];hb.textContent='👤 '+TX[1];
+ hd.insertBefore(vb,x);hd.insertBefore(hb,x);
+ function pickVoice(){var vs=speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.replace('_','-').toLowerCase().indexOf(BCP.slice(0,2).toLowerCase())===0});
+  var good=/natural|neural|premium|enhanced|siri|google|m[oó]nica|paulina|helena|jorge|alba/i;return vs.filter(function(v){return good.test(v.name)})[0]||vs.filter(function(v){return v.lang.replace('_','-')===BCP})[0]||vs[0]}
+ function speak(t){if(!voiceOn||!('speechSynthesis' in window)||!t)return;var u=new SpeechSynthesisUtterance(t);u.lang=BCP;var v=pickVoice();if(v)u.voice=v;u.rate=1.0;u.pitch=1.02;speechSynthesis.speak(u)}
+ vb.onclick=function(){voiceOn=!voiceOn;vb.setAttribute('aria-pressed',voiceOn);if(!voiceOn)speechSynthesis.cancel();else{var last=[].slice.call(body.querySelectorAll('.bt-m.b')).pop();if(last)speak(last.textContent)}};
+ if('speechSynthesis' in window)speechSynthesis.getVoices();else vb.hidden=true;
+ new MutationObserver(function(ms){ms.forEach(function(mu){var n=mu.target.nodeType===1?mu.target:mu.target.parentElement;if(n&&n.classList&&n.classList.contains('bt-m')&&n.classList.contains('b')&&!n.querySelector('.bt-dots')&&mu.type==='childList'&&mu.addedNodes.length&&mu.addedNodes[0].nodeType===3)speak(n.textContent)})}).observe(body,{childList:true,subtree:true});
+ hb.onclick=function(){var lines=[].slice.call(body.querySelectorAll('.bt-m')).filter(function(d){return !d.querySelector('.bt-dots')}).slice(-14).map(function(d){return (d.classList.contains('u')?'Yo: ':'Orbi: ')+d.textContent});
+  var msg='Hola Kalifai, quiero hablar con una persona. Resumen de mi conversación con Orbi:\n'+(lines.join('\n')||'(sin conversación aún)');window.open('https://wa.me/34614057443?text='+encodeURIComponent(msg.slice(0,1800)),'_blank','noopener')};
+ /* Micrófono: dictar en el idioma elegido */
+ var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(SR){var mb=document.createElement('button');mb.type='button';mb.className='kmic';mb.setAttribute('aria-label','Hablar');mb.textContent='🎙';form.insertBefore(mb,form.lastElementChild);
+  var rec=null;mb.onclick=function(){if(rec){rec.stop();return}rec=new SR();rec.lang=BCP;rec.interimResults=true;var ph=inp.placeholder;inp.placeholder=TX[3];mb.classList.add('rec');
+   rec.onresult=function(e){var t='';for(var i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;inp.value=t;if(e.results[e.results.length-1].isFinal){rec.stop()}};
+   rec.onend=function(){mb.classList.remove('rec');inp.placeholder=ph;rec=null;if(inp.value.trim()){voiceOn=true;vb.setAttribute('aria-pressed','true');form.requestSubmit?form.requestSubmit():form.dispatchEvent(new Event('submit',{cancelable:true}))}};
+   rec.onerror=function(){rec&&rec.stop()};try{rec.start()}catch(e){mb.classList.remove('rec');rec=null}}}
+}
+init();
+})();
+</script>
+
 <section class="wrap" id="propuesta">
   <div class="sec-head"><span class="ey"><i></i>Propuesta en tiempo real</span><h2>Tu propuesta <span class="grad">al instante</span></h2><p class="lead">Marca lo que necesitas y verás el precio de partida y el pago fraccionado al momento. Escanea el código para recibir tu propuesta y el enlace de pago.</p></div>
   <div class="prop">
@@ -375,7 +470,7 @@ R();
       <span class="small" style="margin-top:6px">Pago fraccionado</span>
       <div class="modes" role="group" aria-label="Forma de pago"><button data-m="2" aria-pressed="true">50/50</button><button data-m="3" aria-pressed="false">3 pagos</button><button data-m="6" aria-pressed="false">6 cuotas</button><button data-m="12" aria-pressed="false">12 cuotas</button></div>
       <div class="plan" id="plan"></div>
-      <div class="qrbox"><div id="qr" role="img" aria-label="Código QR para recibir tu propuesta y pagar"></div><div class="small">Escanea con el móvil para recibir tu propuesta y el <b style="color:#fff">enlace de pago seguro</b> (tarjeta, Apple Pay o Google Pay).</div></div>
+      <div id="qr" hidden></div>
       <a class="btn main" id="payNow" href="#" target="_blank" rel="noopener" style="text-align:center" hidden>Pagar la reserva con tarjeta</a><a class="btn main" id="wa" href="#" style="text-align:center">Recibir propuesta por WhatsApp</a>
       <span class="small">Precios orientativos de partida. La propuesta final se confirma tras la videollamada de diagnóstico. Cuotas sujetas a aprobación cuando haya financiación.</span>
     </aside>

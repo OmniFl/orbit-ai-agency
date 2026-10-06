@@ -130,6 +130,59 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
 </style>
 </head>
 <body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=DM+Sans:wght@500&display=swap">
+<div id="kSplash" role="img" aria-label="Kalifai, soluciones de IA para humanos">
+  <div class="ksp-wrap"><div class="kh">
+    <svg class="kh-mk" viewBox="0 0 100 100" aria-hidden="true">
+      <path class="kh-draw" pathLength="1" d="M22 92 C22 60, 30 44, 50 44 C70 44, 78 60, 78 92" fill="none" stroke="#C0613E" stroke-width="11" stroke-linecap="round"/>
+      <circle class="kh-drop" cx="50" cy="24" r="13" fill="#C0613E"/>
+      <path class="kh-draw kh-d2" pathLength="1" d="M38 92 C38 74, 42 66, 50 66 C58 66, 62 74, 62 92" fill="none" stroke="#6E7C5A" stroke-width="6" stroke-linecap="round"/></svg>
+    <div class="kh-wm"><div class="kh-name">Kalifai</div><div class="kh-sub">SOLUCIONES DE IA PARA HUMANOS</div></div></div></div>
+  <div class="ksp-skip">Toca para escuchar Kalifai</div>
+</div>
+<style>
+#kSplash{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#F6F1E8;cursor:pointer;transition:opacity .55s ease,transform .55s ease}
+#kSplash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.ksp-word{display:flex;align-items:baseline;font:700 clamp(54px,15vw,150px)/1 'Space Grotesk',Helvetica,Arial,sans-serif;letter-spacing:-.04em;color:#F3F6FF}
+.ksp-word .l{display:inline-block;opacity:0;transform:translateY(.35em);animation:kRise .6s cubic-bezier(.2,.8,.2,1) forwards}
+.ksp-grad{background:linear-gradient(180deg,#8B5FE0,#FF4F8B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ksp-arch{height:.7em;width:.52em;margin:0 .02em;overflow:visible}
+.ksp-arch path{stroke-dasharray:1;stroke-dashoffset:1;animation:kDraw .95s cubic-bezier(.65,0,.35,1) .1s forwards}
+.ksp-arch .core{transform-origin:50px 62px;transform:translateY(-90px) scale(.4);opacity:0;animation:kDrop .55s cubic-bezier(.3,1.5,.5,1) .75s forwards}
+.ksp-arch .ring{transform-origin:50px 62px;opacity:0;animation:kRipple 1s ease-out 1.15s forwards}
+.ksp-tag{margin-top:22px;text-align:center;font:600 clamp(11px,2.6vw,15px)/1 'Inter',Helvetica,Arial,sans-serif;letter-spacing:.42em;color:#A9B4C2;opacity:0;animation:kFade .7s ease 1.45s forwards}
+.ksp-skip{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font:500 13px 'DM Sans','Inter',sans-serif;color:#7A6E62}
+.kh{display:flex;align-items:center;gap:.9em;font-size:clamp(11px,2.6vw,26px)}
+.kh-mk{width:5.2em;height:5.2em;overflow:visible}
+.kh-name{font:600 4.6em/1 'Cormorant Garamond',Georgia,serif;color:#2B2622}
+.kh-sub{font:500 .62em 'DM Sans',sans-serif;letter-spacing:.3em;color:#7A6E62;margin-top:.7em}
+.kh-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:kDraw .95s cubic-bezier(.65,0,.35,1) .1s forwards}
+.kh-d2{animation-delay:.9s}
+.kh-drop{transform-box:fill-box;transform-origin:center;opacity:0;transform:translateY(-120%) scale(.5);animation:kDrop .6s cubic-bezier(.3,1.5,.5,1) .65s forwards}
+.kh-wm{opacity:0;animation:kFade .8s ease 1.2s forwards}
+@media (max-width:560px){.kh{flex-direction:column;text-align:center;gap:.5em;font-size:clamp(10px,3.6vw,18px)}}
+@media (prefers-reduced-motion:reduce){.kh-draw{animation:none;stroke-dashoffset:0}.kh-drop,.kh-wm{animation:none;opacity:1;transform:none}}
+@keyframes kDraw{to{stroke-dashoffset:0}}@keyframes kDrop{to{transform:none;opacity:1}}@keyframes kRipple{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.4)}}@keyframes kRise{to{opacity:1;transform:none}}@keyframes kFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ksp-word .l,.ksp-tag,.ksp-arch .core{animation:none;opacity:1;transform:none}.ksp-arch path{animation:none;stroke-dashoffset:0}.ksp-arch .ring{display:none}}
+</style>
+<script>
+(function(){
+var sp=document.getElementById('kSplash'),done=false,played=false,timer=null;
+var snd=new Audio('kalifai-sonido.mp3');snd.preload='auto';
+/* Vibración sincronizada con el sonido: barrido, gota, 3 notas KA-LI-FAI y acorde final */
+var VIB=[18,70,18,260,40,60,25,60,25,60,30,180,90];
+function buzz(){try{if(navigator.vibrate)navigator.vibrate(VIB)}catch(e){}}
+function hide(){if(done)return;done=true;clearTimeout(timer);sp.classList.add('out');setTimeout(function(){sp.remove()},650)}
+function schedule(ms){clearTimeout(timer);timer=setTimeout(hide,ms)}
+function restart(){var w=sp.querySelector('.ksp-wrap'),c=w.cloneNode(true);w.parentNode.replaceChild(c,w)}
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+schedule(reduce?900:2900);
+try{var p=snd.play();if(p&&p.then)p.then(function(){played=true;buzz();sp.querySelector('.ksp-skip').textContent='Toca para entrar'},function(){})}catch(e){}
+sp.addEventListener('click',function(){if(!played&&!done){played=true;restart();try{snd.currentTime=0;snd.play().catch(function(){})}catch(e){}buzz();sp.querySelector('.ksp-skip').textContent='Toca para entrar';schedule(2900)}else hide()});
+addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter')hide()});
+})();
+</script>
+
 <canvas id="water" aria-hidden="true"></canvas><canvas id="lines" aria-hidden="true"></canvas>
 
 <nav><div class="wrap"><a class="notranslate logo" href="#inicio"><i></i>ORBIT AI</a>
@@ -140,6 +193,8 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
  <li><button class="mb" aria-haspopup="true">Agencia</button><div class="dd"><a href="#ias">IAs que usamos</a><a href="#proceso">Cómo trabajamos</a><a href="#compromiso">Compromiso</a><a href="#casos">Casos y reseñas</a><a href="#video">Vídeo</a></div></li>
  <li><button class="mb" aria-haspopup="true">Ayuda</button><div class="dd"><a href="#faq">Preguntas frecuentes</a><a href="#contacto">Contacto</a></div></li>
 </ul>
+
+
 
 <div class="lng" id="lng">
   <button type="button" class="lng-btn" id="lngBtn" aria-haspopup="true" aria-expanded="false" aria-label="Idioma"><img id="lngCur" src="" alt="" width="22" height="16"><span id="lngCode">ES</span></button>
@@ -184,6 +239,7 @@ btn.onclick=function(e){e.stopPropagation();var o=root.classList.toggle('open');
 document.addEventListener('click',function(){root.classList.remove('open');btn.setAttribute('aria-expanded','false')});
 dd.querySelectorAll('button').forEach(function(b){b.onclick=function(){var l=b.dataset.l;if(l==='es')setCookie('');else setCookie('/es/'+l);location.reload()}});
 window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,fr,it,pt,sq,ja,zh-CN,es',autoDisplay:false},'google_translate_element')};
+var vmap={en:'en',fr:'fr',it:'it',pt:'pt',sq:'sq',ja:'ja','zh-CN':'zh'};if(vmap[c])document.addEventListener('DOMContentLoaded',function(){var vv=document.querySelector('#video video');if(vv&&/(kalifai|orbit)-servicios/.test(vv.getAttribute('src')||'')){var es=vv.getAttribute('src');vv.onerror=function(){vv.onerror=null;vv.src=es};vv.src=(location.pathname.indexOf('/app/')>-1?'../':'')+'kalifai-servicios-'+vmap[c]+'.mp4'}});
 if(c!=='es'){var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.head.appendChild(s)}
 })();
 </script>
