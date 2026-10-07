@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kalifai Mapas · Europa sin datos</title>
+<meta name="description" content="Mapa de Europa que funciona sin datos: GPS por satélite, lugares recomendados con comentarios, restaurantes, ocio y parkings gratis o de pago.">
+<meta name="theme-color" content="#060B1C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="lib/maplibre-gl.css">
+<style>
+:root{--bg:#060B1C;--card:#0E1730;--line:rgba(255,255,255,.12);--muted:#A9B4C2;--cyan:#7FE7F2;--terra:#C0613E;--rose:#E58BA8;--green:#3DDC84;--grey:#8B95A7;--ivory:#F6F1E8}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:#fff;font:400 15px/1.45 Inter,system-ui,-apple-system,sans-serif;overflow:hidden;top:0!important}
+#map{position:fixed;inset:0}
+.top{position:fixed;left:0;right:0;top:0;z-index:5;padding:calc(10px + env(safe-area-inset-top,0px)) 12px 8px;background:linear-gradient(180deg,rgba(6,11,28,.95),rgba(6,11,28,.75) 75%,transparent)}
+.row{display:flex;gap:8px;align-items:center}
+.back{color:#fff;text-decoration:none;font-weight:700;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px;white-space:nowrap}
+select{flex:1;min-width:0;background:var(--card);color:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font:600 15px Inter,system-ui,sans-serif}
+.dl{background:#fff;color:#060B1C;border:0;border-radius:12px;padding:10px 12px;font:700 14px Inter,system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+.dl.ok{background:var(--green)}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-top:8px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:1px solid var(--line);background:rgba(14,23,48,.92);color:#fff;border-radius:999px;padding:8px 12px;font:600 13px Inter,system-ui,sans-serif;cursor:pointer}
+.chips button[aria-pressed="true"]{background:#fff;color:#060B1C}
+.chips i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.status{position:fixed;z-index:5;right:12px;top:calc(118px + env(safe-area-inset-top,0px));background:rgba(14,23,48,.92);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:600}
+.status b{color:var(--green)}
+.me{position:fixed;z-index:5;right:12px;bottom:calc(46vh + 12px);width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:#060B1C;font-size:22px;box-shadow:0 6px 20px rgba(0,0,0,.4);cursor:pointer}
+.sheet{position:fixed;z-index:6;left:0;right:0;bottom:0;height:46vh;background:var(--bg);border-top-left-radius:22px;border-top-right-radius:22px;border-top:1px solid var(--line);display:flex;flex-direction:column;transition:height .25s}
+.sheet.min{height:84px}.sheet.max{height:82vh}
+.grab{padding:8px 16px 6px;cursor:pointer}.grab::before{content:"";display:block;width:42px;height:5px;border-radius:5px;background:var(--line);margin:0 auto 8px}
+.grab b{font-size:16px}.grab span{display:block;color:var(--muted);font-size:12px}
+.list{overflow:auto;padding:0 12px calc(16px + env(safe-area-inset-bottom,0px))}
+.pl{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:8px;cursor:pointer}
+.pl h3{margin:0;font-size:15px;display:flex;gap:8px;align-items:center}.pl h3 i{width:10px;height:10px;border-radius:50%;flex:none}
+.pl .d{margin-left:auto;font-size:12px;color:var(--muted);font-weight:500;white-space:nowrap}
+.pl p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.pl .tag{display:inline-block;font-size:11px;font-weight:700;border-radius:6px;padding:2px 6px;margin:6px 4px 0 0;background:rgba(127,231,242,.14);color:var(--cyan)}
+.pl .tag.r{background:rgba(192,97,62,.22);color:#F2A27F}.pl .tag.f{background:rgba(61,220,132,.16);color:var(--green)}
+.acts{display:flex;gap:6px;margin-top:10px}.acts button,.acts a{flex:1;text-align:center;text-decoration:none;border:1px solid var(--line);background:transparent;color:#fff;border-radius:10px;padding:8px;font:600 13px Inter,system-ui,sans-serif;cursor:pointer}.acts .g{background:#fff;color:#060B1C;border-color:#fff}
+.prem{border-radius:16px;padding:14px;margin:6px 0 10px;background:linear-gradient(120deg,rgba(127,231,242,.16),rgba(192,97,62,.2));border:1px solid var(--line);font-size:13px}
+.prem b{font-size:15px}.prem a{color:#fff;font-weight:700}
+.empty{color:var(--muted);font-size:13px;padding:12px;text-align:center}
+.mod{position:fixed;inset:0;z-index:20;background:rgba(3,6,16,.95);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.mod.open{display:flex}
+.arrow{width:min(60vw,260px);height:min(60vw,260px);transition:transform .2s linear}
+.mod h2{margin:18px 0 4px;font-size:22px}.mod .big{font:700 44px/1 Inter,system-ui,sans-serif;margin:10px 0}.mod p{color:var(--muted);margin:4px 0}
+.mod button{margin-top:18px;background:#fff;color:#060B1C;border:0;border-radius:12px;padding:12px 22px;font:700 15px Inter,system-ui,sans-serif;cursor:pointer}
+.toast{position:fixed;z-index:30;left:50%;transform:translateX(-50%);top:calc(70px + env(safe-area-inset-top,0px));background:#fff;color:#060B1C;border-radius:12px;padding:10px 14px;font-weight:600;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.4);display:none;max-width:92vw}
+.dot{width:18px;height:18px;border-radius:50%;background:#4F7CFF;border:3px solid #fff;box-shadow:0 0 0 8px rgba(79,124,255,.25)}
+.maplibregl-popup-content{color:#060B1C;border-radius:12px;font:600 13px Inter,system-ui,sans-serif}
+.goog-te-banner-frame,.skiptranslate>iframe,#goog-gt-tt{display:none!important}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div id="map" aria-label="Mapa"></div>
+<div class="top">
+  <div class="row">
+    <a class="back" href="./" aria-label="Volver a la app">←</a>
+    <select id="city" aria-label="Ciudad"></select>
+    <button class="dl" id="dl" type="button">⬇ Sin datos</button>
+  </div>
+  <div class="chips" id="chips">
+    <button data-f="top" aria-pressed="true">⭐ Recomendados</button>
+    <button data-f="ver" aria-pressed="false"><i style="background:var(--terra)"></i>Imprescindibles</button>
+    <button data-f="comer" aria-pressed="false"><i style="background:var(--rose)"></i>Comer</button>
+    <button data-f="ocio" aria-pressed="false"><i style="background:var(--cyan)"></i>Ocio</button>
+    <button data-f="pfree" aria-pressed="false"><i style="background:var(--green)"></i>Parking gratis</button>
+    <button data-f="ppaid" aria-pressed="false"><i style="background:var(--grey)"></i>Parking de pago</button>
+  </div>
+</div>
+<div class="status" id="st">…</div>
+<button class="me" id="me" type="button" aria-label="Mi ubicación">◎</button>
+<div class="sheet" id="sheet">
+  <div class="grab" id="grab"><b id="sTitle">Lugares</b><span id="sSub">Toca para ampliar</span></div>
+  <div class="list" id="list"></div>
+</div>
+<div class="mod" id="guide" role="dialog" aria-modal="true">
+  <svg class="arrow" id="arrow" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/><path d="M50 8 L72 70 L50 58 L28 70 Z" fill="#C0613E"/></svg>
+  <h2 id="gName"></h2><div class="big" id="gDist">—</div><p id="gHint">Gira el móvil hasta que la flecha apunte hacia arriba y camina.</p><p style="font-size:12px">Funciona sin datos: GPS por satélite y brújula del móvil.</p>
+  <button type="button" id="gClose">Cerrar</button>
+</div>
+<div class="toast" id="toast"></div>
+<div id="google_translate_element" hidden></div>
+<script src="lib/maplibre-gl.js"></script>
+<script>
+(function(){
+var STYLE='https://tiles.openfreemap.org/styles/liberty';
+var COL={ver:'#C0613E',comer:'#E58BA8',ocio:'#7FE7F2',pfree:'#3DDC84',ppaid:'#8B95A7'};
+var PARTNERS=[]; /* Negocios patrocinados: {city:'cordoba',name:'…',lat:..,lon:..,txt:'…'} — siempre se muestran como "Patrocinado" */
+function get(k,d){try{var v=localStorage.getItem('km_'+k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function set(k,v){try{localStorage.setItem('km_'+k,JSON.stringify(v))}catch(e){}}
+function $(id){return document.getElementById(id)}
+function toast(t,ms){var e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(function(){e.style.display='none'},ms||2600)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* ---------- Estado de conexión y GPS ---------- */
+var me=null,meMarker=null,heading=null;
+function paintSt(){$('st').innerHTML=(navigator.onLine?'🌐 En línea':'<b>📡 Sin datos</b>')+(me?' · GPS ±'+Math.round(me.acc)+' m':' · GPS…')}
+addEventListener('online',paintSt);addEventListener('offline',paintSt);paintSt();
+
+/* ---------- Mapa ---------- */
+var map=new maplibregl.Map({container:'map',style:STYLE,center:[-4.7792,37.8847],zoom:13,attributionControl:{compact:true}});
+map.on('error',function(e){if(!navigator.onLine&&!get('dl_'+(cur&&cur.slug),false))toast('Sin datos: descarga esta ciudad con wifi para ver el mapa sin conexión.',4000)});
+var cities=[],cur=null,pois=[],filter='top';
+function dist(a,b,c,d){var R=6371e3,p=Math.PI/180,x=Math.sin((c-a)*p/2),y=Math.sin((d-b)*p/2);return 2*R*Math.asin(Math.sqrt(x*x+Math.cos(a*p)*Math.cos(c*p)*y*y))}
+function bearing(a,b,c,d){var p=Math.PI/180,y=Math.sin((d-b)*p)*Math.cos(c*p),x=Math.cos(a*p)*Math.sin(c*p)-Math.sin(a*p)*Math.cos(c*p)*Math.cos((d-b)*p);return (Math.atan2(y,x)/p+360)%360}
+function fmtD(m){return m<1000?Math.round(m/10)*10+' m':(m/1000).toFixed(m<10000?1:0).replace('.',',')+' km'}
+function kind(p){return p[0]==='parking'?(p[5].fee==='no'?'pfree':'ppaid'):p[0]}
+
+/* ---------- Comentario Kalifai (generado a partir de datos abiertos, sin reseñas) ---------- */
+var CUI={spanish:'cocina española',tapas:'tapas',regional:'cocina de la zona',mediterranean:'cocina mediterránea',italian:'cocina italiana',pizza:'pizza',japanese:'cocina japonesa',sushi:'sushi',chinese:'cocina china',indian:'cocina india',mexican:'cocina mexicana',french:'cocina francesa',greek:'cocina griega',portuguese:'cocina portuguesa',german:'cocina alemana',burger:'hamburguesas',seafood:'marisco y pescado',fish:'pescado',vegetarian:'vegetariana',vegan:'vegana',coffee_shop:'café de especialidad',ice_cream:'helados',kebab:'kebab',asian:'cocina asiática',thai:'cocina tailandesa',steak_house:'carnes a la brasa',international:'cocina internacional',bakery:'panadería',cake:'pasteles'};
+var VER={museum:'Museo',attraction:'Lugar de interés',viewpoint:'Mirador con vistas',gallery:'Galería de arte',castle:'Castillo o fortaleza',palace:'Palacio',cathedral:'Catedral',church:'Iglesia histórica',monument:'Monumento',archaeological_site:'Yacimiento arqueológico',city_gate:'Puerta histórica de la ciudad',fort:'Fortaleza'};
+var OCIO={park:'Parque para pasear y desconectar',garden:'Jardín',water_park:'Parque acuático',marina:'Puerto deportivo',beach_resort:'Zona de playa',theatre:'Teatro',cinema:'Cine',nightclub:'Discoteca',arts_centre:'Centro cultural',zoo:'Zoo',aquarium:'Acuario',theme_park:'Parque de atracciones'};
+function comment(p){var i=p[5],c=p[0],out=[];
+ if(c==='ver'){out.push(VER[i.tourism]||VER[i.historic]||'Lugar con historia');if(i.wiki)out.push('de los más conocidos de '+(cur?cur.name:'la ciudad'));if(i.fee==='no')out.push('entrada gratuita');else if(i.fee==='yes')out.push('con entrada')}
+ else if(c==='comer'){var t={restaurant:'Restaurante',cafe:'Cafetería',bar:'Bar',pub:'Pub',ice_cream:'Heladería'}[i.amenity]||'Para comer';var cu=(i.cuisine||'').split(';').map(function(x){return CUI[x.trim()]}).filter(Boolean).slice(0,2);out.push(t+(cu.length?' de '+cu.join(' y '):''));if(i.outdoor_seating==='yes')out.push('con terraza');if(i['diet:vegan']==='yes'||i['diet:vegan']==='only')out.push('opción vegana');else if(i['diet:vegetarian']==='yes'||i['diet:vegetarian']==='only')out.push('opción vegetariana')}
+ else if(c==='ocio'){out.push(OCIO[i.leisure]||OCIO[i.amenity]||OCIO[i.tourism]||'Ocio');if(i.fee==='no')out.push('gratis')}
+ else{out.push(i.fee==='no'?'Aparcamiento gratuito':'Aparcamiento de pago');var pk={underground:'subterráneo',multi_storey:'en altura','multi-storey':'en altura',surface:'al aire libre',street_side:'en la calle'}[i.parking];if(pk)out.push(pk);if(i.capacity)out.push('unas '+i.capacity+' plazas');if(i.maxstay)out.push('estancia máxima '+i.maxstay)}
+ if(i.wheelchair==='yes')out.push('accesible');
+ var s=out.join(', ');s=s.charAt(0).toUpperCase()+s.slice(1)+'.';
+ if(i.opening_hours)s+=' Horario: '+i.opening_hours.replace(/Mo/g,'L').replace(/Tu/g,'M').replace(/We/g,'X').replace(/Th/g,'J').replace(/Fr/g,'V').replace(/Sa/g,'S').replace(/Su/g,'D').replace(/off/g,'cerrado')+'.';
+ return s}
+
+/* ---------- Lista y capa de puntos ---------- */
+function visible(){var l=pois.filter(function(p){return filter==='top'?(p[4]>=6||(p[0]==='comer'&&p[4]>=2.5)||(p[0]==='parking'&&p[4]>=3)):kind(p)===filter});
+ if(me&&cur&&dist(me.lat,me.lon,cur.center[0],cur.center[1])<30000)l.sort(function(a,b){return dist(me.lat,me.lon,a[2],a[3])-dist(me.lat,me.lon,b[2],b[3])});else l.sort(function(a,b){return b[4]-a[4]});
+ return l}
+function render(){
+ var l=visible();
+ var gj={type:'FeatureCollection',features:l.map(function(p,k){return {type:'Feature',id:k,properties:{n:p[1],k:kind(p),i:pois.indexOf(p)},geometry:{type:'Point',coordinates:[p[3],p[2]]}}})};
+ if(map.getSource('pois'))map.getSource('pois').setData(gj);
+ $('sTitle').textContent=(cur?cur.name+' · ':'')+l.length+' lugares';
+ $('sSub').textContent=me&&cur&&dist(me.lat,me.lon,cur.center[0],cur.center[1])<30000?'Ordenados por cercanía a ti':'Ordenados por recomendación Kalifai';
+ var html='';
+ PARTNERS.filter(function(x){return cur&&x.city===cur.slug}).forEach(function(x){html+='<div class="pl"><h3><i style="background:#fff"></i>'+esc(x.name)+'<span class="d">Patrocinado</span></h3><p>'+esc(x.txt)+'</p></div>'});
+ if(!get('premSeen',false))html+='<div class="prem"><b>Kalifai Premium</b><br>Todas las ciudades de Europa sin datos, juegos sin conexión y novedades primero. <b>2,99 €/mes</b> o <b>24,99 € pago único</b>. Durante el lanzamiento, todo gratis. <a href="https://wa.me/34614057443?text='+encodeURIComponent('Hola Kalifai, quiero Kalifai Premium')+'" target="_blank" rel="noopener">Quiero Premium →</a></div>';
+ html+=l.slice(0,60).map(function(p){var k=kind(p),i=pois.indexOf(p),d=me?fmtD(dist(me.lat,me.lon,p[2],p[3])):'';
+  var tags=(p[4]>=6?'<span class="tag r">⭐ Recomendado</span>':'')+(p[5].fee==='no'?'<span class="tag f">Gratis</span>':'')+(p[5].website?'<span class="tag">Web</span>':'');
+  return '<div class="pl" data-i="'+i+'"><h3><i style="background:'+COL[k]+'"></i>'+esc(p[1])+'<span class="d">'+d+'</span></h3><p><b style="color:#fff;font-weight:600">Comentario Kalifai:</b> '+esc(comment(p))+'</p>'+tags+'<div class="acts"><button type="button" class="g" data-go="'+i+'">🧭 Guiarme</button><a href="https://www.google.com/maps/dir/?api=1&destination='+p[2]+','+p[3]+'" target="_blank" rel="noopener">Ruta en Maps</a>'+(p[5].website?'<a href="'+esc(p[5].website)+'" target="_blank" rel="noopener">Web</a>':'')+'</div></div>'}).join('')||'<div class="empty">No hay lugares de este tipo en el paquete de esta ciudad.</div>';
+ $('list').innerHTML=html;
+}
+$('list').addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(g){guide(+g.dataset.go);return}var c=e.target.closest('.pl[data-i]');if(c&&!e.target.closest('a')){var p=pois[+c.dataset.i];map.flyTo({center:[p[3],p[2]],zoom:16});$('sheet').className='sheet min'}});
+$('grab').onclick=function(){var s=$('sheet');s.className='sheet '+(s.classList.contains('max')?'min':s.classList.contains('min')?'':'max')};
+$('chips').onclick=function(e){var b=e.target.closest('button');if(!b)return;filter=b.dataset.f;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});render()};
+
+map.on('load',function(){
+ map.addSource('pois',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
+ map.addLayer({id:'pois',type:'circle',source:'pois',paint:{'circle-radius':['interpolate',['linear'],['zoom'],11,4,16,9],'circle-color':['match',['get','k'],'ver',COL.ver,'comer',COL.comer,'ocio',COL.ocio,'pfree',COL.pfree,COL.ppaid],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
+ map.on('click','pois',function(e){var f=e.features[0],p=pois[f.properties.i];new maplibregl.Popup({offset:10}).setLngLat(f.geometry.coordinates).setHTML('<div>'+esc(p[1])+'</div><div style="font-weight:400;margin-top:4px">'+esc(comment(p))+'</div>').addTo(map)});
+ map.on('mouseenter','pois',function(){map.getCanvas().style.cursor='pointer'});map.on('mouseleave','pois',function(){map.getCanvas().style.cursor=''});
+ render();
+});
+
+/* ---------- Ciudades ---------- */
+function loadCity(slug,fly){
+ return fetch('mapas/'+slug+'.json').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){cur=d;pois=d.pois||[];set('city',slug);
+  if(fly!==false)map.jumpTo({center:[d.center[1],d.center[0]],zoom:13.5});
+  $('dl').className='dl'+(get('dl_'+slug,false)?' ok':'');$('dl').textContent=get('dl_'+slug,false)?'✓ Sin datos':'⬇ Sin datos';render()})
+ .catch(function(){toast(navigator.onLine?'Esta ciudad aún no tiene datos.':'Sin datos: esta ciudad no está descargada.')})}
+fetch('mapas/index.json').then(function(r){return r.json()}).then(function(j){cities=j.cities||[];
+ var byC={};cities.forEach(function(c){(byC[c.country]=byC[c.country]||[]).push(c)});
+ $('city').innerHTML=Object.keys(byC).map(function(k){return '<optgroup label="'+k+'">'+byC[k].map(function(c){return '<option value="'+c.slug+'">'+c.name+(get('dl_'+c.slug,false)?' ✓':'')+'</option>'}).join('')+'</optgroup>'}).join('');
+ var s=get('city','cordoba');if(!cities.some(function(c){return c.slug===s}))s=cities[0]&&cities[0].slug;$('city').value=s;if(s)loadCity(s)})
+ .catch(function(){toast('No se pudo cargar la lista de ciudades.')});
+$('city').onchange=function(){loadCity(this.value)};
+
+/* ---------- Descargar ciudad para usar sin datos ---------- */
+function lon2x(l,z){return Math.floor((l+180)/360*Math.pow(2,z))}
+function lat2y(a,z){var r=a*Math.PI/180;return Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*Math.pow(2,z))}
+$('dl').onclick=function(){
+ if(!cur)return;if(!navigator.onLine){toast('Conéctate a wifi para descargar.');return}
+ var b=cur.bbox,btn=this,urls=['mapas/'+cur.slug+'.json','mapas/index.json','lib/maplibre-gl.js','lib/maplibre-gl.css','mapa.html'];
+ btn.disabled=true;btn.textContent='Preparando…';
+ fetch(STYLE).then(function(r){return r.json()}).then(function(style){
+  urls.push(STYLE);
+  var spr=style.sprite;(Array.isArray(spr)?spr.map(function(x){return x.url}):spr?[spr]:[]).forEach(function(u){['.json','.png','@2x.json','@2x.png'].forEach(function(x){urls.push(u+x)})});
+  var fonts={};(style.layers||[]).forEach(function(l){var f=l.layout&&l.layout['text-font'];if(Array.isArray(f)&&typeof f[0]==='string')fonts[f.join(',')]=1});
+  Object.keys(fonts).forEach(function(f){['0-255','256-511','512-767','768-1023','8192-8447'].forEach(function(r){urls.push(style.glyphs.replace('{fontstack}',encodeURIComponent(f)).replace('{range}',r))})});
+  return Promise.all(Object.keys(style.sources).map(function(k){var s=style.sources[k];if(!s.url)return null;urls.push(s.url);return fetch(s.url).then(function(r){return r.json()})}))
+ }).then(function(tjs){
+  tjs.filter(Boolean).forEach(function(tj){var tpl=tj.tiles[0],mz=Math.min(tj.maxzoom||14,14);
+   for(var z=4;z<=mz;z++){var pad=z<=11?0.12:0;var x0=lon2x(b[1]-pad,z),x1=lon2x(b[3]+pad,z),y0=lat2y(b[2]+pad,z),y1=lat2y(b[0]-pad,z);
+    for(var x=x0;x<=x1;x++)for(var y=y0;y<=y1;y++)urls.push(tpl.replace('{z}',z).replace('{x}',x).replace('{y}',y))}});
+  var done=0,fail=0,i=0,N=urls.length;
+  function next(){if(i>=N)return Promise.resolve();var u=urls[i++];return fetch(u).then(function(r){if(!r.ok)fail++}).catch(function(){fail++}).then(function(){done++;btn.textContent=Math.round(done/N*100)+' %';return next()})}
+  return Promise.all([next(),next(),next(),next(),next(),next()]).then(function(){return {N:N,fail:fail}})
+ }).then(function(r){btn.disabled=false;if(r.fail>r.N*0.05){btn.textContent='⬇ Reintentar';toast('Algunas partes no se descargaron. Prueba otra vez con wifi.');return}
+  set('dl_'+cur.slug,true);btn.className='dl ok';btn.textContent='✓ Sin datos';
+  var o=$('city').querySelector('option[value="'+cur.slug+'"]');if(o&&o.textContent.indexOf('✓')<0)o.textContent+=' ✓';
+  toast(cur.name+' lista para usar sin datos ✓',3500)})
+ .catch(function(){btn.disabled=false;btn.textContent='⬇ Reintentar';toast('No se pudo descargar. Revisa tu conexión.')});
+};
+
+/* ---------- GPS por satélite (funciona sin datos) ---------- */
+var first=true;
+function onPos(p){me={lat:p.coords.latitude,lon:p.coords.longitude,acc:p.coords.accuracy};paintSt();
+ if(!meMarker){var el=document.createElement('div');el.className='dot';meMarker=new maplibregl.Marker({element:el}).setLngLat([me.lon,me.lat]).addTo(map)}else meMarker.setLngLat([me.lon,me.lat]);
+ if(first){first=false;var near=cities.map(function(c){return [c,dist(me.lat,me.lon,c.center[0],c.center[1])]}).sort(function(a,b){return a[1]-b[1]})[0];
+  if(near&&near[1]<30000&&(!cur||cur.slug!==near[0].slug)){$('city').value=near[0].slug;loadCity(near[0].slug,false).then(function(){map.jumpTo({center:[me.lon,me.lat],zoom:15})})}else if(near&&near[1]<30000)map.jumpTo({center:[me.lon,me.lat],zoom:15})}
+ render();updGuide()}
+if('geolocation' in navigator)navigator.geolocation.watchPosition(onPos,function(){$('st').innerHTML=(navigator.onLine?'🌐 En línea':'<b>📡 Sin datos</b>')+' · Activa la ubicación'},{enableHighAccuracy:true,maximumAge:5000,timeout:30000});
+$('me').onclick=function(){if(me)map.flyTo({center:[me.lon,me.lat],zoom:16});else toast('Buscando satélites… sal a un lugar abierto.')};
+
+/* ---------- Brújula: te guía sin datos ---------- */
+var target=null;
+function onOri(e){if(e.webkitCompassHeading!=null)heading=e.webkitCompassHeading;else if(e.absolute&&e.alpha!=null)heading=360-e.alpha;updGuide()}
+function guide(i){target=pois[i];$('gName').textContent=target[1];$('guide').classList.add('open');
+ var D=window.DeviceOrientationEvent;
+ if(D&&typeof D.requestPermission==='function')D.requestPermission().then(function(s){if(s==='granted')addEventListener('deviceorientation',onOri)}).catch(function(){});
+ else{addEventListener('deviceorientationabsolute',onOri);addEventListener('deviceorientation',onOri)}
+ updGuide()}
+function updGuide(){if(!target||!$('guide').classList.contains('open'))return;
+ if(!me){$('gDist').textContent='Buscando GPS…';return}
+ var d=dist(me.lat,me.lon,target[2],target[3]),br=bearing(me.lat,me.lon,target[2],target[3]);
+ $('gDist').textContent=d<25?'¡Has llegado!':fmtD(d);
+ $('arrow').style.transform='rotate('+((br-(heading==null?0:heading))+360)%360+'deg)';
+ $('gHint').textContent=heading==null?'Sin brújula: la flecha apunta respecto al norte (arriba = norte).':'Gira hasta que la flecha apunte hacia arriba y camina.'}
+$('gClose').onclick=function(){$('guide').classList.remove('open');target=null};
+
+/* ---------- Idioma ---------- */
+window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,fr,it,pt,sq,ja,zh-CN,es',autoDisplay:false},'google_translate_element')};
+if(navigator.onLine&&/googtrans=\/es\/(?!es)/.test(document.cookie)){var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.body.appendChild(s)}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+})();
+</script>
+</body>
+</html>

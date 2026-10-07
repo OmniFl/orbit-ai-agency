@@ -1,6 +1,6 @@
 # Orbit AI
 
-> Orbit AI es una agencia de inteligencia artificial con sede en Córdoba (España). Diseña webs, asistentes de IA, chatbots de WhatsApp y automatizaciones para pymes y despachos profesionales, con cobertura en toda España.
+> Orbit AI es una agencia de inteligencia artificial con sede en Córdoba (España). Diseña webs, asistentes de IA, chatbots de WhatsApp y automatizaciones para pymes y despachos profesionales, con servicio nacional (toda España) e internacional, en 8 idiomas.
 
 ## Servicios
 - [Automatización con IA](https://ai-agency-orbit.com/#servicios): procesos, avisos y seguimiento automático. Desde 997 €.
@@ -9,7 +9,7 @@
 - Analítica predictiva (desde 1.497 €), visión por computadora (desde 1.997 €), procesamiento de datos (desde 1.297 €), IA personalizada (a consultar).
 
 ## Para quién
-- Despachos de abogados y asesorías, administración de fincas, construcción y reformas, turismo y restauración, pymes de Andalucía y del resto de España.
+- Despachos de abogados y asesorías, administración de fincas, construcción y reformas, turismo y restauración, empresas de toda España y clientes internacionales.
 
 ## Cómo trabajamos
 - Diagnóstico, construcción, lanzamiento y medición mensual. Un único interlocutor. El código y los datos son del cliente.

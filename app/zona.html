@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zona Kalifai · Estilo, belleza, vida sana, deportes y juegos</title>
+<meta name="description" content="Lo último en moda, belleza, cuidado de la piel, vida sana y deportes, con trucos diarios y juegos. Gratis en la app de Kalifai.">
+<meta name="theme-color" content="#060B1C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#060B1C;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);--muted:#A9B4C2;--cyan:#7FE7F2;--terra:#C0613E;--olive:#6E7C5A;--ivory:#F6F1E8}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 80% -10%,rgba(127,231,242,.12),transparent 60%),radial-gradient(900px 500px at -10% 30%,rgba(192,97,62,.14),transparent 60%),var(--bg);color:#fff;font:400 16px/1.5 Inter,system-ui,sans-serif;min-height:100vh;padding-bottom:calc(30px + env(safe-area-inset-bottom,0px));top:0!important}
+a{color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(6,11,28,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:10px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none}.brand svg{width:28px;height:28px}.brand b{font:600 24px/1 'Cormorant Garamond',Georgia,serif}.brand small{font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.chip{margin-left:auto;display:flex;gap:6px;font-size:13px;font-weight:600}.chip span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 10px;white-space:nowrap}
+.back{font-size:13px;text-decoration:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 10px;white-space:nowrap}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:0 0 12px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:8px 14px;font:600 14px Inter,sans-serif;cursor:pointer}
+.tabs button[aria-selected="true"]{background:#fff;color:#060B1C;border-color:#fff}
+main{padding-top:18px}
+h1{font:600 clamp(30px,7vw,44px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 4px}
+h2{font:700 20px/1.2 Inter,sans-serif;margin:26px 0 12px}
+.lead{color:var(--muted);margin:0 0 8px}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.tip{border-radius:20px;padding:18px;border:1px solid var(--line);background:var(--card);position:relative;overflow:hidden}
+.tip::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--g,var(--cyan))}
+.tip em{font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}.tip p{margin:8px 0 0;font-size:15px}
+.cta{display:flex;align-items:center;gap:14px;border-radius:20px;padding:18px;margin-top:14px;background:linear-gradient(120deg,rgba(127,231,242,.16),rgba(192,97,62,.18));border:1px solid var(--line);text-decoration:none}
+.cta b{display:block}.cta span{font-size:14px;color:var(--muted)}.cta i{margin-left:auto;font-style:normal;background:#fff;color:#060B1C;border-radius:12px;padding:10px 14px;font-weight:700;white-space:nowrap}
+.news{display:grid;gap:10px}
+.nw{display:block;text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px 16px}
+.nw b{display:block;font-weight:600;font-size:15px;line-height:1.35}.nw small{display:flex;gap:8px;margin-top:6px;color:var(--muted);font-size:12px}
+.nw small .c{color:var(--cyan)}
+.empty{color:var(--muted);font-size:14px;padding:14px;border:1px dashed var(--line);border-radius:14px}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px}
+.gm{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:18px;text-align:left;color:#fff;font:inherit;cursor:pointer}
+.gm .e{font-size:34px}.gm b{display:block;font-size:17px;margin-top:6px}.gm span{font-size:14px;color:var(--muted)}.gm small{display:block;margin-top:8px;color:var(--cyan);font-weight:600}
+.btn{border:0;border-radius:14px;padding:13px 18px;font:700 15px Inter,sans-serif;cursor:pointer;background:#fff;color:#060B1C}.btn.g{background:transparent;color:#fff;border:1px solid var(--line)}
+/* Modal de juego */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(3,6,16,.92);backdrop-filter:blur(8px);display:none;overflow:auto}
+.modal.open{display:block}
+.mbox{max-width:520px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top,0px)) 16px 30px}
+.mtop{display:flex;align-items:center;gap:10px;margin-bottom:14px}.mtop b{font-size:18px}.mtop button{margin-left:auto;background:var(--card);border:1px solid var(--line);color:#fff;border-radius:999px;width:38px;height:38px;font-size:20px;cursor:pointer}
+.q h3{font-size:20px;line-height:1.3;margin:6px 0 14px}
+.q .ops{display:grid;gap:8px}.q .ops button{text-align:left;border:1px solid var(--line);background:var(--card);color:#fff;border-radius:14px;padding:14px;font:500 16px Inter,sans-serif;cursor:pointer}
+.q .ops button.ok{background:rgba(61,220,132,.2);border-color:#3DDC84}.q .ops button.ko{background:rgba(192,97,62,.25);border-color:var(--terra)}
+.bar{display:flex;gap:5px;margin-bottom:10px}.bar i{flex:1;height:5px;border-radius:5px;background:var(--line)}.bar i.ok{background:#3DDC84}.bar i.ko{background:var(--terra)}.bar i.now{background:var(--cyan)}
+.res{text-align:center;padding:20px 0}.res .big{font:600 54px/1 'Cormorant Garamond',serif}.res .em{font-size:28px;letter-spacing:4px;margin:12px 0}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mem button{aspect-ratio:1;border-radius:14px;border:1px solid var(--line);background:linear-gradient(140deg,#13203f,#0b1530);font-size:clamp(26px,8vw,40px);cursor:pointer;color:#fff;transition:transform .25s}
+.mem button.up,.mem button.done{background:var(--ivory)}.mem button.done{opacity:.55}.mem button:not(.up):not(.done) span{visibility:hidden}
+.stat{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-bottom:10px}
+canvas{width:100%;border-radius:18px;background:linear-gradient(180deg,#0b1530,#060B1C);border:1px solid var(--line);touch-action:none;display:block}
+
+.mu-sub{display:flex;gap:6px;margin:6px 0 14px}.mu-sub button{flex:1;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:12px;padding:10px;font:600 14px Inter,sans-serif;cursor:pointer}.mu-sub button[aria-pressed="true"]{background:#fff;color:#060B1C}
+.mu-sel{width:100%;background:var(--card);color:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;font:600 15px Inter,sans-serif;margin-bottom:10px}
+.mu-chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none}.mu-chips::-webkit-scrollbar{display:none}.mu-chips button{flex:none;border:1px solid var(--line);background:transparent;color:#fff;border-radius:999px;padding:7px 12px;font:600 13px Inter,sans-serif;cursor:pointer}.mu-chips button[aria-pressed="true"]{background:var(--cyan);color:#060B1C;border-color:var(--cyan)}
+.song{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:8px 10px;margin-bottom:8px}
+.song .n{width:22px;text-align:center;color:var(--muted);font-weight:700;font-size:13px}.song img{width:52px;height:52px;border-radius:10px;object-fit:cover;background:#13203f;flex:none}
+.song .tx{flex:1;min-width:0}.song b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song .ln{display:flex;gap:8px;white-space:nowrap;margin-top:3px;font-size:11px}.song .ln a{color:var(--cyan);text-decoration:none}
+.pb{width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:#060B1C;font-size:16px;cursor:pointer;flex:none}.pb.on{background:var(--terra);color:#fff}
+.player{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:none;align-items:center;gap:12px;background:rgba(14,23,48,.97);border:1px solid var(--line);border-radius:18px;padding:10px 12px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.player.on{display:flex}.player img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#13203f}.player .tx{flex:1;min-width:0}.player b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player small{color:var(--muted);font-size:12px}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px;margin-right:6px}.eq i{width:3px;background:var(--cyan);animation:eq .9s infinite ease-in-out}.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}@keyframes eq{0%,100%{height:3px}50%{height:12px}}
+footer{margin-top:34px;color:var(--muted);font-size:12px;line-height:1.5}
+.goog-te-banner-frame,.skiptranslate>iframe,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="hd">
+    <a class="brand notranslate" href="./" aria-label="Volver a Kalifai"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M22 92 C22 60, 30 44, 50 44 C70 44, 78 60, 78 92" fill="none" stroke="#C0613E" stroke-width="11" stroke-linecap="round"/><circle cx="50" cy="24" r="13" fill="#C0613E"/><path d="M38 92 C38 74, 42 66, 50 66 C58 66, 62 74, 62 92" fill="none" stroke="#6E7C5A" stroke-width="6" stroke-linecap="round"/></svg><span><b>Kalifai</b><br><small>Zona</small></span></a>
+    <div class="chip"><span id="stk" title="Días seguidos">🔥 1</span><span id="pts" title="Puntos Kalifai">⭐ 0</span></div>
+    <a class="back" href="./">App</a>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="Secciones">
+    <button role="tab" data-t="hoy" aria-selected="true">Hoy</button>
+    <button role="tab" data-t="moda" aria-selected="false">Moda</button>
+    <button role="tab" data-t="belleza" aria-selected="false">Belleza</button>
+    <button role="tab" data-t="piel" aria-selected="false">Piel</button>
+    <button role="tab" data-t="sana" aria-selected="false">Vida sana</button>
+    <button role="tab" data-t="deportes" aria-selected="false">Deportes</button>
+    <button role="tab" data-t="musica" aria-selected="false">Música</button>
+    <button role="tab" data-t="juegos" aria-selected="false">Juegos</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section id="v-hoy">
+    <h1 id="hola">Hola</h1>
+    <p class="lead">Tus trucos de hoy, lo último en tendencias y deporte, y tu reto diario.</p>
+    <div class="tips" id="tipsHoy"></div>
+    <a class="cta" href="#" id="ctaReto"><span style="font-size:30px">🧠</span><div><b>Reto del día</b><span id="retoTxt">5 preguntas · mantén tu racha</span></div><i>Jugar</i></a>
+    <h2>Lo último</h2>
+    <div class="news" id="nHoy"></div>
+    <a class="cta" href="./#express"><span style="font-size:30px">🚀</span><div><b>¿Tienes un negocio?</b><span>Tu web desde 290 € y tu bot de WhatsApp con IA. Precio al momento.</span></div><i>Ver</i></a>
+  </section>
+  <section id="v-moda" hidden><h1>Moda</h1><p class="lead">Tendencias y prendas de la temporada.</p><div class="news" data-c="moda"></div></section>
+  <section id="v-belleza" hidden><h1>Belleza</h1><div class="tips" data-tip="belleza"></div><h2>Lo último en belleza</h2><div class="news" data-c="belleza"></div></section>
+  <section id="v-piel" hidden><h1>Cuidado de la piel</h1><div class="tips" data-tip="piel"></div><h2>Lo último en cuidado de la piel</h2><div class="news" data-c="piel"></div></section>
+  <section id="v-sana" hidden><h1>Vida sana</h1><p class="lead">Hábitos para sentirte bien y cuidar tu peso de forma saludable.</p><div class="tips" data-tip="sana"></div><h2>Lo último en vida sana</h2><div class="news" data-c="sana"></div></section>
+  <section id="v-deportes" hidden><h1>Deportes</h1><p class="lead">Fútbol, tenis, motor y más, actualizado cada pocas horas.</p><div class="news" data-c="deportes"></div></section>
+  <section id="v-musica" hidden>
+    <h1>Música</h1><p class="lead">Los éxitos de hoy en cada país y cientos de radios en directo de todo el mundo, gratis y legales.</p>
+    <div class="mu-sub" role="group"><button data-m="exitos" aria-pressed="true">🔥 Éxitos de hoy</button><button data-m="radio" aria-pressed="false">📻 Radio en directo</button></div>
+    <div id="muExitos"><select class="mu-sel" id="muCc" aria-label="País"></select><div id="muList"><div class="empty">Cargando los éxitos…</div></div><p class="lead" style="font-size:12px">Escucha 30 segundos aquí y la canción completa en tu app de música. Listas de Apple Music actualizadas a diario.</p></div>
+    <div id="muRadio" hidden><div class="mu-chips" id="muG"></div><select class="mu-sel" id="muRc" aria-label="País de la radio"><option value="">Todo el mundo</option><option value="ES" selected>España</option><option value="MX">México</option><option value="CO">Colombia</option><option value="AR">Argentina</option><option value="US">EE. UU.</option><option value="GB">Reino Unido</option><option value="FR">Francia</option><option value="IT">Italia</option><option value="PT">Portugal</option><option value="BR">Brasil</option><option value="DE">Alemania</option><option value="AL">Albania</option><option value="JP">Japón</option><option value="CN">China</option></select><div id="muRList"></div><p class="lead" style="font-size:12px">Emisoras públicas en directo del directorio abierto Radio Browser. Necesita conexión a internet.</p></div>
+  </section>
+  <section id="v-juegos" hidden>
+    <h1>Juegos</h1><p class="lead">Suma puntos Kalifai y no pierdas tu racha.</p>
+    <div class="games">
+      <button class="gm" data-g="reto"><div class="e">🧠</div><b>Reto del día</b><span>5 preguntas nuevas cada día. Comparte tu resultado.</span><small id="gRetoS"></small></button>
+      <button class="gm" data-g="mem"><div class="e">🃏</div><b>Memoria</b><span>Encuentra las 8 parejas en los menos movimientos.</span><small id="gMemS"></small></button>
+      <button class="gm" data-g="gota"><div class="e">💧</div><b>Atrapa la gota</b><span>Mueve el cuenco y que no caiga ninguna.</span><small id="gGotaS"></small></button>
+    </div>
+  </section>
+  <footer>Música: listas de Apple Music (previsualizaciones oficiales de 30 s) y emisoras del directorio abierto Radio Browser.<br>Los titulares enlazan a la noticia en su medio original (Trendencias, Vitónica, Marca y otros). <span id="upd"></span><br>Los trucos son consejos generales y no sustituyen la opinión de un profesional de la salud o de un dermatólogo.<br>Zona Kalifai · gratis para la comunidad de <a href="./">Kalifai</a>.</footer>
+</main>
+
+<div class="player" id="player" aria-live="polite"><img id="plImg" alt=""><div class="tx"><b id="plT"></b><small id="plA"></small></div><button class="pb on" id="plB" type="button" aria-label="Pausa">❚❚</button></div>
+<audio id="au" preload="none"></audio>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="mbox"><div class="mtop"><b id="mt"></b><button type="button" id="mx" aria-label="Cerrar">×</button></div><div id="mc"></div></div></div>
+<div id="google_translate_element" hidden></div>
+
+<script>
+(function(){
+/* ---------- Almacenamiento seguro ---------- */
+function get(k,d){try{var v=localStorage.getItem('kz_'+k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function set(k,v){try{localStorage.setItem('kz_'+k,JSON.stringify(v))}catch(e){}}
+var today=new Date(),dkey=today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+function seed(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return function(){h^=h<<13;h^=h>>>17;h^=h<<5;return ((h>>>0)%100000)/100000}}
+function pick(arr,n,r){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(r()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a.slice(0,n)}
+
+/* ---------- Racha y puntos ---------- */
+var st=get('st',{last:'',streak:0,pts:0});
+var y=new Date(today);y.setDate(y.getDate()-1);var ykey=y.getFullYear()+'-'+(y.getMonth()+1)+'-'+y.getDate();
+if(st.last!==dkey){st.streak=st.last===ykey?st.streak+1:1;st.last=dkey;set('st',st)}
+function paint(){document.getElementById('stk').textContent='🔥 '+st.streak;document.getElementById('pts').textContent='⭐ '+st.pts}
+function addPts(n){st.pts+=n;set('st',st);paint()}
+paint();
+var hr=today.getHours();document.getElementById('hola').textContent=(hr<13?'Buenos días':hr<21?'Buenas tardes':'Buenas noches')+' ✨';
+
+/* ---------- Trucos del día ---------- */
+var TIPS={
+belleza:['Aplica el corrector en forma de triángulo invertido bajo el ojo: ilumina más y se difumina mejor.','Pon el perfume en cuello y muñecas sin frotarlas: así no rompes las notas y dura más.','Lava tus brochas de maquillaje una vez por semana con jabón suave y déjalas secar en horizontal.','Un colorete en crema sirve también para labios: un solo producto, look de buena cara en 30 segundos.','Termina el secado del pelo con aire frío: cierra la cutícula y gana brillo.','Usa siempre protector térmico antes de plancha o rizador.','Una gota de aceite en las cutículas antes de dormir y tu manicura dura más.','Aplica la máscara de pestañas en zigzag desde la raíz para separar y dar volumen.','Una funda de almohada de raso puede ayudar a que el pelo amanezca con menos encrespamiento.','Perfila los labios con un tono parecido al tuyo: el labial dura más y no se corre.','Para un look natural: menos base y corrector solo donde lo necesites.','Guarda los esmaltes lejos del calor y la luz para que no se espesen.'],
+piel:['Protector solar SPF 30 o más todos los días, también si está nublado.','Limpia tu cara cada noche, aunque no te hayas maquillado.','Aplica los productos del más ligero al más denso: primero sérum, después crema.','Introduce el retinol poco a poco, solo por la noche, y usa protector solar al día siguiente.','La crema también va en cuello, escote y manos: son las zonas que antes delatan la edad.','Lava la cara con agua tibia: la caliente reseca.','Prueba cada producto nuevo en una zona pequeña 24 horas antes de usarlo en toda la cara.','Exfolia como máximo una o dos veces por semana.','Sécate la cara a toquecitos con una toalla limpia, sin frotar.','La vitamina C por la mañana complementa a tu protector solar.','Si un lunar o una mancha cambia de forma, color o tamaño, consulta a tu dermatólogo.','Dormir bien se nota: la piel se repara por la noche.'],
+sana:['Camina 30 minutos al día cinco días: son los 150 minutos semanales que recomienda la OMS.','Llena la mitad del plato con verdura y fruta.','Lleva siempre una botella de agua contigo y bebe antes de tener sed.','Incluye proteína en cada comida: huevos, legumbres, pescado o yogur te sacian más.','Dormir entre 7 y 9 horas ayuda a regular el apetito.','Sube por las escaleras siempre que puedas: suma sin darte cuenta.','Dos días de ejercicios de fuerza a la semana: sentadillas, flexiones o gomas.','Come despacio y sin pantallas: notarás antes que estás saciada o saciado.','Cambia el refresco por agua con gas y limón.','Estira cinco minutos al levantarte.','Ten a mano tentempiés saludables: fruta o un puñado de frutos secos.','Para perder peso de forma segura funcionan los cambios pequeños y constantes. Antes de una dieta estricta, consulta a un profesional.']};
+var G={belleza:'#E58BA8',piel:'#E7C6A5',sana:'#3DDC84'},LBL={belleza:'Truco de belleza',piel:'Cuidado de la piel',sana:'Vida sana'};
+function tipOf(c,off){var r=seed(dkey+c);var a=pick(TIPS[c],TIPS[c].length,r);return a[(off||0)%a.length]}
+function tipCard(c,off){return '<div class="tip" style="--g:'+G[c]+'"><em>'+LBL[c]+'</em><p>'+tipOf(c,off)+'</p></div>'}
+document.getElementById('tipsHoy').innerHTML=tipCard('belleza')+tipCard('piel')+tipCard('sana');
+document.querySelectorAll('[data-tip]').forEach(function(b){var c=b.dataset.tip;b.innerHTML=tipCard(c,0)+tipCard(c,1)});
+
+/* ---------- Titulares actualizados ---------- */
+var CN={moda:'Moda',belleza:'Belleza',piel:'Piel',sana:'Vida sana',deportes:'Deportes'};
+function ago(d){if(!d)return '';var m=Math.round((Date.now()-new Date(d))/60000);if(m<60)return 'hace '+Math.max(1,m)+' min';var h=Math.round(m/60);if(h<24)return 'hace '+h+' h';return 'hace '+Math.round(h/24)+' d'}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function card(x){return '<a class="nw" href="'+esc(x.l)+'" target="_blank" rel="noopener"><b>'+esc(x.t)+'</b><small><span class="c">'+CN[x.c]+'</span><span>'+esc(x.s)+'</span><span>'+ago(x.d)+'</span></small></a>'}
+function render(items){
+ document.querySelectorAll('.news[data-c]').forEach(function(b){var l=items.filter(function(x){return x.c===b.dataset.c}).slice(0,15);b.innerHTML=l.length?l.map(card).join(''):'<div class="empty">Cargando novedades… vuelve en un rato.</div>'});
+ var mix=[],by={};items.forEach(function(x){(by[x.c]=by[x.c]||[]).push(x)});for(var i=0;i<3;i++)['moda','belleza','piel','sana','deportes'].forEach(function(c){if(by[c]&&by[c][i])mix.push(by[c][i])});
+ document.getElementById('nHoy').innerHTML=mix.length?mix.slice(0,8).map(card).join(''):'<div class="empty">Cargando novedades… vuelve en un rato.</div>';
+}
+var KW={piel:/\bpiel\b|s[eé]rum|crema|protector solar|acn[eé]|arrugas|hidrata|retinol|vitamina c|manchas|ojeras|skincare|limpiador|exfolia|contorno/i,belleza:/maquillaje|labial|pintalabios|perfume|u[ñn]as|manicura|\bpelo\b|cabello|peinado|mechas|r[ií]mel|colorete|belleza|beauty|melena/i,moda:/zapatilla|vestido|\blook|abrigo|chaqueta|falda|pantal[oó]n|bolso|botas|zara|mango|h&m|primark|tendencia|moda|outfit|jersey|camisa|blazer|vaqueros|prenda|colecci[oó]n|rebajas|sandalias|gabardina|cazadora/i};
+var FB=[['Trendencias','https://www.trendencias.com/feedburner.xml','estilo'],['Vitónica','https://www.vitonica.com/feedburner.xml','sana'],['Marca','https://e00-xlk-ue-marca.uecdn.es/rss/googlenews/portada.xml','deportes']];
+function fallback(){ /* Respaldo si aún no existe zona.json: lector RSS público */
+ Promise.all(FB.map(function(f){return fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(f[1])).then(function(r){return r.json()}).then(function(j){return (j.items||[]).map(function(it){var c=f[2];if(c==='estilo'){c=['piel','belleza','moda'].filter(function(k){return KW[k].test(it.title)})[0];if(!c)return null}return {c:c,t:it.title,l:it.link,s:f[0],d:(it.pubDate||'').replace(' ','T')+'Z'}}).filter(Boolean)}).catch(function(){return []})}))
+ .then(function(r){var all=[].concat.apply([],r);all.sort(function(a,b){return a.d<b.d?1:-1});if(all.length){render(all);set('news',{at:Date.now(),items:all})}});
+}
+var cache=get('news',null);if(cache&&cache.items)render(cache.items);else render([]);
+fetch('zona.json?v='+Math.floor(Date.now()/600000)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+ if(!j.items||!j.items.length||Date.now()-new Date(j.updated)>12*3600e3)throw 0;
+ render(j.items);document.getElementById('upd').textContent='Actualizado '+ago(j.updated)+'.';set('news',{at:Date.now(),items:j.items})}).catch(fallback);
+
+
+/* ---------- Música: éxitos (previews 30 s) y radio en directo ---------- */
+var au=document.getElementById('au'),cur=null,MU=null;
+function play(src,t,a,img,btn){
+ if(cur&&cur.src===src&&!au.paused){au.pause();return}
+ au.src=src;au.play().then(function(){cur={src:src,btn:btn};document.querySelectorAll('.pb[data-src]').forEach(function(b){b.classList.toggle('on',b===btn);b.textContent=b===btn?'❚❚':'▶'});
+  document.getElementById('player').classList.add('on');document.getElementById('plT').textContent=t;document.getElementById('plA').innerHTML='<span class="eq"><i></i><i></i><i></i></span>'+esc(a);var im=document.getElementById('plImg');im.src=img||'icon-192.png';
+  if('mediaSession' in navigator)try{navigator.mediaSession.metadata=new MediaMetadata({title:t,artist:a,artwork:[{src:img||'icon-192.png',sizes:'200x200'}]})}catch(e){}
+ }).catch(function(){alert('No se pudo reproducir. Prueba con otra.')})}
+au.onpause=function(){document.getElementById('plB').textContent='▶';document.querySelectorAll('.pb[data-src]').forEach(function(b){b.classList.remove('on');b.textContent='▶'})};
+au.onplay=function(){document.getElementById('plB').textContent='❚❚'};
+document.getElementById('plB').onclick=function(){if(au.paused)au.play();else au.pause()};
+function songRow(x,k){var q=encodeURIComponent(x.t+' '+x.a);
+ return '<div class="song"><span class="n">'+(k+1)+'</span><img loading="lazy" src="'+esc(x.img)+'" alt=""><div class="tx"><b>'+esc(x.t)+'</b><small>'+esc(x.a)+(x.g?' · '+esc(x.g):'')+'</small><div class="ln"><a href="'+esc(x.url)+'" target="_blank" rel="noopener">Apple Music</a><a href="https://open.spotify.com/search/'+q+'" target="_blank" rel="noopener">Spotify</a><a href="https://music.youtube.com/search?q='+q+'" target="_blank" rel="noopener">YouTube Music</a></div></div>'+(x.p?'<button class="pb" type="button" data-src="'+esc(x.p)+'" data-t="'+esc(x.t)+'" data-a="'+esc(x.a)+'" data-img="'+esc(x.img)+'" aria-label="Escuchar">▶</button>':'')+'</div>'}
+function drawChart(){if(!MU)return;var c=MU.charts[document.getElementById('muCc').value];document.getElementById('muList').innerHTML=c?c.songs.map(songRow).join(''):'<div class="empty">Sin datos para este país.</div>';set('mucc',document.getElementById('muCc').value)}
+function loadMusic(){if(MU)return;fetch('musica.json?v='+Math.floor(Date.now()/3600e3)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){MU=j;var sel=document.getElementById('muCc');
+ sel.innerHTML=Object.keys(j.charts).map(function(k){return '<option value="'+k+'">Top 50 · '+j.charts[k].name+'</option>'}).join('');sel.value=j.charts[get('mucc','es')]?get('mucc','es'):Object.keys(j.charts)[0];drawChart()})
+ .catch(function(){document.getElementById('muList').innerHTML='<div class="empty">Los éxitos se están preparando. Mientras tanto, prueba la radio en directo.</div>'})}
+document.getElementById('muCc').onchange=drawChart;
+document.getElementById('v-musica').addEventListener('click',function(e){var b=e.target.closest('.pb[data-src]');if(b)play(b.dataset.src,b.dataset.t,b.dataset.a,b.dataset.img,b)});
+document.querySelectorAll('.mu-sub button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.mu-sub button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});var r=b.dataset.m==='radio';document.getElementById('muExitos').hidden=r;document.getElementById('muRadio').hidden=!r;if(r)loadRadio()}});
+var GEN=[['Éxitos','pop'],['Latino','latino'],['Reggaetón','reggaeton'],['Rock','rock'],['Dance','dance'],['Flamenco','flamenco'],['Clásica','classical'],['Jazz','jazz'],['Chill','chillout'],['Años 80','80s'],['Hip hop','hip hop'],['Noticias','news']],gen='pop';
+document.getElementById('muG').innerHTML=GEN.map(function(g){return '<button type="button" data-g="'+g[1]+'" aria-pressed="'+(g[1]===gen)+'">'+g[0]+'</button>'}).join('');
+document.getElementById('muG').onclick=function(e){var b=e.target.closest('button');if(!b)return;gen=b.dataset.g;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});loadRadio(true)};
+document.getElementById('muRc').onchange=function(){loadRadio(true)};
+var RB=['https://de1.api.radio-browser.info','https://nl1.api.radio-browser.info','https://at1.api.radio-browser.info'],rbDone=false;
+function loadRadio(force){if(rbDone&&!force)return;rbDone=true;var box=document.getElementById('muRList');box.innerHTML='<div class="empty">Buscando emisoras…</div>';
+ var cc=document.getElementById('muRc').value,q='/json/stations/search?tag='+encodeURIComponent(gen)+(cc?'&countrycode='+cc:'')+'&order=clickcount&reverse=true&hidebroken=true&limit=60';
+ (function tryH(i){if(i>=RB.length){box.innerHTML='<div class="empty">No se pudieron cargar las radios. Revisa tu conexión.</div>';return}
+  fetch(RB[i]+q).then(function(r){return r.json()}).then(function(l){l=l.filter(function(s){return /^https:/.test(s.url_resolved||'')}).slice(0,30);
+   box.innerHTML=l.length?l.map(function(s,k){return '<div class="song"><span class="n">'+(k+1)+'</span><img loading="lazy" src="'+(/^https:/.test(s.favicon||'')?esc(s.favicon):'icon-192.png')+'" alt="" onerror="this.src=\'icon-192.png\'"><div class="tx"><b>'+esc(s.name.trim())+'</b><small>'+esc([s.country,(s.tags||'').split(',').slice(0,3).join(', ')].filter(Boolean).join(' · '))+'</small></div><button class="pb" type="button" data-src="'+esc(s.url_resolved)+'" data-t="'+esc(s.name.trim())+'" data-a="Radio en directo · '+esc(s.country||'')+'" data-img="'+(/^https:/.test(s.favicon||'')?esc(s.favicon):'')+'" aria-label="Escuchar">▶</button></div>'}).join(''):'<div class="empty">No hay emisoras de este estilo en este país. Prueba "Todo el mundo".</div>'})
+  .catch(function(){tryH(i+1)})})(0)}
+
+/* ---------- Pestañas ---------- */
+var tabs=document.querySelectorAll('.tabs button');
+function show(t){if(t==='musica')loadMusic();tabs.forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===t)});document.querySelectorAll('main>section').forEach(function(s){s.hidden=s.id!=='v-'+t});scrollTo(0,0);try{history.replaceState(null,'','#'+t)}catch(e){}}
+tabs.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
+if(location.hash&&document.getElementById('v-'+location.hash.slice(1)))show(location.hash.slice(1));
+
+/* ---------- Modal ---------- */
+var modal=document.getElementById('modal'),mc=document.getElementById('mc'),stopFn=null;
+function open(t){document.getElementById('mt').textContent=t;modal.classList.add('open');document.body.style.overflow='hidden'}
+function close(){modal.classList.remove('open');document.body.style.overflow='';if(stopFn){stopFn();stopFn=null}scores()}
+document.getElementById('mx').onclick=close;
+function buzz(p){try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
+function shareTxt(txt){var url=location.origin+location.pathname;if(navigator.share)navigator.share({title:'Zona Kalifai',text:txt,url:url}).catch(function(){});else window.open('https://wa.me/?text='+encodeURIComponent(txt+' '+url),'_blank','noopener')}
+
+/* ---------- Juego 1: Reto del día ---------- */
+var QS=[['¿Cuántos jugadores tiene un equipo de fútbol en el campo?',['11','10','9','12']],['¿En qué ciudad se celebraron los Juegos Olímpicos de 1992?',['Barcelona','Madrid','Sevilla','Atlanta']],['¿Qué vitamina produce la piel con la luz del sol?',['Vitamina D','Vitamina C','Vitamina A','Vitamina B12']],['¿Cuántos minutos de actividad moderada a la semana recomienda la OMS a los adultos?',['150','60','300','90']],['¿Cuál es el río más largo de la península ibérica?',['Tajo','Ebro','Duero','Guadalquivir']],['¿Cuántos anillos tiene la bandera olímpica?',['5','4','6','7']],['¿Cuánto mide una maratón?',['42,195 km','40 km','21,097 km','45 km']],['¿Quién creó el perfume Nº 5?',['Coco Chanel','Christian Dior','Yves Saint Laurent','Paco Rabanne']],['¿En qué ciudad abrió Zara su primera tienda?',['A Coruña','Madrid','Barcelona','Vigo']],['¿Cuántos puntos vale un triple en baloncesto?',['3','2','4','1']],['¿Qué tenista tiene más títulos de Roland Garros?',['Rafa Nadal','Roger Federer','Novak Djokovic','Björn Borg']],['¿Cuál es el órgano más grande del cuerpo humano?',['La piel','El hígado','El cerebro','Los pulmones']],['¿Cuántas horas de sueño se recomiendan a un adulto?',['Entre 7 y 9','Entre 4 y 5','Entre 10 y 12','Exactamente 6']],['¿Qué ciudad es famosa por su Mezquita-Catedral?',['Córdoba','Granada','Toledo','Sevilla']],['¿Qué ingrediente de cosmética es un derivado de la vitamina A?',['Retinol','Ácido hialurónico','Niacinamida','Colágeno']],['¿Cuántos jugadores por equipo hay en pista en baloncesto?',['5','6','7','4']],['¿Qué selección ganó el Mundial de fútbol de 2010?',['España','Países Bajos','Alemania','Brasil']],['¿En qué deporte se usa la palabra «birdie»?',['Golf','Tenis','Bádminton','Pádel']],['¿Qué color sale al mezclar azul y amarillo?',['Verde','Morado','Naranja','Marrón']],['¿Cuántos días tiene un año bisiesto?',['366','365','364','367']],['¿Qué fruta es famosa por su potasio?',['Plátano','Fresa','Manzana','Kiwi']],['¿Cuál es el planeta más grande del sistema solar?',['Júpiter','Saturno','Neptuno','La Tierra']],['¿Qué océano baña la costa de Huelva?',['Atlántico','Mediterráneo','Índico','Pacífico']],['¿Quién pintó «Las Meninas»?',['Velázquez','Goya','Picasso','El Greco']],['¿Qué gas toman las plantas para hacer la fotosíntesis?',['Dióxido de carbono','Oxígeno','Nitrógeno','Helio']],['¿Cada cuánto conviene reaplicar el protector solar en la playa?',['Cada 2 horas','Una vez al día','Cada 6 horas','No hace falta']],['¿Cuál es la mejor bebida para hidratarse en un ejercicio moderado?',['Agua','Refresco','Café','Zumo azucarado']],['¿Qué escudería de Fórmula 1 es famosa por su color rojo?',['Ferrari','McLaren','Mercedes','Williams']],['¿Qué idioma tiene más hablantes nativos en el mundo?',['Chino mandarín','Inglés','Español','Hindi']],['¿En qué ciudad está el Museo del Prado?',['Madrid','Barcelona','Valencia','Bilbao']],['¿Cuántos lados tiene un hexágono?',['6','5','8','7']],['¿Qué tejido se obtiene del capullo de un gusano?',['Seda','Lino','Algodón','Lana']],['¿Qué prenda es el icono de Levi’s?',['Los vaqueros','Las zapatillas','El bolso','La gorra']],['¿Qué deporte practica Carlos Alcaraz?',['Tenis','Pádel','Golf','Fútbol']],['¿Cuántos minutos dura un partido de fútbol sin descuento?',['90','80','100','60']],['¿Qué es un chatbot?',['Un programa que conversa contigo','Un tipo de móvil','Una red social','Un virus']],['¿Qué elemento químico tiene el símbolo O?',['Oxígeno','Oro','Osmio','Ozono']],['¿Cuál es la capital de Portugal?',['Lisboa','Oporto','Coímbra','Faro']],['¿Cuántos huesos tiene un adulto aproximadamente?',['206','150','312','98']],['¿Qué día es el Día Internacional de la Mujer?',['8 de marzo','14 de febrero','1 de mayo','25 de noviembre']],['¿En qué ciudad está la Alhambra?',['Granada','Córdoba','Málaga','Sevilla']],['¿Qué significa IA?',['Inteligencia artificial','Internet avanzada','Información automática','Imagen animada']],['¿Qué empresa fabrica el iPhone?',['Apple','Samsung','Google','Huawei']],['¿Cuántos centímetros tiene un metro?',['100','10','1.000','50']],['¿Qué deporte se juega en Wimbledon?',['Tenis','Golf','Críquet','Rugby']],['¿Qué baile nació en Andalucía?',['Flamenco','Tango','Salsa','Vals']],['¿Cuántos jugadores tiene un equipo de pádel en pista?',['2','1','4','3']],['¿Qué mineral ayuda a mantener los huesos fuertes?',['Calcio','Hierro','Sodio','Yodo']],['¿Qué color se asocia a la camiseta de la selección española de fútbol?',['Rojo','Azul','Verde','Blanco']]];
+function reto(){
+ var done=get('reto_'+dkey,null);open('Reto del día');
+ if(done){return retoRes(done.marks)}
+ var r=seed('reto'+dkey),qs=pick(QS,5,r).map(function(q){return {t:q[0],ok:q[1][0],ops:pick(q[1],4,r)}}),i=0,marks=[];
+ function step(){
+  if(i>=qs.length){var d={marks:marks};set('reto_'+dkey,d);var ok=marks.filter(Boolean).length;addPts(ok*10+(ok===5?20:0));return retoRes(marks)}
+  var q=qs[i];mc.innerHTML='<div class="bar">'+qs.map(function(_,k){return '<i class="'+(k<i?(marks[k]?'ok':'ko'):k===i?'now':'')+'"></i>'}).join('')+'</div><div class="q"><small style="color:var(--muted)">Pregunta '+(i+1)+' de 5</small><h3>'+q.t+'</h3><div class="ops">'+q.ops.map(function(o){return '<button type="button">'+o+'</button>'}).join('')+'</div></div>';
+  mc.querySelectorAll('.ops button').forEach(function(b){b.onclick=function(){var good=b.textContent===q.ok;mc.querySelectorAll('.ops button').forEach(function(x){x.disabled=true;if(x.textContent===q.ok)x.classList.add('ok')});if(!good)b.classList.add('ko');buzz(good?30:[60,40,60]);marks.push(good);i++;setTimeout(step,900)}});
+ }
+ step();
+}
+function retoRes(marks){var ok=marks.filter(Boolean).length,em=marks.map(function(m){return m?'🟩':'🟥'}).join('');
+ mc.innerHTML='<div class="res"><div class="big">'+ok+'/5</div><div class="em">'+em+'</div><p class="lead">'+(ok===5?'¡Perfecto! +70 puntos':ok>=3?'¡Muy bien! Mañana, más.':'Mañana tienes otra oportunidad.')+'</p><p class="lead">🔥 Racha: '+st.streak+' días · vuelve mañana a por 5 preguntas nuevas</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" id="shr">Compartir resultado</button><button class="btn g" id="cls">Cerrar</button></div></div>';
+ document.getElementById('shr').onclick=function(){shareTxt('Reto Kalifai '+dkey+': '+ok+'/5 '+em+' ¿Me superas?')};document.getElementById('cls').onclick=close}
+
+/* ---------- Juego 2: Memoria ---------- */
+function mem(){
+ open('Memoria');var E=['💄','👗','👠','💅','⚽','🎾','🥑','🧴'],cards=pick(E.concat(E),16,Math.random),up=[],moves=0,found=0,t0=Date.now(),lock=false;
+ mc.innerHTML='<div class="stat"><span id="mv">Movimientos: 0</span><span>Récord: '+(get('mem_best',0)||'—')+'</span></div><div class="mem">'+cards.map(function(c,k){return '<button type="button" data-k="'+k+'" aria-label="Carta"><span>'+c+'</span></button>'}).join('')+'</div>';
+ mc.querySelectorAll('.mem button').forEach(function(b){b.onclick=function(){if(lock||b.classList.contains('up')||b.classList.contains('done'))return;b.classList.add('up');up.push(b);buzz(10);
+  if(up.length===2){moves++;document.getElementById('mv').textContent='Movimientos: '+moves;var a=up[0],c=up[1];
+   if(cards[a.dataset.k]===cards[c.dataset.k]){a.classList.add('done');c.classList.add('done');up=[];found++;buzz(40);
+    if(found===8){var best=get('mem_best',0);if(!best||moves<best)set('mem_best',moves);addPts(20);setTimeout(function(){mc.innerHTML='<div class="res"><div class="big">'+moves+'</div><p class="lead">movimientos en '+Math.round((Date.now()-t0)/1000)+' s · +20 puntos</p><div style="display:flex;gap:8px;justify-content:center"><button class="btn" id="again">Otra vez</button><button class="btn g" id="shr">Compartir</button></div></div>';document.getElementById('again').onclick=mem;document.getElementById('shr').onclick=function(){shareTxt('He completado la Memoria Kalifai en '+moves+' movimientos. ¿Me superas?')}},500)}}
+   else{lock=true;setTimeout(function(){a.classList.remove('up');c.classList.remove('up');up=[];lock=false},750)}}}});
+}
+
+/* ---------- Juego 3: Atrapa la gota ---------- */
+function gota(){
+ open('Atrapa la gota');mc.innerHTML='<div class="stat"><span id="gs">Puntos: 0</span><span id="gl">❤️❤️❤️</span><span>Récord: '+get('gota_best',0)+'</span></div><canvas id="cv" width="360" height="520"></canvas><p class="lead" style="text-align:center;margin-top:10px">Arrastra el dedo para mover el cuenco.</p>';
+ var cv=document.getElementById('cv'),x=cv.getContext('2d'),W=360,H=520,px=W/2,drops=[],score=0,lives=3,tick=0,run=true,raf;
+ function mv(e){var r=cv.getBoundingClientRect(),cx=(e.touches?e.touches[0].clientX:e.clientX);px=Math.max(34,Math.min(W-34,(cx-r.left)/r.width*W));if(e.cancelable)e.preventDefault()}
+ cv.addEventListener('pointermove',mv);cv.addEventListener('touchmove',mv,{passive:false});cv.addEventListener('pointerdown',mv);
+ function loop(){if(!run)return;tick++;var sp=2.2+score*.05;if(tick%Math.max(18,48-Math.floor(score/3))===0)drops.push({x:20+Math.random()*(W-40),y:-10,g:Math.random()<.12});
+  x.clearRect(0,0,W,H);
+  drops.forEach(function(d){d.y+=sp*(d.g?1.3:1);x.beginPath();x.fillStyle=d.g?'#E58BA8':'#7FE7F2';x.moveTo(d.x,d.y-12);x.quadraticCurveTo(d.x+9,d.y+2,d.x,d.y+8);x.quadraticCurveTo(d.x-9,d.y+2,d.x,d.y-12);x.fill();
+   if(d.y>H-48&&d.y<H-28&&Math.abs(d.x-px)<36){d.hit=true;score+=d.g?5:1;buzz(12)}else if(d.y>H){d.hit=true;if(!d.g){lives--;buzz([80,40,80])}}});
+  drops=drops.filter(function(d){return !d.hit});
+  x.fillStyle='#C0613E';x.beginPath();x.moveTo(px-36,H-44);x.lineTo(px+36,H-44);x.quadraticCurveTo(px+30,H-16,px,H-16);x.quadraticCurveTo(px-30,H-16,px-36,H-44);x.fill();
+  document.getElementById('gs').textContent='Puntos: '+score;document.getElementById('gl').textContent='❤️'.repeat(Math.max(0,lives))+'🤍'.repeat(3-Math.max(0,lives));
+  if(lives<=0){run=false;var best=get('gota_best',0);if(score>best)set('gota_best',score);var p=Math.floor(score/5);if(p)addPts(p);
+   mc.insertAdjacentHTML('beforeend','<div class="res"><div class="big">'+score+'</div><p class="lead">'+(score>best?'¡Nuevo récord! ':'')+'+'+p+' puntos</p><div style="display:flex;gap:8px;justify-content:center"><button class="btn" id="again">Otra vez</button><button class="btn g" id="shr">Compartir</button></div></div>');
+   document.getElementById('again').onclick=gota;document.getElementById('shr').onclick=function(){shareTxt('He atrapado '+score+' gotas en Kalifai. ¿Me superas?')};return}
+  raf=requestAnimationFrame(loop)}
+ stopFn=function(){run=false;cancelAnimationFrame(raf)};loop();
+}
+var GAMES={reto:reto,mem:mem,gota:gota};
+document.querySelectorAll('.gm').forEach(function(b){b.onclick=function(){if(stopFn){stopFn();stopFn=null}GAMES[b.dataset.g]()}});
+document.getElementById('ctaReto').onclick=function(e){e.preventDefault();reto()};
+function scores(){var d=get('reto_'+dkey,null);document.getElementById('gRetoS').textContent=d?'Hoy: '+d.marks.filter(Boolean).length+'/5 ✓':'¡Nuevo reto disponible!';document.getElementById('retoTxt').textContent=d?'Hecho hoy: '+d.marks.filter(Boolean).length+'/5 · vuelve mañana':'5 preguntas · mantén tu racha';
+ var m=get('mem_best',0);document.getElementById('gMemS').textContent=m?'Récord: '+m+' movimientos':'¡Estrena tu récord!';var g=get('gota_best',0);document.getElementById('gGotaS').textContent=g?'Récord: '+g+' puntos':'¡Estrena tu récord!'}
+scores();
+
+/* ---------- Idioma (mismo selector que la app) ---------- */
+window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'es',includedLanguages:'en,fr,it,pt,sq,ja,zh-CN,es',autoDisplay:false},'google_translate_element')};
+if(/googtrans=\/es\/(?!es)/.test(document.cookie)){var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.body.appendChild(s)}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+})();
+</script>
+</body>
+</html>
