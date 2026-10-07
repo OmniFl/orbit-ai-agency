@@ -139,7 +139,6 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offs
       <circle class="kh-drop" cx="50" cy="24" r="13" fill="#C0613E"/>
       <path class="kh-draw kh-d2" pathLength="1" d="M38 92 C38 74, 42 66, 50 66 C58 66, 62 74, 62 92" fill="none" stroke="#6E7C5A" stroke-width="6" stroke-linecap="round"/></svg>
     <div class="kh-wm"><div class="kh-name">Kalifai</div><div class="kh-sub">SOLUCIONES DE IA PARA HUMANOS</div></div></div></div>
-  <div class="ksp-skip">Toca para escuchar Kalifai</div>
 </div>
 <style>
 #kSplash{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#F6F1E8;cursor:pointer;transition:opacity .55s ease,transform .55s ease}
@@ -178,8 +177,11 @@ function schedule(ms){clearTimeout(timer);timer=setTimeout(hide,ms)}
 function restart(){var w=sp.querySelector('.ksp-wrap'),c=w.cloneNode(true);w.parentNode.replaceChild(c,w)}
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 schedule(reduce?900:2900);
-try{var p=snd.play();if(p&&p.then)p.then(function(){played=true;buzz();sp.querySelector('.ksp-skip').textContent='Toca para entrar'},function(){})}catch(e){}
-sp.addEventListener('click',function(){if(!played&&!done){played=true;restart();try{snd.currentTime=0;snd.play().catch(function(){})}catch(e){}buzz();sp.querySelector('.ksp-skip').textContent='Toca para entrar';schedule(2900)}else hide()});
+function unlock(){if(played)return;var ok=Date.now()-t0<15000;off();if(!ok)return;played=true;try{snd.currentTime=0;snd.play().catch(function(){})}catch(e){}buzz()}
+function off(){['pointerdown','touchend','keydown','click'].forEach(function(ev){removeEventListener(ev,unlock,true)})}
+var t0=Date.now();
+try{var p=snd.play();if(p&&p.then)p.then(function(){played=true;buzz()},function(){['pointerdown','touchend','keydown','click'].forEach(function(ev){addEventListener(ev,unlock,true)})})}catch(e){}
+sp.addEventListener('click',function(){hide()});
 addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter')hide()});
 })();
 </script>
