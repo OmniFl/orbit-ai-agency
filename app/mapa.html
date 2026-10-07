@@ -88,6 +88,18 @@ select{flex:1;min-width:0;background:var(--card);color:#fff;border:1px solid var
 <script>
 (function(){
 var STYLE='https://tiles.openfreemap.org/styles/liberty';
+/* ---------- Almacén propio de mapas en el móvil (IndexedDB): funciona sin datos en web y en la app nativa ---------- */
+var KDB=null;
+function db(){return KDB||(KDB=new Promise(function(res,rej){var r=indexedDB.open('kalifai-mapas',1);r.onupgradeneeded=function(){r.result.createObjectStore('t')};r.onsuccess=function(){res(r.result)};r.onerror=function(){rej(r.error)}}))}
+function idbGet(k){return db().then(function(d){return new Promise(function(res){var q=d.transaction('t').objectStore('t').get(k);q.onsuccess=function(){res(q.result)};q.onerror=function(){res(undefined)}})}).catch(function(){})}
+function idbPut(k,v){return db().then(function(d){return new Promise(function(res){var tx=d.transaction('t','readwrite');tx.objectStore('t').put(v,k);tx.oncomplete=res;tx.onerror=res})}).catch(function(){})}
+function kget(url){return idbGet(url).then(function(b){if(b)return b;return fetch(url).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.arrayBuffer()}).then(function(buf){return idbPut(url,buf).then(function(){return buf})})})}
+var KP='kofm://';
+maplibregl.addProtocol('kofm',function(p){var url=p.url.replace(KP,'https://');return kget(url).then(function(buf){
+ if(p.type==='json')return {data:JSON.parse(new TextDecoder().decode(buf))};
+ if(p.type==='string')return {data:new TextDecoder().decode(buf)};
+ return {data:buf}})});
+function kTransform(url){return /^https:\/\/tiles\.openfreemap\.org\//.test(url)?{url:url.replace('https://',KP)}:{url:url}}
 var COL={ver:'#C0613E',comer:'#E58BA8',ocio:'#7FE7F2',pfree:'#3DDC84',ppaid:'#8B95A7'};
 var PARTNERS=[]; /* Negocios patrocinados: {city:'cordoba',name:'…',lat:..,lon:..,txt:'…'} — siempre se muestran como "Patrocinado" */
 function get(k,d){try{var v=localStorage.getItem('km_'+k);return v===null?d:JSON.parse(v)}catch(e){return d}}
@@ -102,7 +114,7 @@ function paintSt(){$('st').innerHTML=(navigator.onLine?'🌐 En línea':'<b>📡
 addEventListener('online',paintSt);addEventListener('offline',paintSt);paintSt();
 
 /* ---------- Mapa ---------- */
-var map=new maplibregl.Map({container:'map',style:STYLE,center:[-4.7792,37.8847],zoom:13,attributionControl:{compact:true}});
+var map=new maplibregl.Map({container:'map',style:STYLE,transformRequest:kTransform,center:[-4.7792,37.8847],zoom:13,attributionControl:{compact:true}});
 map.on('error',function(e){if(!navigator.onLine&&!get('dl_'+(cur&&cur.slug),false))toast('Sin datos: descarga esta ciudad con wifi para ver el mapa sin conexión.',4000)});
 var cities=[],cur=null,pois=[],filter='top';
 function dist(a,b,c,d){var R=6371e3,p=Math.PI/180,x=Math.sin((c-a)*p/2),y=Math.sin((d-b)*p/2);return 2*R*Math.asin(Math.sqrt(x*x+Math.cos(a*p)*Math.cos(c*p)*y*y))}
@@ -174,18 +186,18 @@ $('dl').onclick=function(){
  if(!cur)return;if(!navigator.onLine){toast('Conéctate a wifi para descargar.');return}
  var b=cur.bbox,btn=this,urls=['mapas/'+cur.slug+'.json','mapas/index.json','lib/maplibre-gl.js','lib/maplibre-gl.css','mapa.html'];
  btn.disabled=true;btn.textContent='Preparando…';
- fetch(STYLE).then(function(r){return r.json()}).then(function(style){
+ kget(STYLE).then(function(buf){var style=JSON.parse(new TextDecoder().decode(buf));
   urls.push(STYLE);
   var spr=style.sprite;(Array.isArray(spr)?spr.map(function(x){return x.url}):spr?[spr]:[]).forEach(function(u){['.json','.png','@2x.json','@2x.png'].forEach(function(x){urls.push(u+x)})});
   var fonts={};(style.layers||[]).forEach(function(l){var f=l.layout&&l.layout['text-font'];if(Array.isArray(f)&&typeof f[0]==='string')fonts[f.join(',')]=1});
   Object.keys(fonts).forEach(function(f){['0-255','256-511','512-767','768-1023','8192-8447'].forEach(function(r){urls.push(style.glyphs.replace('{fontstack}',encodeURIComponent(f)).replace('{range}',r))})});
-  return Promise.all(Object.keys(style.sources).map(function(k){var s=style.sources[k];if(!s.url)return null;urls.push(s.url);return fetch(s.url).then(function(r){return r.json()})}))
+  return Promise.all(Object.keys(style.sources).map(function(k){var s=style.sources[k];if(!s.url)return null;urls.push(s.url);return kget(s.url).then(function(buf){return JSON.parse(new TextDecoder().decode(buf))})}))
  }).then(function(tjs){
   tjs.filter(Boolean).forEach(function(tj){var tpl=tj.tiles[0],mz=Math.min(tj.maxzoom||14,14);
    for(var z=4;z<=mz;z++){var pad=z<=11?0.12:0;var x0=lon2x(b[1]-pad,z),x1=lon2x(b[3]+pad,z),y0=lat2y(b[2]+pad,z),y1=lat2y(b[0]-pad,z);
     for(var x=x0;x<=x1;x++)for(var y=y0;y<=y1;y++)urls.push(tpl.replace('{z}',z).replace('{x}',x).replace('{y}',y))}});
   var done=0,fail=0,i=0,N=urls.length;
-  function next(){if(i>=N)return Promise.resolve();var u=urls[i++];return fetch(u).then(function(r){if(!r.ok)fail++}).catch(function(){fail++}).then(function(){done++;btn.textContent=Math.round(done/N*100)+' %';return next()})}
+  function next(){if(i>=N)return Promise.resolve();var u=urls[i++];return (/^https:\/\/tiles\.openfreemap\.org\//.test(u)?kget(u):fetch(u).then(function(r){if(!r.ok)throw 0})).catch(function(){fail++}).then(function(){done++;btn.textContent=Math.round(done/N*100)+' %';return next()})}
   return Promise.all([next(),next(),next(),next(),next(),next()]).then(function(){return {N:N,fail:fail}})
  }).then(function(r){btn.disabled=false;if(r.fail>r.N*0.05){btn.textContent='⬇ Reintentar';toast('Algunas partes no se descargaron. Prueba otra vez con wifi.');return}
   set('dl_'+cur.slug,true);btn.className='dl ok';btn.textContent='✓ Sin datos';

@@ -256,6 +256,8 @@ if(c!=='es'){var s=document.createElement('script');s.src='https://translate.goo
   <div class="btns"><a class="btn main" href="https://wa.me/34614057443">Hablar por WhatsApp</a><a class="btn" href="#servicios">Ver servicios</a></div>
 </section>
 
+
+
 <section class="wrap" id="escaner">
   <div class="sec-head"><span class="ey"><i></i>Kalifai Scan + Gemelo IA</span><h2>Prueba tu propia IA <span class="grad">antes de pagar nada</span></h2><p class="lead">Responde 7 preguntas. En un minuto ves tu índice de preparación para la IA, las horas que puedes recuperar, el plan que te conviene con su precio, y hablas con un asistente que ya responde como tu negocio.</p></div>
   <div class="ks-box" id="ksBox"></div>
@@ -536,6 +538,7 @@ init();
 <script>
 (function(){
 var PHONE='34614057443';
+var LANZ_FIN=new Date('2026-12-31T23:59:59+01:00').getTime(); /* fin de la oferta de lanzamiento (primeros 50 negocios) */
 var WEB=[{id:'w0',n:'Sin web',d:'Solo quiero el asistente',s:0,m:0},{id:'w1',n:'Web de 1 página',d:'Presentación, servicios y contacto',s:290,m:15},{id:'w3',n:'Web de empresa',d:'De 3 a 5 páginas',s:490,m:15},{id:'w5',n:'Web con pagos o tienda',d:'Cobros online y en cuotas',s:890,m:19}];
 var BOT=[{id:'b0',n:'Sin asistente',d:'De momento no',s:0,m:0},{id:'b1',n:'Chatbot en la web',d:'Responde y capta clientes 24/7',s:390,m:29},{id:'b2',n:'Bot de WhatsApp con IA',d:'Atiende, cotiza y agenda',s:690,m:59}];
 var EX=[{id:'pag',n:'Página extra',d:'Cada página adicional',s:60,max:10,q:1},{id:'img',n:'Pack de 10 imágenes profesionales',d:'Creadas con IA para tu marca',s:49,max:5,q:1},{id:'idi',n:'Idioma adicional',d:'Web traducida por idioma',s:90,max:7,q:1},{id:'dis',n:'Diseño premium',d:'Animaciones y vídeo de fondo',s:190},{id:'logo',n:'Logo y colores de marca',d:'Identidad básica',s:120},{id:'res',n:'Reservas y citas online',d:'Calendario conectado',s:150},{id:'blog',n:'Blog o noticias',d:'Para publicar tú misma',s:120},{id:'seo',n:'Alta en Google y en las IA hecha por nosotros',d:'Perfil de empresa, directorios y datos coherentes',s:149}];
@@ -558,6 +561,7 @@ function draw(){
  mo=bo.m?bo.m+(w.s?20:0):w.m;
  if(w.s&&st.bot==='b2'){lines.push(['Descuento pack web + WhatsApp',-190]);set-=190}
  EX.forEach(function(x){var q=st.ex[x.id]||0;if(q){lines.push([x.n+(x.q&&q>1?' ×'+q:''),x.s*q]);set+=x.s*q}});
+ if(set>0&&Date.now()<LANZ_FIN){var dto=Math.round(set*0.2);lines.push(['🎁 Oferta de lanzamiento −20 %',-dto]);set-=dto}
  var cero=st.pay==='cero'&&set>0;
  document.getElementById('kxL1').textContent=cero?'Hoy pagas':'Implantación (sin IVA)';
  document.getElementById('kxSet').textContent=cero?'0 €':eur(set);
