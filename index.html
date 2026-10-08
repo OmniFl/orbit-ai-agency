@@ -216,9 +216,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
 
 <main>
 <section class="hero" id="inicio">
-  <div class="vid hv" id="hv"><video data-h class="on" autoplay muted loop playsinline preload="auto" src="media/burj-hero.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-a.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/luces.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-b.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/dubai-noche.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-c.mp4"></video></div>
+  <div class="vid hv" id="hv"><video data-h data-l="Dubái · Burj Khalifa" class="on" autoplay muted loop playsinline preload="auto" src="media/burj-hero.mp4"></video><video data-h data-l="Shanghái · Shanghai Tower" muted loop playsinline preload="none" data-src="media/shanghai.mp4"></video><video data-h data-l="Dubái · Burj Khalifa" muted loop playsinline preload="none" data-src="media/burj-a.mp4"></video><video data-h data-l="Singapur · Marina Bay" muted loop playsinline preload="none" data-src="media/singapur.mp4"></video><video data-h data-l="Dubái · Downtown" muted loop playsinline preload="none" data-src="media/luces.mp4"></video><video data-h data-l="Nueva York · One World" muted loop playsinline preload="none" data-src="media/nueva-york.mp4"></video><video data-h data-l="Dubái · Burj Khalifa" muted loop playsinline preload="none" data-src="media/burj-b.mp4"></video><video data-h data-l="Dubái · Ciudad que no duerme" muted loop playsinline preload="none" data-src="media/dubai-noche.mp4"></video></div>
   <div class="hin wrap">
-    <div class="place rv">Dubái · Burj Khalifa</div>
+    <div class="place rv" id="place" style="transition:opacity .5s">Dubái · Burj Khalifa</div>
     <div class="kick rv">Agencia de inteligencia artificial · Córdoba, España</div>
     <h1 class="rv notranslate">KALIFAI</h1>
     <h2 class="rv">Inteligencia artificial a medida</h2>
@@ -334,10 +334,11 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 document.addEventListener('visibilitychange',function(){if(document.hidden)vids.forEach(function(v){v.pause()})});
 
 /* ---------- Portada: carrete de vídeos del Burj Khalifa con fundido ---------- */
-(function(){var hv=[].slice.call(document.querySelectorAll('#hv video')),i=0;if(reduce||slow||hv.length<2)return;
- setInterval(function(){if(document.hidden)return;var a=hv[i],n=(i+1)%hv.length,b=hv[n];if(!b.getAttribute('src'))b.src=b.dataset.src;
-  function sw(){b.classList.add('on');a.classList.remove('on');setTimeout(function(){a.pause()},1900);i=n}
-  try{b.currentTime=0}catch(x){}var p=b.play();if(p&&p.then)p.then(sw,function(){});else sw()},7000)})();
+(function(){var hv=[].slice.call(document.querySelectorAll('#hv video')),cur=hv[0],pl=document.getElementById('place');if(reduce||slow||hv.length<2)return;
+ setInterval(function(){if(document.hidden||hv.length<2)return;var n=(hv.indexOf(cur)+1)%hv.length,b=hv[n];if(!b.getAttribute('src'))b.src=b.dataset.src;
+  try{b.currentTime=0}catch(x){}var p=b.play();
+  function sw(){var a=cur;cur=b;if(pl&&b.dataset.l&&pl.textContent!==b.dataset.l){pl.style.opacity=0;setTimeout(function(){pl.textContent=b.dataset.l;pl.style.opacity=1},500)}b.classList.add('on');a.classList.remove('on');setTimeout(function(){a.pause()},1900)}
+  if(p&&p.then)p.then(sw,function(){hv.splice(hv.indexOf(b),1)});else sw()},7000)})();
 
 /* ---------- Aparición al bajar y barra de progreso ---------- */
 var rv=[].slice.call(document.querySelectorAll('.rv'));
@@ -364,13 +365,22 @@ document.getElementById('form').onsubmit=function(e){e.preventDefault();var f=e.
  window.open('https://wa.me/34614057443?text='+encodeURIComponent(t),'_blank','noopener');m.style.color='';m.textContent='Gracias. Se ha abierto WhatsApp con tu solicitud: solo tienes que pulsar enviar.'};
 
 /* ---------- Intro con logo y sonido, y botón de sonido ---------- */
-var intro=document.getElementById('intro'),jingle=new Audio('kalifai-sonido.mp3'),amb=new Audio('hero/ambiente.mp3'),played=false,t0=Date.now();amb.loop=true;amb.volume=.5;
+var intro=document.getElementById('intro'),jingle=new Audio('kalifai-sonido.mp3'),amb=new Audio('hero/ambiente.mp3');amb.loop=true;amb.preload='auto';amb.volume=0;
 function hide(){intro.classList.add('out');setTimeout(function(){intro.remove()},900)}
 setTimeout(hide,reduce?600:2800);intro.onclick=hide;
-function first(){if(played||Date.now()-t0>15000)return;played=true;try{jingle.play().catch(function(){})}catch(x){}}
-try{var jp=jingle.play();if(jp&&jp.then)jp.then(function(){played=true},function(){['pointerdown','keydown','touchend'].forEach(function(ev){addEventListener(ev,first,{once:true,capture:true})})})}catch(x){}
-var sb=document.getElementById('snd'),st=document.getElementById('sndT');
-sb.onclick=function(){if(amb.paused){amb.play().then(function(){sb.classList.add('on');sb.setAttribute('aria-pressed','true');st.textContent='Sonido activado'}).catch(function(){})}else{amb.pause();sb.classList.remove('on');sb.setAttribute('aria-pressed','false');st.textContent='Activar sonido'}};
+var sb=document.getElementById('snd'),st=document.getElementById('sndT'),off=false,started=false,fadeT;
+try{off=localStorage.getItem('kalifai_sonido')==='off'}catch(x){}
+function ui(on){sb.classList.toggle('on',on);sb.setAttribute('aria-pressed',on?'true':'false');st.textContent=on?'Sonido activado':'Activar sonido'}
+function fade(to){clearInterval(fadeT);fadeT=setInterval(function(){var v=amb.volume+(to>amb.volume?.05:-.05);if(Math.abs(to-v)<.05){v=to;clearInterval(fadeT);if(to===0)amb.pause()}amb.volume=Math.max(0,Math.min(1,v))},80)}
+function startSound(){if(off)return Promise.reject();var p=amb.play();return (p&&p.then?p:Promise.resolve()).then(function(){if(!started){started=true;try{jingle.volume=.9;jingle.play().catch(function(){})}catch(x){}}fade(.55);ui(true)})}
+function stopSound(){fade(0);ui(false)}
+/* Música de fondo continua: intenta sonar al entrar; si el navegador lo bloquea, arranca al primer toque, clic o tecla */
+function gesture(e){if(e&&e.target&&e.target.closest&&e.target.closest('#snd'))return;rm();if(!off)startSound().catch(function(){})}
+var EV=['pointerdown','touchstart','keydown','click'];function rm(){EV.forEach(function(ev){removeEventListener(ev,gesture,true)})}
+startSound().catch(function(){if(!off)EV.forEach(function(ev){addEventListener(ev,gesture,true)})});
+sb.onclick=function(){rm();if(amb.paused||amb.volume===0){off=false;try{localStorage.removeItem('kalifai_sonido')}catch(x){}startSound().catch(function(){})}else{off=true;try{localStorage.setItem('kalifai_sonido','off')}catch(x){}stopSound()}};
+/* Si cambias de pestaña se pausa y al volver sigue sonando */
+document.addEventListener('visibilitychange',function(){if(document.hidden){if(!amb.paused){amb.pause();amb._w=1}}else if(amb._w&&!off){amb._w=0;amb.play().catch(function(){})}});
 })();
 </script>
 </body>
