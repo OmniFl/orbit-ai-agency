@@ -90,6 +90,7 @@ section{position:relative;z-index:2}
 .eq{display:inline-flex;gap:3px;align-items:flex-end;height:16px}.eq i{width:3px;height:5px;background:var(--gold)}
 .snd.on .eq i{animation:eq .9s infinite ease-in-out}.snd.on .eq i:nth-child(2){animation-delay:.2s}.snd.on .eq i:nth-child(3){animation-delay:.4s}.snd.on .eq i:nth-child(4){animation-delay:.6s}
 @keyframes eq{0%,100%{height:4px}50%{height:16px}}
+.hv video{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}.hv video.on{opacity:1}
 /* Cinta de servicios */
 .tape{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);background:#050505;overflow:hidden;z-index:3}
 .tape .tr{display:flex;width:max-content;animation:tape 38s linear infinite}
@@ -215,7 +216,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
 
 <main>
 <section class="hero" id="inicio">
-  <div class="vid"><video autoplay muted loop playsinline preload="auto" src="media/burj-hero.mp4"></video></div>
+  <div class="vid hv" id="hv"><video data-h class="on" autoplay muted loop playsinline preload="auto" src="media/burj-hero.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-a.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/luces.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-b.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/dubai-noche.mp4"></video><video data-h muted loop playsinline preload="none" data-src="media/burj-c.mp4"></video></div>
   <div class="hin wrap">
     <div class="place rv">Dubái · Burj Khalifa</div>
     <div class="kick rv">Agencia de inteligencia artificial · Córdoba, España</div>
@@ -328,9 +329,15 @@ cards.innerHTML=S.map(function(s,i){return '<article class="card rv"><div class=
 /* ---------- Vídeos: se cargan y reproducen solo cuando se ven ---------- */
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,slow=navigator.connection&&navigator.connection.saveData;
 function play(v){if(reduce||slow)return;if(!v.getAttribute('src')&&v.dataset.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}
-var vids=[].slice.call(document.querySelectorAll('video'));
+var vids=[].slice.call(document.querySelectorAll('video:not([data-h])'));
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)play(e.target);else e.target.pause()})},{rootMargin:'200px 0px',threshold:.01});vids.forEach(function(v){io.observe(v)})}else vids.forEach(play);
 document.addEventListener('visibilitychange',function(){if(document.hidden)vids.forEach(function(v){v.pause()})});
+
+/* ---------- Portada: carrete de vídeos del Burj Khalifa con fundido ---------- */
+(function(){var hv=[].slice.call(document.querySelectorAll('#hv video')),i=0;if(reduce||slow||hv.length<2)return;
+ setInterval(function(){if(document.hidden)return;var a=hv[i],n=(i+1)%hv.length,b=hv[n];if(!b.getAttribute('src'))b.src=b.dataset.src;
+  function sw(){b.classList.add('on');a.classList.remove('on');setTimeout(function(){a.pause()},1900);i=n}
+  try{b.currentTime=0}catch(x){}var p=b.play();if(p&&p.then)p.then(sw,function(){});else sw()},7000)})();
 
 /* ---------- Aparición al bajar y barra de progreso ---------- */
 var rv=[].slice.call(document.querySelectorAll('.rv'));
