@@ -14,4 +14,4 @@ bajar shanghai   https://videos.pexels.com/video-files/31776600/13536901_2560_14
 bajar singapur   https://videos.pexels.com/video-files/15999788/15999788-uhd_2560_1440_30fps.mp4
 bajar nueva-york https://videos.pexels.com/video-files/36206025/15353618_1440_2560_24fps.mp4
 rm -f flow_kalifai.sh
-git add -A && git commit -q -m "Kalifai: carrete de 4 ciudades y sonido continuo"; git push && echo && echo "LISTO. Abre https://ai-agency-orbit.com y recarga con Cmd+Shift+R"
+git config http.postBuffer 524288000; git add -A && git commit -q -m "Kalifai: carrete de 4 ciudades y sonido continuo"; (git push || (sleep 5 && git push)) && echo && echo "LISTO. Abre https://ai-agency-orbit.com y recarga con Cmd+Shift+R"
