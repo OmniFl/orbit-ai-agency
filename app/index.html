@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .hero p{margin:10px auto 0;color:#9b9b9b;font:500 11px var(--mono);letter-spacing:.3em;text-transform:uppercase}
 /* Carrusel 3D */
 .stage{position:absolute;inset:0;perspective:1100px;perspective-origin:50% 45%;touch-action:none}
-.ring{position:absolute;left:50%;top:54%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
+.ring{position:absolute;left:50%;top:57%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
 .card{backface-visibility:hidden;-webkit-backface-visibility:hidden;position:absolute;left:calc(var(--w)/-2);top:calc(var(--h)/-2);width:var(--w);height:var(--h);transform-style:preserve-3d;border:1px solid var(--line2);background:#050505;overflow:hidden;cursor:pointer;transition:border-color .4s,box-shadow .4s}
 .card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.1)}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,0) 40%,rgba(0,0,0,.9))}
@@ -67,6 +67,24 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .price{margin:26px 0;padding:22px;border:1px solid var(--gold)}.price b{display:block;font:700 30px var(--sans)}.price span{font:500 11px var(--mono);letter-spacing:.3em;color:var(--gold)}
 .btn{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:14px;padding:20px 22px;border:1px solid #fff;background:#fff;color:#000;font:700 12px var(--mono);letter-spacing:.3em;text-transform:uppercase}
 .btn.o{background:transparent;color:#fff;border-color:var(--line2)}
+/* Universo IA */
+.uni-btn{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin:10px 0 0 8px;height:42px;padding:0 18px;border:1px solid var(--gold);background:var(--amber);color:#000;font:700 11px var(--mono);letter-spacing:.3em;text-transform:uppercase}
+#uni{position:fixed;inset:0;z-index:60;background:#000;display:none}#uni.on{display:block}
+#uni canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
+#uni .uh{position:absolute;top:calc(env(safe-area-inset-top) + 14px);left:16px;right:16px;z-index:3;display:flex;gap:10px;align-items:center}
+#uni .uh input{flex:1;height:46px;background:rgba(0,0,0,.7);border:1px solid var(--line2);color:#fff;padding:0 14px;font:400 16px var(--sans);outline:none}
+#uni .uh input:focus{border-color:var(--gold)}
+#uni .uh button{height:46px;padding:0 14px;border:1px solid var(--line2);background:rgba(0,0,0,.7);font:500 11px var(--mono);letter-spacing:.3em}
+#uni .ut{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 72px);z-index:3;text-align:center;pointer-events:none}
+#uni .ut b{display:block;font:700 clamp(22px,6vw,40px)/1 var(--sans);text-transform:uppercase}
+#uni .ut span{font:500 10px var(--mono);letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
+#uni .cats{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 14px);z-index:3;display:flex;gap:8px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+#uni .cats::-webkit-scrollbar{display:none}
+#uni .cats button{flex:0 0 auto;height:40px;padding:0 14px;border:1px solid var(--line2);background:rgba(0,0,0,.75);font:500 10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf}
+#uni .cats button.on{border-color:var(--gold);color:var(--gold)}
+#uni .hint{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 66px);z-index:3;text-align:center;font:500 10px var(--mono);letter-spacing:.3em;color:#8a8a8a;text-transform:uppercase;pointer-events:none}
+.snd3{position:fixed;z-index:25;right:16px;bottom:calc(env(safe-area-inset-bottom) + 76px);width:46px;height:46px;border:1px solid var(--gold);background:rgba(0,0,0,.7);color:var(--gold);font-size:18px;display:none}
+.snd3.has{display:block}.snd3.off{opacity:.45}
 /* Crea tu empleado IA */
 .emp{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin:10px 0 0 8px;height:42px;padding:0 18px;border:1px solid #fff;background:#fff;color:#000;font:700 11px var(--mono);letter-spacing:.3em;text-transform:uppercase}
 .mine{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 156px);max-width:560px;margin:0 auto;z-index:7;display:none;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--gold);background:rgba(0,0,0,.85);font:500 11px/1.5 var(--mono);letter-spacing:.15em}
@@ -141,11 +159,13 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
   <svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#E08A1E"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#0b0b0b" stroke="#2a2a2a" stroke-width="2"/><path d="M38 26 V74 M38 52 L62 28 M45 46 L64 72" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-28 50 50)" fill="none" stroke="url(#g)" stroke-width="4"/><circle cx="83" cy="33" r="6" fill="url(#g)"/></svg>
   <b>KALIFAI</b><span class="sp"></span><a class="web" href="../">WEB</a>
 </header>
-<div class="hero"><div class="lbl">Kalifai · App</div><h1>Elige tu inteligencia</h1><p>Desliza · toca para abrir</p><button class="imag" type="button" id="imagina"><i></i>Imagina lo imposible</button><button class="emp" type="button" id="crearEmp">Crea tu empleado IA gratis</button></div><div class="mine" id="mine"></div>
+<div class="hero"><div class="lbl">Kalifai · App</div><h1>Elige tu inteligencia</h1><p>Desliza · toca para abrir</p><button class="imag" type="button" id="imagina"><i></i>Imagina lo imposible</button><button class="emp" type="button" id="crearEmp">Crea tu empleado IA gratis</button><button class="uni-btn" type="button" id="uniGo">Entrar al universo IA</button></div><div class="mine" id="mine"></div>
 <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
 <div class="ctrl"><button type="button" id="prev" aria-label="Anterior">&larr;</button><button type="button" class="open" id="open">Abrir</button><button type="button" id="next" aria-label="Siguiente">&rarr;</button></div>
 <nav class="dock"><a href="../"><b>&#9675;</b>Web</a><a href="#" id="dockVid"><b>&#9655;</b>Vídeo</a><a href="https://wa.me/34614057443" target="_blank" rel="noopener"><b>&#9711;</b>WhatsApp</a><a href="herramientas.html"><b>&#9634;</b>Herramientas</a></nav>
 <div class="wins" id="wins"></div>
+<div id="uni"><canvas id="ucv"></canvas><div class="uh"><input id="uq" placeholder="¿Qué quieres crear?" autocomplete="off"><button type="button" id="uX">Salir</button></div><div class="ut"><span id="uC"></span><b>Universo IA Kalifai</b></div><div class="hint">Arrastra para girar · toca una estrella</div><div class="cats" id="uCats"></div></div>
+<button class="snd3" type="button" id="snd3" aria-label="Música">&#9835;</button>
 
 <script>
 (function(){
@@ -291,6 +311,9 @@ var SEC={
  'Turismo y alojamiento':{tasks:['Reservas','Preguntas de huéspedes','Check-in','Reseñas'],q:[['Do you have a room for this weekend?','Yes, we have a double room available Friday and Saturday. Shall I book it for you? I can also recommend dinner nearby.'],['¿A qué hora es el check-in?','El check-in es a partir de las 15:00. Te enviaré el código de acceso el mismo día.']],aut:['Atención a huéspedes en 8 idiomas','Check-in y avisos automáticos','Respuesta a reseñas']},
  'Otro sector':{tasks:['Atención al cliente','Tareas repetitivas','Documentos','Agenda'],q:[['¿Qué servicios ofrecéis?','Te cuento en un minuto lo que hacemos y te propongo el servicio que mejor encaja contigo. ¿Me dices qué necesitas?'],['¿Tenéis disponibilidad esta semana?','Sí, tengo hueco el jueves por la mañana. ¿Te lo reservo?']],aut:['Atención automática 24 h','Tareas repetitivas automatizadas','Documentos generados con IA']}};
 var P=null;try{P=JSON.parse(localStorage.getItem('kalifai_emp')||'null')}catch(x){}
+var REF='';try{REF=(new URLSearchParams(location.search).get('ref')||localStorage.getItem('kalifai_ref')||'').replace(/[^A-Z0-9-]/gi,'').slice(0,12);if(REF)localStorage.setItem('kalifai_ref',REF)}catch(x){}
+function myCode(){if(!P.code){P.code='KAL-'+Math.random().toString(36).slice(2,6).toUpperCase();saveP()}return P.code}
+var LADDER=[[0,'Al activar el programa','Oferta de bienvenida: 20 % de descuento en tu primer servicio (hasta el 31/12/2026) y una auditoría IA de tu negocio gratis.'],[1,'1 negocio invitado','Tu asistente de WhatsApp gratis durante 1 mes.'],[3,'3 negocios invitados','Guía de visibilidad en Google y en las IA hecha para ti, gratis.'],[5,'5 negocios invitados','50 % de descuento en tu web con IA.'],[10,'10 negocios invitados','Socio Kalifai: 10 % de comisión por cada cliente que nos traigas.']];
 function saveP(){try{localStorage.setItem('kalifai_emp',JSON.stringify(P))}catch(x){}}
 var TIPS=['Responde a tus 3 preguntas más repetidas con un mensaje guardado: ahorras 20 minutos al día.','Pide a tu empleado IA que resuma tus correos de la mañana en 5 líneas.','Activa recordatorios automáticos de citas: las ausencias bajan hasta la mitad.','Convierte tus fotos de trabajos en publicaciones con un texto generado por IA.','Usa un formulario único para presupuestos: la IA lo ordena por urgencia.','Graba un audio con la tarea y deja que la IA lo convierta en lista de pasos.','Revisa cada viernes cuántas horas te ha ahorrado tu empleado IA.'];
 function mine(){var el=document.getElementById('mine');if(!P){el.classList.remove('on');return}
@@ -323,7 +346,7 @@ function result(){var sec=SEC[P.sector],hY=Math.round(P.hours*0.6*46),eur=hY*22,
  var q=sec.q.map(function(x){return [x[0],x[1].replace('{a}',(sec.ab||[0,0])[0].toLocaleString('es-ES')).replace('{b}',(sec.ab||[0,0])[1].toLocaleString('es-ES'))]});
  var body='<p class="lead">Así trabajaría <b style="color:#F2AE3D">'+P.emp+'</b> en '+P.biz+'. Esto es una demostración: tu empleado real se entrena con tu información.</p>'+
  '<div class="chat" id="cht"></div>'+
- '<div class="tiles" style="margin-top:16px"><button class="tile" data-r="a"><span>01</span><b>Tu ahorro</b></button><button class="tile" data-r="i"><span>02</span><b>Tu Índice IA</b></button><button class="tile wide" data-r="s"><span>Gratis · 7 semanas</span><b>Activar mi programa IA &rarr;</b></button></div>'+
+ '<div class="tiles" style="margin-top:16px"><button class="tile" data-r="a"><span>01</span><b>Tu ahorro</b></button><button class="tile" data-r="i"><span>02</span><b>Tu Índice IA</b></button><button class="tile wide" data-r="s"><span>Gratis · 7 semanas</span><b>Activar mi programa IA &rarr;</b></button><button class="tile wide" data-r="o" style="background:#070707;border-color:#F2AE3D;color:#fff"><span>Ofertas y regalos</span><b>Gana ofertas invitando &rarr;</b></button></div>'+
  '<button class="btn o" type="button" data-r="e">Editar datos <span>&#9998;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
  var w=push({head:'<div class="lbl">'+P.biz+' · '+P.city+'</div><h2>Hola, soy '+P.emp+'</h2>',body:body});
  w.querySelector('[data-close]').onclick=closeTop;
@@ -337,8 +360,14 @@ function result(){var sec=SEC[P.sector],hY=Math.round(P.hours*0.6*46),eur=hY*22,
   w2.querySelector('#shr').onclick=function(){cv.toBlob(function(bl){var f=new File([bl],'indice-ia-kalifai.png',{type:'image/png'}),txt=P.biz+' tiene un Índice IA de '+sc+'/100. ¿Y tu negocio? Calcúlalo gratis en ai-agency-orbit.com/app';
    if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:txt}).catch(function(){});else{var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='indice-ia-kalifai.png';a.click()}})}};
  w.querySelector('[data-r="s"]').onclick=function(){var wk=['Tu asistente responde las 5 preguntas más repetidas','Recordatorios automáticos para clientes','Presupuestos o fichas generados con IA','Tus publicaciones de redes en 10 minutos','Resumen diario de correos y mensajes','Tu panel de horas ahorradas','Tu plan de IA a 12 meses'];
-  var b='<p class="lead">Cada lunes, durante 7 semanas, recibes en tu WhatsApp una automatización lista para tu sector ('+P.sector+'), con instrucciones paso a paso. Gratis y te das de baja cuando quieras.</p><div class="weeks">'+wk.map(function(x,j){return '<div><em>SEMANA '+(j+1)+'</em><span>'+x+'</span></div>'}).join('')+'</div><a class="btn" style="background:#FBBA25;border-color:#FBBA25" href="'+WA+encodeURIComponent('Hola Kalifai, quiero activar el programa IA gratis de 7 semanas. Negocio: '+P.biz+' · Sector: '+P.sector+' · Ciudad: '+P.city+' · Índice IA: '+sc+'/100')+'" target="_blank" rel="noopener">Activar gratis por WhatsApp <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Al activarlo nos envías tus datos por WhatsApp para recibir el programa. Solo los usamos para eso.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+  var b='<p class="lead">Cada lunes, durante 7 semanas, recibes en tu WhatsApp una automatización lista para tu sector ('+P.sector+'), con instrucciones paso a paso. Gratis y te das de baja cuando quieras.</p><div class="price" style="margin-top:0"><span>AL ACTIVARLO GANAS</span><b style="font-size:22px;line-height:1.3">20 % de descuento en tu primer servicio + auditoría IA gratis</b></div><div class="weeks">'+wk.map(function(x,j){return '<div><em>SEMANA '+(j+1)+'</em><span>'+x+'</span></div>'}).join('')+'</div><a class="btn" style="background:#FBBA25;border-color:#FBBA25" href="'+WA+encodeURIComponent('Hola Kalifai, quiero activar el programa IA gratis de 7 semanas. Negocio: '+P.biz+' · Sector: '+P.sector+' · Ciudad: '+P.city+' · Índice IA: '+sc+'/100 · Mi código: '+myCode()+(REF?' · Invitado por: '+REF:''))+'" target="_blank" rel="noopener">Activar gratis por WhatsApp <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Al activarlo nos envías tus datos por WhatsApp para recibir el programa. Solo los usamos para eso.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
   var w2=push({head:'<div class="lbl">Gratis · 7 semanas</div><h2>Programa IA para '+P.biz+'</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop};
+ w.querySelector('[data-r="o"]').onclick=function(){var code=myCode(),link='https://ai-agency-orbit.com/app/?ref='+code;
+  var b='<p class="lead">Cada negocio que se suscriba con tu código te hace ganar regalos. Las invitaciones se confirman cuando el negocio activa su programa gratis, y te avisamos por WhatsApp de cada regalo conseguido.</p><div class="price"><span>TU CÓDIGO</span><b>'+code+'</b></div><div class="list">'+LADDER.map(function(l,j){return '<div><em>'+(j?'&#9733;':'&#9675;')+'</em><section><b>'+l[1]+'</b><p>'+l[2]+'</p></section></div>'}).join('')+'</div><button class="btn" type="button" id="invW" style="background:#FBBA25;border-color:#FBBA25">Invitar por WhatsApp <span>&rarr;</span></button><button class="btn o" type="button" id="invS">Compartir mi enlace <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Un regalo por nivel y por negocio.</p>';
+  var w2=push({head:'<div class="lbl">Ofertas y regalos</div><h2>Gana invitando</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop;
+  var txt='Te paso esta herramienta gratis: crea tu propio empleado IA y descubre cuánto puede ahorrar tu negocio. Con mi código '+code+' tienes 20 % de descuento en tu primer servicio: '+link;
+  w2.querySelector('#invW').onclick=function(){window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank','noopener')};
+  w2.querySelector('#invS').onclick=function(){var me=this;if(navigator.share)navigator.share({title:'Kalifai',text:txt,url:link}).catch(function(){});else{try{navigator.clipboard.writeText(txt)}catch(x){}me.querySelector('span').innerHTML='Copiado'}}};
  w.querySelector('[data-r="e"]').onclick=function(){closeTop();setTimeout(wizard,450)}}
 function drawBadge(cv,sc){var x=cv.getContext('2d'),W=cv.width,H=cv.height;x.fillStyle='#000';x.fillRect(0,0,W,H);
  x.strokeStyle='rgba(255,255,255,.08)';for(var i=1;i<4;i++){x.beginPath();x.moveTo(W*i/4,0);x.lineTo(W*i/4,H);x.stroke()}
@@ -353,6 +382,61 @@ function drawBadge(cv,sc){var x=cv.getContext('2d'),W=cv.width,H=cv.height;x.fil
  x.fillStyle='#8a8a8a';x.font='500 28px Menlo,monospace';x.fillText('Calcula el tuyo gratis: ai-agency-orbit.com/app',W/2,1240)}
 document.getElementById('crearEmp').onclick=function(){if(P)result();else wizard()};
 mine();
+/* ================= UNIVERSO IA ================= */
+var UCAT={
+'Agentes IA':['Agente comercial que llama y agenda','Agente de atención 24 h','Agente que responde reseñas','Agente investigador de mercado','Agente que busca licitaciones','Agente de cobros amables','Agente de reclutamiento','Agente de compras y proveedores','Agente de seguimiento de clientes','Agente de soporte técnico','Agente que prepara reuniones','Agente que vigila a la competencia'],
+'Voz':['Recepcionista telefónica con IA','Doblaje con tu propia voz','Locución de anuncios','Audioguías en 8 idiomas','Transcripción de reuniones','Notas de voz convertidas en tareas','Asistente de voz para la tienda','Podcast generado con IA'],
+'Imagen':['Fotos de producto de estudio','Diseño de logotipos y marca','Renders de reformas antes de hacerlas','Catálogos visuales automáticos','Avatares de marca','Carteles y flyers','Retoque masivo de fotos','Interiorismo virtual'],
+'Vídeo':['Anuncios en vídeo con IA','Vídeos de producto desde fotos','Presentador virtual de tu marca','Subtítulos en 8 idiomas','Tours virtuales','Reels automáticos para redes','Vídeos de formación','Tráilers cinematográficos'],
+'Webs y apps':['Web con IA en 7 días','App propia para tus clientes','Tienda online inteligente','Reservas online','Portal de clientes','Calculadora de presupuestos','Configurador de productos','Landing de campañas'],
+'Automatización':['Facturas que se registran solas','Presupuestos desde foto y audio','Correos clasificados y respondidos','Contratos generados al momento','Informes semanales automáticos','Sincronización de CRM','Avisos de plazos','Partes de trabajo digitales'],
+'Ventas y marketing':['Captación de clientes en LinkedIn','Campañas de email personalizadas','Contenido para redes en 10 minutos','Estudio de palabras clave','Visibilidad en ChatGPT y Gemini','Programa de referidos','Chat que vende en tu web','Precios dinámicos'],
+'Datos y predicción':['Previsión de ventas','Riesgo de impago','Panel de negocio en vivo','Detección de fraude','Optimización de stock','Análisis de reseñas','Gemelo digital de tu empresa','Rutas de reparto óptimas'],
+'Documentos':['Busca en tus expedientes','Resumen de contratos','Lectura de facturas y albaranes','Traducción de documentos','Base de conocimiento interna','Firmas y plantillas inteligentes','Actas automáticas','Preguntas a tus PDF'],
+'Sectores':['Construcción: control de obra','Inmobiliaria: fichas y visitas','Legal: asistente de expedientes','Hostelería: reservas y carta','Salud: citas y recordatorios','Turismo: conserje digital','Educación: tutor IA','Comercio: probador virtual','Industria: mantenimiento predictivo','Agricultura: riego inteligente']};
+var UN=[];Object.keys(UCAT).forEach(function(c,ci){UCAT[c].forEach(function(t){UN.push({t:t,c:c,ci:ci})})});
+// combinaciones: cada herramienta con cada sector = el universo de opciones
+var combos=UN.length*UCAT['Sectores'].length*3;
+var uni=document.getElementById('uni'),cv=document.getElementById('ucv'),cx=cv.getContext('2d'),uAng=0,uTilt=-.25,uVel=.0012,uZoom=1,uF='',uQ='',pts=[],stars=[],uRun=false;
+document.getElementById('uC').textContent=UN.length+' herramientas y agentes · +'+combos.toLocaleString('es-ES')+' combinaciones';
+function uBuild(){pts=UN.map(function(n,i){var k=i+.5,phi=Math.acos(1-2*k/UN.length),th=Math.PI*(1+Math.sqrt(5))*k;var r=1+(n.ci%3)*.12;return {x:r*Math.cos(th)*Math.sin(phi),y:r*Math.cos(phi),z:r*Math.sin(th)*Math.sin(phi),n:n}});
+ stars=[];for(var i=0;i<600;i++)stars.push({x:Math.random()*2-1,y:Math.random()*2-1,z:Math.random()*2-1,s:Math.random()})}
+uBuild();
+var cats=document.getElementById('uCats');cats.innerHTML='<button type="button" class="on" data-c="">Todo</button>'+Object.keys(UCAT).map(function(c){return '<button type="button" data-c="'+c+'">'+c+'</button>'}).join('');
+cats.querySelectorAll('button').forEach(function(b){b.onclick=function(){uF=b.dataset.c;cats.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)})}});
+document.getElementById('uq').oninput=function(){uQ=this.value.trim().toLowerCase()};
+var proj=[];
+function uDraw(){if(!uRun)return;var W=cv.width=innerWidth*devicePixelRatio,H=cv.height=innerHeight*devicePixelRatio,d=devicePixelRatio;
+ cx.fillStyle='#000';cx.fillRect(0,0,W,H);uAng+=uVel;var ca=Math.cos(uAng),sa=Math.sin(uAng),ct=Math.cos(uTilt),st=Math.sin(uTilt),R=Math.min(W,H)*.36*uZoom,f=2.6;
+ stars.forEach(function(p){var x=p.x*ca-p.z*sa,z=p.x*sa+p.z*ca;var px=W/2+x*W*.7/(f-z*.5),py=H/2+p.y*H*.7/(f-z*.5);cx.fillStyle='rgba(255,255,255,'+(.15+p.s*.35)+')';cx.fillRect(px,py,d*(.6+p.s),d*(.6+p.s))});
+ proj=pts.map(function(p){var x=p.x*ca-p.z*sa,z=p.x*sa+p.z*ca,y=p.y*ct-z*st;z=p.y*st+z*ct;var sc=f/(f-z);return {p:p,X:W/2+x*R*sc,Y:H/2+y*R*sc,z:z,sc:sc}}).sort(function(a,b){return a.z-b.z});
+ // órbitas
+ cx.strokeStyle='rgba(242,174,61,.12)';cx.lineWidth=d;for(var o=0;o<3;o++){cx.beginPath();cx.ellipse(W/2,H/2,R*(1.05+o*.12),R*(.35+o*.05),uAng*0.3+o,0,Math.PI*2);cx.stroke()}
+ proj.forEach(function(q){var n=q.p.n,match=(!uF||n.c===uF)&&(!uQ||n.t.toLowerCase().indexOf(uQ)>-1||n.c.toLowerCase().indexOf(uQ)>-1),a=match?(.35+.65*(q.z+1)/2):.06,r=(match?3.2:2)*q.sc*d;
+  q.match=match;cx.beginPath();cx.arc(q.X,q.Y,r,0,Math.PI*2);cx.fillStyle=match?'rgba(242,174,61,'+a+')':'rgba(255,255,255,'+a+')';cx.fill();
+  if(match&&q.z>.35&&(uF||uQ||q.z>.7)){cx.font=(500*1)+' '+Math.round(11*d*Math.min(1.3,q.sc))+'px Menlo,monospace';cx.fillStyle='rgba(255,255,255,'+Math.min(1,a+.1)+')';cx.fillText(n.t.toUpperCase(),q.X+8*d,q.Y+4*d)}});
+ window.__up=proj;requestAnimationFrame(uDraw)}
+var ux=0,uy=0,ud=false,umv=false;
+cv.addEventListener('pointerdown',function(e){ud=true;umv=false;ux=e.clientX;uy=e.clientY;uVel=0});
+cv.addEventListener('pointermove',function(e){if(!ud)return;var dx=e.clientX-ux,dy=e.clientY-uy;if(Math.abs(dx)+Math.abs(dy)>4)umv=true;uAng-=dx*.006;uTilt=Math.max(-1.2,Math.min(1.2,uTilt+dy*.004));ux=e.clientX;uy=e.clientY});
+cv.addEventListener('pointerup',function(e){ud=false;uVel=.0012;if(umv)return;var d=devicePixelRatio,X=e.clientX*d,Y=e.clientY*d,best=null,bd=1e9;proj.forEach(function(q){if(!q.match||q.z<-.2)return;var dd=(q.X-X)*(q.X-X)+(q.Y-Y)*(q.Y-Y);if(dd<bd){bd=dd;best=q}});if(best&&bd<(40*d)*(40*d))uOpen(best.p.n)});
+cv.addEventListener('wheel',function(e){uZoom=Math.max(.6,Math.min(2.4,uZoom*(e.deltaY>0?.92:1.08)))},{passive:true});
+function uOpen(n){var ex={'Agentes IA':'Trabaja por ti las 24 horas, conectado a tus herramientas, y te informa de cada resultado.','Voz':'Habla con tus clientes con una voz natural, en su idioma, a cualquier hora.','Imagen':'Crea imágenes de nivel profesional en minutos, con la estética de tu marca.','Vídeo':'Produce vídeos que antes requerían un equipo de rodaje, en horas y no en semanas.','Webs y apps':'Tu presencia digital propia, rápida y pensada para vender.','Automatización':'Elimina tareas repetitivas para que tu equipo se dedique a lo importante.','Ventas y marketing':'Más clientes, con menos esfuerzo y mensajes personalizados.','Datos y predicción':'Decide con datos: anticipa lo que va a pasar en tu negocio.','Documentos':'Toda tu información ordenada y lista para responder en segundos.','Sectores':'Una solución pensada para los retos concretos de tu sector.'}[n.c];
+ var w=push({head:'<div class="lbl">'+n.c+'</div><h2>'+n.t+'</h2>',body:'<p class="lead">'+ex+'</p><div class="list"><div><em>01</em><section><b>Lo diseñamos contigo</b><p>Partimos de cómo trabajas hoy.</p></section></div><div><em>02</em><section><b>Lo construimos e integramos</b><p>Con tus herramientas y tus datos, siempre tuyos.</p></section></div><div><em>03</em><section><b>Lo combinamos con lo que necesites</b><p>Cada herramienta se une a otras: las combinaciones no tienen límite.</p></section></div></div><a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, quiero crear: '+n.t+' ('+n.c+')')+'" target="_blank" rel="noopener">Créalo para mi negocio <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver al universo <span>&larr;</span></button>'});
+ w.style.zIndex=70;w.querySelector('[data-close]').onclick=closeTop;w.querySelector('.x').onclick=closeTop}
+document.getElementById('uniGo').onclick=function(){uni.classList.add('on');uRun=true;auto=false;requestAnimationFrame(uDraw)};
+document.getElementById('uX').onclick=function(){uni.classList.remove('on');uRun=false;t0=Date.now();auto=true};
+document.getElementById('wins').style.zIndex=65;
+
+/* ================= MÚSICA MIENTRAS NAVEGAS ================= */
+var bgm=new Audio(),bOn=false,bHas=false,sb3=document.getElementById('snd3');bgm.loop=true;bgm.volume=0;
+try{bOn=localStorage.getItem('kalifai_app_musica')!=='off'}catch(x){bOn=true}
+fetch('../hero/musica.mp3',{method:'HEAD'}).then(function(r){if(r.ok){bHas=true;bgm.src='../hero/musica.mp3';sb3.classList.add('has');sb3.classList.toggle('off',!bOn)}}).catch(function(){});
+function bFade(to){var t=setInterval(function(){var v=bgm.volume+(to>bgm.volume?.03:-.05);if(Math.abs(v-to)<.05){v=to;clearInterval(t);if(!to)bgm.pause()}bgm.volume=Math.max(0,Math.min(1,v))},90)}
+function bStart(){if(!bHas||!bOn)return;bgm.play().then(function(){bFade(.35)}).catch(function(){})}
+['pointerdown','touchstart','keydown'].forEach(function(ev){addEventListener(ev,function h(){removeEventListener(ev,h,true);if(bgm.paused)bStart()},true)});
+sb3.onclick=function(e){e.stopPropagation();bOn=!bOn;try{localStorage.setItem('kalifai_app_musica',bOn?'on':'off')}catch(x){}sb3.classList.toggle('off',!bOn);if(bOn)bStart();else bFade(0)};
+document.addEventListener('visibilitychange',function(){if(document.hidden)bgm.pause();else if(bOn&&bHas&&bgm.currentTime>0)bgm.play().catch(function(){})});
 if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 })();
 </script>
