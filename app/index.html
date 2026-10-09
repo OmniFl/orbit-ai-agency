@@ -13,7 +13,7 @@
 <link rel="icon" href="icon-192.png">
 <script>if(location.hash&&location.hash.length>1)location.replace('herramientas.html'+location.hash)</script>
 <style>
-:root{--gold:#F2AE3D;--amber:#FBBA25;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:'Helvetica Neue',Helvetica,Arial,sans-serif}
+:root{--gold:#FFCB45;--amber:#FFD54F;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:'Helvetica Neue',Helvetica,Arial,sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:#000;color:#fff;font:400 16px/1.55 var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
@@ -35,7 +35,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .card .n{font:500 12px var(--mono);letter-spacing:.3em;color:var(--gold)}
 .card h3{margin:auto 0 8px;font:700 22px/1.1 var(--sans);text-transform:uppercase}
 .card small{font:500 10px var(--mono);letter-spacing:.3em;color:#cfcfcf;text-transform:uppercase}
-.card.front{border-color:var(--gold);box-shadow:0 0 60px rgba(242,174,61,.25)}
+.card.front{border-color:var(--gold);box-shadow:0 0 60px rgba(255,203,69,.25)}
 .card.tools{background:#111}.card.tools::after{display:none}
 .ctrl{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 92px);display:flex;justify-content:center;gap:14px;z-index:6}
 .ctrl button{width:52px;height:52px;border:1px solid var(--line2);background:rgba(0,0,0,.6);font-size:20px}
@@ -70,7 +70,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 /* Estudio Kalifai (freemium) */
 .hero .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px;padding:0 12px}
 .hero .acts button{pointer-events:auto;margin:0!important;height:38px!important;padding:0 14px!important;font-size:10px!important;letter-spacing:.22em!important}
-.std{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid #fff;background:linear-gradient(90deg,#F2AE3D,#FBBA25);color:#000;font:700 10px var(--mono);letter-spacing:.22em;text-transform:uppercase}
+.std{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;border:1px solid #fff;background:linear-gradient(90deg,#FFCB45,#FFD54F);color:#000;font:700 10px var(--mono);letter-spacing:.22em;text-transform:uppercase}
 .stdbox{display:grid;gap:16px}
 .cvwrap{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:9/16;border:1px solid var(--line2);background:#050505;overflow:hidden}
 .cvwrap canvas{width:100%;height:100%;display:block}
@@ -79,14 +79,14 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .reel .rt{position:absolute;left:8%;right:8%;top:38%;font:700 26px/1.1 var(--sans);text-transform:uppercase;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}.reel .rt.on{opacity:1;transform:none}
 .reel .rt small{display:block;font:500 9px var(--mono);letter-spacing:.3em;color:var(--gold);margin-bottom:8px}
 .reel .wm{position:absolute;right:10px;bottom:10px;font:500 9px var(--mono);letter-spacing:.25em;color:rgba(255,255,255,.75)}
-.pro{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 18px;border:1px dashed var(--gold);background:rgba(242,174,61,.05);color:#fff;font:500 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-top:10px}.pro b{color:var(--gold)}
+.pro{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 18px;border:1px dashed var(--gold);background:rgba(255,203,69,.05);color:#fff;font:500 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;margin-top:10px}.pro b{color:var(--gold)}
 .cap{border:1px solid var(--line2);padding:14px;color:#cfcfcf;font-size:15px;white-space:pre-line}
 .left{font:500 10px var(--mono);letter-spacing:.25em;color:var(--gold);text-align:center;text-transform:uppercase}
 /* Planes */
 .tog{display:flex;border:1px solid var(--line2);margin:0 0 18px}.tog button{flex:1;height:46px;background:none;border:0;font:500 11px var(--mono);letter-spacing:.25em;text-transform:uppercase;color:#9b9b9b}.tog button.on{background:#fff;color:#000}
 .plans{display:grid;gap:12px}
 .plan{border:1px solid var(--line2);background:#060606;padding:22px}
-.plan.hot{border-color:var(--gold);box-shadow:0 0 40px rgba(242,174,61,.12)}
+.plan.hot{border-color:var(--gold);box-shadow:0 0 40px rgba(255,203,69,.12)}
 .plan small{font:500 10px var(--mono);letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
 .plan h3{margin:8px 0 4px;font:700 24px var(--sans);text-transform:uppercase}
 .plan .pz{font:700 40px/1 var(--sans);margin:12px 0 4px}.plan .pz span{font:500 12px var(--mono);letter-spacing:.2em;color:#9b9b9b}
@@ -119,10 +119,11 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .fld{display:block;margin:0 0 22px}.fld span{display:block;font:500 10px var(--mono);letter-spacing:.35em;color:#9b9b9b;text-transform:uppercase;margin-bottom:10px}
 .fld input,.fld select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:#fff;font:400 20px var(--sans);padding:6px 0 12px;outline:none;border-radius:0;-webkit-appearance:none;appearance:none}.fld select option{background:#000}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips button{border:1px solid var(--line2);background:#070707;padding:12px 14px;font:500 11px var(--mono);letter-spacing:.15em;text-transform:uppercase}.chips button.on{border-color:var(--gold);color:var(--gold)}
-.rng{width:100%;accent-color:#F2AE3D}
+.rng{width:100%;accent-color:#FFCB45}
 .chat{border:1px solid var(--line2);background:#050505;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px}
 .chat .m{max-width:84%;padding:12px 14px;font-size:16px;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}.chat .m.on{opacity:1;transform:none}
-.chat .u{align-self:flex-end;background:#1b1b1b}.chat .a{align-self:flex-start;border:1px solid var(--gold);background:rgba(242,174,61,.06)}
+.chat .u{align-self:flex-end;background:#1b1b1b}.chat .a{align-self:flex-start;border:1px solid var(--gold);background:rgba(255,203,69,.06)}
+.ask{display:flex;gap:8px;margin-top:10px}.ask input{flex:1;min-width:0;background:#0b0b0b;border:1px solid var(--line2);color:#fff;font:16px var(--sans,inherit);padding:13px 14px;outline:none}.ask input:focus{border-color:var(--gold)}.ask button{background:var(--gold);color:#000;border:0;font:600 12px var(--mono);letter-spacing:.15em;text-transform:uppercase;padding:0 16px;cursor:pointer}
 .chat .a small{display:block;font:500 9px var(--mono);letter-spacing:.3em;color:var(--gold);margin-bottom:6px}
 .big{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 24px}.big div{border:1px solid var(--line2);padding:18px}.big b{display:block;font:700 34px var(--sans);color:var(--gold)}.big span{font:500 10px var(--mono);letter-spacing:.25em;color:#bdbdbd;text-transform:uppercase}
 .badge{display:block;width:100%;max-width:420px;margin:0 auto 18px;border:1px solid var(--line2)}
@@ -161,7 +162,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .exp .sc h4{margin:10px 0 30px;font:700 clamp(20px,5vw,30px)/1.15 var(--sans);text-transform:uppercase}
 .flow{display:flex;align-items:center;gap:0}
 .flow .nd{flex:0 0 auto;min-width:0;max-width:30%;padding:12px 10px;border:1px solid var(--line2);background:rgba(0,0,0,.6);font:500 10px/1.3 var(--mono);letter-spacing:.15em;text-transform:uppercase;text-align:center;opacity:0;transform:scale(.8);transition:opacity .5s,transform .5s,border-color .5s}
-.exp .sc.on .nd{opacity:1;transform:none}.exp .sc.on .nd.hl{border-color:var(--gold);color:var(--gold);box-shadow:0 0 30px rgba(242,174,61,.25)}
+.exp .sc.on .nd{opacity:1;transform:none}.exp .sc.on .nd.hl{border-color:var(--gold);color:var(--gold);box-shadow:0 0 30px rgba(255,203,69,.25)}
 .flow .ln{position:relative;flex:1;height:1px;background:var(--line2);min-width:14px}
 .flow .ln::after{content:"";position:absolute;top:-3px;left:0;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:dot 1.4s linear infinite}
 @keyframes dot{to{left:calc(100% - 7px)}}
@@ -183,7 +184,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 <body>
 <div class="grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <header class="top">
-  <svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#E08A1E"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#0b0b0b" stroke="#2a2a2a" stroke-width="2"/><path d="M38 26 V74 M38 52 L62 28 M45 46 L64 72" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-28 50 50)" fill="none" stroke="url(#g)" stroke-width="4"/><circle cx="83" cy="33" r="6" fill="url(#g)"/></svg>
+  <svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#FFB83D"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#0b0b0b" stroke="#2a2a2a" stroke-width="2"/><path d="M38 26 V74 M38 52 L62 28 M45 46 L64 72" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-28 50 50)" fill="none" stroke="url(#g)" stroke-width="4"/><circle cx="83" cy="33" r="6" fill="url(#g)"/></svg>
   <b>KALIFAI</b><span class="sp"></span><a class="web" href="../">WEB</a>
 </header>
 <div class="hero"><div class="lbl">Kalifai · App</div><h1>Elige tu inteligencia</h1><p>Desliza · toca para abrir</p><div class="acts"><button class="std" type="button" id="stdGo">Crea tendencia gratis</button><button class="emp" type="button" id="crearEmp">Tu empleado IA</button><button class="uni-btn" type="button" id="uniGo">Universo IA</button><button class="imag" type="button" id="imagina"><i></i>Imagina</button></div></div><div class="mine" id="mine"></div>
@@ -197,6 +198,13 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 <script>
 (function(){
 var WA='https://wa.me/34614057443?text=';
+var AI='';/* servidor Kalifai IA (Cloudflare) */
+var AILIM={chat:15,hooks:10};
+function aiLeft(k){var d=new Date().toISOString().slice(0,10),o={};try{o=JSON.parse(localStorage.getItem('kalifai_ai')||'{}')}catch(x){}if(o.d!==d)o={d:d,chat:0,hooks:0};return {o:o,n:AILIM[k]-(o[k]||0)}}
+function aiUse(k){var r=aiLeft(k);r.o[k]=(r.o[k]||0)+1;try{localStorage.setItem('kalifai_ai',JSON.stringify(r.o))}catch(x){}}
+function ai(k,body){if(!AI)return Promise.reject({msg:'La IA en directo se está activando. Muy pronto.'});
+ if(aiLeft(k).n<=0)return Promise.reject({limite:1,msg:'Has usado tus '+AILIM[k]+' usos gratis de IA de hoy.'});
+ return fetch(AI+'/'+k,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(d){if(!r.ok)throw {limite:d.limite,msg:d.error||'Error'};aiUse(k);return d})},function(){throw {msg:'Sin conexión con la IA. Inténtalo de nuevo.'}})}
 var V=['../media/burj-hero.mp4','../media/burj-a.mp4','../media/burj-b.mp4','../media/burj-c.mp4','../media/luces.mp4','../media/dubai-noche.mp4','../media/shanghai.mp4','../media/singapur.mp4'];
 var S=[
 {t:'Automatización con IA',k:'Procesos sin esfuerzo',d:'Tu equipo deja de repetir las mismas tareas cada día. Conectamos tus herramientas y la IA hace el trabajo repetitivo.',p:'Desde 997 €',
@@ -279,7 +287,7 @@ function sub(i,k){var s=S[i],msg=encodeURIComponent('Hola Kalifai, me interesa '
  if(k==='c'){head='<div class="lbl">'+s.t+'</div><h2>Casos reales</h2>';body='<div class="tiles">'+s.c.map(function(x,j){return '<button class="tile" data-j="'+j+'"><span>'+x[0]+'</span><b>'+x[1]+'</b></button>'}).join('')+'</div>'}
  if(k==='p'){head='<div class="lbl">Un único interlocutor</div><h2>Cómo trabajamos</h2>';body='<div class="list">'+steps.map(function(x,j){return '<div><em>0'+(j+1)+'</em><section><b>'+x[0]+'</b><p>'+x[1]+'</p></section></div>'}).join('')+'</div><p class="lead" style="margin-top:22px">El código y los datos son siempre tuyos. Trabajamos en 8 idiomas.</p>'}
  if(k==='$'){head='<div class="lbl">'+s.t+'</div><h2>Precio y plazos</h2>';body='<div class="price"><span>PRECIO CERRADO</span><b>'+s.p+'</b></div><div class="list"><div><em>&#9675;</em><section><b>Primera valoración gratis</b><p>Respondemos en menos de 24 horas laborables.</p></section></div><div><em>&#9675;</em><section><b>Sin cuotas ocultas</b><p>Sabes lo que pagas desde el principio.</p></section></div><div><em>&#9675;</em><section><b>Puesta en marcha</b><p>Entre 1 y 4 semanas según el proyecto.</p></section></div></div>'}
- if(k==='$')body+='<button class="btn" type="button" data-plans style="background:#FBBA25;border-color:#FBBA25">Ver planes de suscripción <span>&rarr;</span></button>';body+='<a class="btn" href="'+WA+msg+'" target="_blank" rel="noopener">Pedir por WhatsApp <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+ if(k==='$')body+='<button class="btn" type="button" data-plans style="background:#FFD54F;border-color:#FFD54F">Ver planes de suscripción <span>&rarr;</span></button>';body+='<a class="btn" href="'+WA+msg+'" target="_blank" rel="noopener">Pedir por WhatsApp <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
  var w=push({head:head,body:body});w.querySelector('[data-close]').onclick=closeTop;var pb=w.querySelector('[data-plans]');if(pb)pb.onclick=plans;
  w.querySelectorAll('[data-j]').forEach(function(b){b.onclick=function(){var x=s.c[+b.dataset.j];var w2=push({head:'<div class="lbl">Caso real · '+x[0]+'</div><h2>'+s.t+'</h2>',body:'<p class="lead">'+x[1]+'</p><div class="list">'+steps.map(function(y,j){return '<div><em>0'+(j+1)+'</em><section><b>'+y[0]+'</b><p>'+y[1]+'</p></section></div>'}).join('')+'</div><a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, quiero algo como el caso de '+x[0]+' ('+s.t+')')+'" target="_blank" rel="noopener">Quiero algo así <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>'});w2.querySelector('[data-close]').onclick=closeTop}})}
 function explainer(i){var s=S[i],st=STORY[i],msg=encodeURIComponent('Hola Kalifai, he visto el vídeo de '+s.t+' y me interesa');
@@ -354,8 +362,8 @@ function wizard(){var sel={sector:P&&P.sector||'',tasks:P&&P.tasks||[]};
  '<label class="fld"><span>Ciudad</span><input id="eC" placeholder="Ej. Córdoba" value="'+(P?P.city:'')+'"></label>'+
  '<div class="fld"><span>Sector</span><div class="chips" id="eS">'+Object.keys(SEC).map(function(k){return '<button type="button" class="'+(sel.sector===k?'on':'')+'">'+k+'</button>'}).join('')+'</div></div>'+
  '<div class="fld"><span>¿Qué te quita más tiempo?</span><div class="chips" id="eT"></div></div>'+
- '<label class="fld"><span>Horas a la semana en tareas repetitivas: <b id="eHv" style="color:#F2AE3D">'+(P?P.hours:10)+'</b></span><input class="rng" id="eH" type="range" min="2" max="40" value="'+(P?P.hours:10)+'"></label>'+
- '<button class="btn" type="button" id="eGo" style="background:#FBBA25;border-color:#FBBA25">Crear mi empleado IA <span>&rarr;</span></button><small id="eMsg" style="display:block;margin-top:12px;color:#F2AE3D"></small>';
+ '<label class="fld"><span>Horas a la semana en tareas repetitivas: <b id="eHv" style="color:#FFCB45">'+(P?P.hours:10)+'</b></span><input class="rng" id="eH" type="range" min="2" max="40" value="'+(P?P.hours:10)+'"></label>'+
+ '<button class="btn" type="button" id="eGo" style="background:#FFD54F;border-color:#FFD54F">Crear mi empleado IA <span>&rarr;</span></button><small id="eMsg" style="display:block;margin-top:12px;color:#FFCB45"></small>';
  var w=push({head:'<div class="lbl">Herramienta exclusiva Kalifai</div><h2>Crea tu empleado IA</h2>',body:body});
  var eS=w.querySelector('#eS'),eT=w.querySelector('#eT');
  function tasks(){var k=sel.sector||'Otro sector';eT.innerHTML=SEC[k].tasks.map(function(t){return '<button type="button" class="'+(sel.tasks.indexOf(t)>-1?'on':'')+'">'+t+'</button>'}).join('');
@@ -371,26 +379,31 @@ function wizard(){var sel={sector:P&&P.sector||'',tasks:P&&P.tasks||[]};
   closeTop();setTimeout(result,450)}}
 function result(){var sec=SEC[P.sector],hY=Math.round(P.hours*0.6*46),eur=hY*22,sc=score();
  var q=sec.q.map(function(x){return [x[0],x[1].replace('{a}',(sec.ab||[0,0])[0].toLocaleString('es-ES')).replace('{b}',(sec.ab||[0,0])[1].toLocaleString('es-ES'))]});
- var body='<p class="lead">Así trabajaría <b style="color:#F2AE3D">'+P.emp+'</b> en '+P.biz+'. Esto es una demostración: tu empleado real se entrena con tu información.</p>'+
+ var body='<p class="lead">Así trabajaría <b style="color:#FFCB45">'+P.emp+'</b> en '+P.biz+'. Pregúntale lo que quieras: responde con IA real. Tu empleado definitivo se entrena con tu información.</p>'+
  '<div class="chat" id="cht"></div>'+
- '<div class="tiles" style="margin-top:16px"><button class="tile" data-r="a"><span>01</span><b>Tu ahorro</b></button><button class="tile" data-r="i"><span>02</span><b>Tu Índice IA</b></button><button class="tile wide" data-r="s"><span>Gratis · 7 semanas</span><b>Activar mi programa IA &rarr;</b></button><button class="tile wide" data-r="o" style="background:#070707;border-color:#F2AE3D;color:#fff"><span>Ofertas y regalos</span><b>Gana ofertas invitando &rarr;</b></button></div>'+
+ '<form class="ask" id="ask"><input id="askI" maxlength="300" autocomplete="off" placeholder="Pregúntale lo que quieras a '+P.emp+'"><button type="submit">Enviar</button></form><div class="left" id="askL">IA real · '+aiLeft('chat').n+' preguntas gratis hoy</div>'+
+ '<div class="tiles" style="margin-top:16px"><button class="tile" data-r="a"><span>01</span><b>Tu ahorro</b></button><button class="tile" data-r="i"><span>02</span><b>Tu Índice IA</b></button><button class="tile wide" data-r="s"><span>Gratis · 7 semanas</span><b>Activar mi programa IA &rarr;</b></button><button class="tile wide" data-r="o" style="background:#070707;border-color:#FFCB45;color:#fff"><span>Ofertas y regalos</span><b>Gana ofertas invitando &rarr;</b></button></div>'+
  '<button class="btn o" type="button" data-r="e">Editar datos <span>&#9998;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
  var w=push({head:'<div class="lbl">'+P.biz+' · '+P.city+'</div><h2>Hola, soy '+P.emp+'</h2>',body:body});
  w.querySelector('[data-close]').onclick=closeTop;
  var ch=w.querySelector('#cht'),seq=[];q.forEach(function(x){seq.push(['u',x[0]]);seq.push(['a',x[1]])});
  seq.forEach(function(m,i){setTimeout(function(){if(!w.isConnected)return;var d=document.createElement('div');d.className='m '+m[0];d.innerHTML=(m[0]==='a'?'<small>'+P.emp.toUpperCase()+' · IA DE '+P.biz.toUpperCase()+'</small>':'')+m[1];ch.appendChild(d);requestAnimationFrame(function(){d.classList.add('on')})},600+i*1300)});
+ var hist=[];seq.forEach(function(m){hist.push({role:m[0]==='u'?'user':'assistant',content:m[1].replace(/<[^>]+>/g,'')})});
+ function bub(c,t){var d=document.createElement('div');d.className='m '+c;d.innerHTML=(c==='a'?'<small>'+P.emp.toUpperCase()+' · IA DE '+P.biz.toUpperCase()+'</small>':'');d.appendChild(document.createTextNode(t));ch.appendChild(d);requestAnimationFrame(function(){d.classList.add('on')});d.scrollIntoView({block:'nearest',behavior:'smooth'});return d}
+ w.querySelector('#ask').onsubmit=function(e){e.preventDefault();var I=w.querySelector('#askI'),q=I.value.trim();if(!q)return;I.value='';bub('u',q);var d=bub('a','Escribiendo…');
+  ai('chat',{emp:P.emp,biz:P.biz,sector:P.sector,city:P.city,history:hist.slice(-8),msg:q}).then(function(r){d.lastChild.textContent=r.text;hist.push({role:'user',content:q},{role:'assistant',content:r.text});w.querySelector('#askL').textContent='IA real · '+aiLeft('chat').n+' preguntas gratis hoy'},function(er){d.lastChild.textContent=er.msg;if(er.limite)setTimeout(function(){paywall('Has usado tus preguntas gratis de hoy a tu empleado IA.')},900)})};
  w.querySelector('[data-r="a"]').onclick=function(){var b='<div class="big"><div><b>'+hY+' h</b><span>Horas recuperadas al año</span></div><div><b>'+eur.toLocaleString('es-ES')+' €</b><span>Valor de ese tiempo</span></div></div><p class="lead">Calculado con tus '+P.hours+' horas semanales en tareas repetitivas, automatizando el 60 % y valorando la hora a 22 €.</p><div class="list">'+sec.aut.map(function(x,j){return '<div><em>0'+(j+1)+'</em><section><b>'+x+'</b><p>Lo que '+P.emp+' haría por ti desde el primer mes.</p></section></div>'}).join('')+'</div><a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, soy '+P.biz+' ('+P.sector+', '+P.city+'). Mi ahorro estimado es de '+hY+' horas al año. Quiero mi empleado IA real.')+'" target="_blank" rel="noopener">Quiero mi empleado IA real <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
   var w2=push({head:'<div class="lbl">'+P.biz+'</div><h2>Tu ahorro</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop};
- w.querySelector('[data-r="i"]').onclick=function(){var b='<canvas class="badge" id="bdg" width="1080" height="1350"></canvas><p class="lead">Tu Índice IA es de <b style="color:#F2AE3D">'+sc+'/100</b>: mide cuánto puede ganar tu negocio con inteligencia artificial. Compártelo y reta a otros negocios de '+P.city+'.</p><button class="btn" type="button" id="shr">Compartir mi Índice IA <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+ w.querySelector('[data-r="i"]').onclick=function(){var b='<canvas class="badge" id="bdg" width="1080" height="1350"></canvas><p class="lead">Tu Índice IA es de <b style="color:#FFCB45">'+sc+'/100</b>: mide cuánto puede ganar tu negocio con inteligencia artificial. Compártelo y reta a otros negocios de '+P.city+'.</p><button class="btn" type="button" id="shr">Compartir mi Índice IA <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
   var w2=push({head:'<div class="lbl">Certificado Kalifai</div><h2>Tu Índice IA</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop;
   var cv=w2.querySelector('#bdg');drawBadge(cv,sc);
   w2.querySelector('#shr').onclick=function(){cv.toBlob(function(bl){var f=new File([bl],'indice-ia-kalifai.png',{type:'image/png'}),txt=P.biz+' tiene un Índice IA de '+sc+'/100. ¿Y tu negocio? Calcúlalo gratis en ai-agency-orbit.com/app';
    if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:txt}).catch(function(){});else{var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='indice-ia-kalifai.png';a.click()}})}};
  w.querySelector('[data-r="s"]').onclick=function(){var wk=['Tu asistente responde las 5 preguntas más repetidas','Recordatorios automáticos para clientes','Presupuestos o fichas generados con IA','Tus publicaciones de redes en 10 minutos','Resumen diario de correos y mensajes','Tu panel de horas ahorradas','Tu plan de IA a 12 meses'];
-  var b='<p class="lead">Cada lunes, durante 7 semanas, recibes en tu WhatsApp una automatización lista para tu sector ('+P.sector+'), con instrucciones paso a paso. Gratis y te das de baja cuando quieras.</p><div class="price" style="margin-top:0"><span>AL ACTIVARLO GANAS</span><b style="font-size:22px;line-height:1.3">20 % de descuento en tu primer servicio + auditoría IA gratis</b></div><div class="weeks">'+wk.map(function(x,j){return '<div><em>SEMANA '+(j+1)+'</em><span>'+x+'</span></div>'}).join('')+'</div><a class="btn" style="background:#FBBA25;border-color:#FBBA25" href="'+WA+encodeURIComponent('Hola Kalifai, quiero activar el programa IA gratis de 7 semanas. Negocio: '+P.biz+' · Sector: '+P.sector+' · Ciudad: '+P.city+' · Índice IA: '+sc+'/100 · Mi código: '+myCode()+(REF?' · Invitado por: '+REF:''))+'" target="_blank" rel="noopener">Activar gratis por WhatsApp <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Al activarlo nos envías tus datos por WhatsApp para recibir el programa. Solo los usamos para eso.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+  var b='<p class="lead">Cada lunes, durante 7 semanas, recibes en tu WhatsApp una automatización lista para tu sector ('+P.sector+'), con instrucciones paso a paso. Gratis y te das de baja cuando quieras.</p><div class="price" style="margin-top:0"><span>AL ACTIVARLO GANAS</span><b style="font-size:22px;line-height:1.3">20 % de descuento en tu primer servicio + auditoría IA gratis</b></div><div class="weeks">'+wk.map(function(x,j){return '<div><em>SEMANA '+(j+1)+'</em><span>'+x+'</span></div>'}).join('')+'</div><a class="btn" style="background:#FFD54F;border-color:#FFD54F" href="'+WA+encodeURIComponent('Hola Kalifai, quiero activar el programa IA gratis de 7 semanas. Negocio: '+P.biz+' · Sector: '+P.sector+' · Ciudad: '+P.city+' · Índice IA: '+sc+'/100 · Mi código: '+myCode()+(REF?' · Invitado por: '+REF:''))+'" target="_blank" rel="noopener">Activar gratis por WhatsApp <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Al activarlo nos envías tus datos por WhatsApp para recibir el programa. Solo los usamos para eso.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
   var w2=push({head:'<div class="lbl">Gratis · 7 semanas</div><h2>Programa IA para '+P.biz+'</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop};
  w.querySelector('[data-r="o"]').onclick=function(){var code=myCode(),link='https://ai-agency-orbit.com/app/?ref='+code;
-  var b='<p class="lead">Cada negocio que se suscriba con tu código te hace ganar regalos. Las invitaciones se confirman cuando el negocio activa su programa gratis, y te avisamos por WhatsApp de cada regalo conseguido.</p><div class="price"><span>TU CÓDIGO</span><b>'+code+'</b></div><div class="list">'+LADDER.map(function(l,j){return '<div><em>'+(j?'&#9733;':'&#9675;')+'</em><section><b>'+l[1]+'</b><p>'+l[2]+'</p></section></div>'}).join('')+'</div><button class="btn" type="button" id="invW" style="background:#FBBA25;border-color:#FBBA25">Invitar por WhatsApp <span>&rarr;</span></button><button class="btn o" type="button" id="invS">Compartir mi enlace <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Un regalo por nivel y por negocio.</p>';
+  var b='<p class="lead">Cada negocio que se suscriba con tu código te hace ganar regalos. Las invitaciones se confirman cuando el negocio activa su programa gratis, y te avisamos por WhatsApp de cada regalo conseguido.</p><div class="price"><span>TU CÓDIGO</span><b>'+code+'</b></div><div class="list">'+LADDER.map(function(l,j){return '<div><em>'+(j?'&#9733;':'&#9675;')+'</em><section><b>'+l[1]+'</b><p>'+l[2]+'</p></section></div>'}).join('')+'</div><button class="btn" type="button" id="invW" style="background:#FFD54F;border-color:#FFD54F">Invitar por WhatsApp <span>&rarr;</span></button><button class="btn o" type="button" id="invS">Compartir mi enlace <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Un regalo por nivel y por negocio.</p>';
   var w2=push({head:'<div class="lbl">Ofertas y regalos</div><h2>Gana invitando</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop;
   var txt='Te paso esta herramienta gratis: crea tu propio empleado IA y descubre cuánto puede ahorrar tu negocio. Con mi código '+code+' tienes 20 % de descuento en tu primer servicio: '+link;
   w2.querySelector('#invW').onclick=function(){window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank','noopener')};
@@ -398,14 +411,14 @@ function result(){var sec=SEC[P.sector],hY=Math.round(P.hours*0.6*46),eur=hY*22,
  w.querySelector('[data-r="e"]').onclick=function(){closeTop();setTimeout(wizard,450)}}
 function drawBadge(cv,sc){var x=cv.getContext('2d'),W=cv.width,H=cv.height;x.fillStyle='#000';x.fillRect(0,0,W,H);
  x.strokeStyle='rgba(255,255,255,.08)';for(var i=1;i<4;i++){x.beginPath();x.moveTo(W*i/4,0);x.lineTo(W*i/4,H);x.stroke()}
- x.strokeStyle='#F2AE3D';x.lineWidth=3;x.strokeRect(40,40,W-80,H-80);
- x.fillStyle='#F2AE3D';x.font='500 30px Menlo,monospace';x.textAlign='center';x.fillText('KALIFAI · ÍNDICE IA 2026',W/2,150);
+ x.strokeStyle='#FFCB45';x.lineWidth=3;x.strokeRect(40,40,W-80,H-80);
+ x.fillStyle='#FFCB45';x.font='500 30px Menlo,monospace';x.textAlign='center';x.fillText('KALIFAI · ÍNDICE IA 2026',W/2,150);
  x.lineWidth=26;x.strokeStyle='#1d1d1d';x.beginPath();x.arc(W/2,560,260,0,Math.PI*2);x.stroke();
- x.strokeStyle='#F2AE3D';x.beginPath();x.arc(W/2,560,260,-Math.PI/2,-Math.PI/2+Math.PI*2*sc/100);x.stroke();
+ x.strokeStyle='#FFCB45';x.beginPath();x.arc(W/2,560,260,-Math.PI/2,-Math.PI/2+Math.PI*2*sc/100);x.stroke();
  x.fillStyle='#fff';x.font='700 220px Helvetica Neue,Helvetica,Arial';x.fillText(sc,W/2,630);x.font='500 34px Menlo,monospace';x.fillStyle='#9b9b9b';x.fillText('/ 100',W/2,700);
  x.fillStyle='#fff';x.font='700 64px Helvetica Neue,Helvetica,Arial';x.fillText(P.biz.toUpperCase().slice(0,24),W/2,960);
  x.fillStyle='#bdbdbd';x.font='500 32px Menlo,monospace';x.fillText((P.sector+' · '+P.city).toUpperCase().slice(0,44),W/2,1020);
- x.fillStyle='#F2AE3D';x.font='500 30px Menlo,monospace';x.fillText('Empleado IA: '+P.emp.toUpperCase(),W/2,1090);
+ x.fillStyle='#FFCB45';x.font='500 30px Menlo,monospace';x.fillText('Empleado IA: '+P.emp.toUpperCase(),W/2,1090);
  x.fillStyle='#8a8a8a';x.font='500 28px Menlo,monospace';x.fillText('Calcula el tuyo gratis: ai-agency-orbit.com/app',W/2,1240)}
 document.getElementById('crearEmp').onclick=function(){if(P)result();else wizard()};
 mine();
@@ -438,9 +451,9 @@ function uDraw(){if(!uRun)return;var W=cv.width=innerWidth*devicePixelRatio,H=cv
  stars.forEach(function(p){var x=p.x*ca-p.z*sa,z=p.x*sa+p.z*ca;var px=W/2+x*W*.7/(f-z*.5),py=H/2+p.y*H*.7/(f-z*.5);cx.fillStyle='rgba(255,255,255,'+(.15+p.s*.35)+')';cx.fillRect(px,py,d*(.6+p.s),d*(.6+p.s))});
  proj=pts.map(function(p){var x=p.x*ca-p.z*sa,z=p.x*sa+p.z*ca,y=p.y*ct-z*st;z=p.y*st+z*ct;var sc=f/(f-z);return {p:p,X:W/2+x*R*sc,Y:H/2+y*R*sc,z:z,sc:sc}}).sort(function(a,b){return a.z-b.z});
  // órbitas
- cx.strokeStyle='rgba(242,174,61,.12)';cx.lineWidth=d;for(var o=0;o<3;o++){cx.beginPath();cx.ellipse(W/2,H/2,R*(1.05+o*.12),R*(.35+o*.05),uAng*0.3+o,0,Math.PI*2);cx.stroke()}
+ cx.strokeStyle='rgba(255,203,69,.12)';cx.lineWidth=d;for(var o=0;o<3;o++){cx.beginPath();cx.ellipse(W/2,H/2,R*(1.05+o*.12),R*(.35+o*.05),uAng*0.3+o,0,Math.PI*2);cx.stroke()}
  proj.forEach(function(q){var n=q.p.n,match=(!uF||n.c===uF)&&(!uQ||n.t.toLowerCase().indexOf(uQ)>-1||n.c.toLowerCase().indexOf(uQ)>-1),a=match?(.35+.65*(q.z+1)/2):.06,r=(match?3.2:2)*q.sc*d;
-  q.match=match;cx.beginPath();cx.arc(q.X,q.Y,r,0,Math.PI*2);cx.fillStyle=match?'rgba(242,174,61,'+a+')':'rgba(255,255,255,'+a+')';cx.fill();
+  q.match=match;cx.beginPath();cx.arc(q.X,q.Y,r,0,Math.PI*2);cx.fillStyle=match?'rgba(255,203,69,'+a+')':'rgba(255,255,255,'+a+')';cx.fill();
   if(match&&q.z>.35&&(uF||uQ||q.z>.7)){cx.font=(500*1)+' '+Math.round(11*d*Math.min(1.3,q.sc))+'px Menlo,monospace';cx.fillStyle='rgba(255,255,255,'+Math.min(1,a+.1)+')';cx.fillText(n.t.toUpperCase(),q.X+8*d,q.Y+4*d)}});
  window.__up=proj;requestAnimationFrame(uDraw)}
 var ux=0,uy=0,ud=false,umv=false;
@@ -470,10 +483,10 @@ var PLANS=[
  {id:'Crecimiento',tag:'El más elegido',m:149,hot:1,f:['Asistente IA en web y WhatsApp, 8 idiomas','3 automatizaciones a medida','8 contenidos al mes con IA (imagen y texto)','Visibilidad en Google, ChatGPT y Gemini','Panel de horas y ventas']},
  {id:'Pro',tag:'Crea lo que imagines',m:349,f:['Agentes IA a medida (uso razonable)','Vídeo, voz e imagen con IA de calidad profesional','Analítica predictiva de tu negocio','App o web con IA incluida','Prioridad y reunión mensual de estrategia']}];
 function plans(){var annual=false;
- function card(p){var price=p.m===0?0:(annual?Math.round(p.m*10/12*100)/100:p.m);price=String(price).replace('.',',');return '<div class="plan'+(p.hot?' hot':'')+'"><small>'+p.tag+'</small><h3>'+p.id+'</h3><div class="pz">'+(p.m===0?'0 €<span> SIEMPRE':price+' €<span> /MES')+(annual&&p.m?' · PAGO ANUAL':'')+'</span></div><ul>'+p.f.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><a class="btn" style="'+(p.hot?'background:#FBBA25;border-color:#FBBA25':'')+'" href="'+WA+encodeURIComponent('Hola Kalifai, quiero el plan '+p.id+' ('+(annual?'anual':'mensual')+')')+'" target="_blank" rel="noopener">Elegir '+p.id+' <span>&rarr;</span></a></div>'}
+ function card(p){var price=p.m===0?0:(annual?Math.round(p.m*10/12*100)/100:p.m);price=String(price).replace('.',',');return '<div class="plan'+(p.hot?' hot':'')+'"><small>'+p.tag+'</small><h3>'+p.id+'</h3><div class="pz">'+(p.m===0?'0 €<span> SIEMPRE':price+' €<span> /MES')+(annual&&p.m?' · PAGO ANUAL':'')+'</span></div><ul>'+p.f.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><a class="btn" style="'+(p.hot?'background:#FFD54F;border-color:#FFD54F':'')+'" href="'+WA+encodeURIComponent('Hola Kalifai, quiero el plan '+p.id+' ('+(annual?'anual':'mensual')+')')+'" target="_blank" rel="noopener">Elegir '+p.id+' <span>&rarr;</span></a></div>'}
  var body='<p class="lead">Precios módicos que crecen contigo. Empiezas pequeño y escalas cuando tu negocio lo pide, con la misma calidad en todos los planes.</p><div class="tog"><button type="button" class="on" data-a="0">Mensual</button><button type="button" data-a="1">Anual · 2 meses gratis</button></div><div class="plans" id="plC"></div>'+
- '<div class="plan" style="margin-top:12px;border-color:#F2AE3D"><small>Sin cuota fija alta</small><h3>Socio por resultados</h3><div class="pz">0 €<span> DE ENTRADA</span></div><p style="color:#cfcfcf;margin:12px 0 0">Construimos tu solución y compartimos el éxito: una cuota mínima de mantenimiento más un porcentaje de los beneficios extra que genere la IA, medido cada mes con un panel transparente.</p>'+
- '<div class="sim"><label class="fld" style="margin:0"><span>Beneficio extra al mes gracias a la IA: <b id="sB" style="color:#F2AE3D">2.000 €</b></span><input class="rng" id="sR" type="range" min="500" max="20000" step="500" value="2000"></label><div class="big" style="margin:14px 0 0"><div><b id="sK">1.700 €</b><span>Para ti</span></div><div><b id="sP">300 €</b><span>Para Kalifai (15 %)</span></div></div></div>'+
+ '<div class="plan" style="margin-top:12px;border-color:#FFCB45"><small>Sin cuota fija alta</small><h3>Socio por resultados</h3><div class="pz">0 €<span> DE ENTRADA</span></div><p style="color:#cfcfcf;margin:12px 0 0">Construimos tu solución y compartimos el éxito: una cuota mínima de mantenimiento más un porcentaje de los beneficios extra que genere la IA, medido cada mes con un panel transparente.</p>'+
+ '<div class="sim"><label class="fld" style="margin:0"><span>Beneficio extra al mes gracias a la IA: <b id="sB" style="color:#FFCB45">2.000 €</b></span><input class="rng" id="sR" type="range" min="500" max="20000" step="500" value="2000"></label><div class="big" style="margin:14px 0 0"><div><b id="sK">1.700 €</b><span>Para ti</span></div><div><b id="sP">300 €</b><span>Para Kalifai (15 %)</span></div></div></div>'+
  '<a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, me interesa ser socio por resultados')+'" target="_blank" rel="noopener">Quiero ser socio <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:13px;margin-top:10px">Sujeto a estudio previo y contrato. Cuota mínima de mantenimiento desde 29 €/mes.</p></div>'+
  '<div class="plan" style="margin-top:12px"><small>Proyectos a medida</small><h3>Lo creamos para ti</h3><div class="pz">Desde 997 €<span> PAGO ÚNICO</span></div><p style="color:#cfcfcf;margin:12px 0 0">Webs, apps, agentes y automatizaciones a medida. El código y los datos son siempre tuyos.</p><a class="btn o" href="'+WA+encodeURIComponent('Hola Kalifai, quiero un proyecto a medida')+'" target="_blank" rel="noopener">Pedir presupuesto <span>&rarr;</span></a></div>'+
  '<p style="color:#8a8a8a;font-size:13px;margin-top:18px">Precios sin IVA (21 %). Sin permanencia en los planes mensuales. Oferta de lanzamiento: 20 % de descuento el primer mes hasta el 31/12/2026.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
@@ -486,13 +499,13 @@ var HOOKS={
 'Vender':['Nadie te cuenta esto sobre {tema}','Por qué todos en {ciudad} están pidiendo {tema}','El error que te hace pagar de más en {tema}','Esto es lo que consigues con {negocio}','Última semana para {tema} al mejor precio','Antes y después: {tema} con {negocio}'],
 'Atraer':['POV: descubres {negocio}','Así se ve {tema} cuando se hace bien','3 señales de que necesitas {tema}','Lo que {ciudad} no sabía de {tema}','Si te gusta {tema}, guarda esto','Un día en {negocio} en 15 segundos'],
 'Enseñar':['3 errores que todos cometen con {tema}','Guía rápida de {tema} en 30 segundos','Lo que nadie te explica de {tema}','Cómo elegir {tema} sin equivocarte','El truco de los expertos en {tema}','{tema}: mito o realidad']};
-var STY={'Noche Dubái':{v:'../media/burj-hero.mp4',c:'#F2AE3D',f:'700'},'Neón ciudad':{v:'../media/luces.mp4',c:'#7CF7FF',f:'700'},'Minimal oro':{v:'',c:'#F2AE3D',f:'300'},'Lujo':{v:'../media/burj-b.mp4',c:'#E9D8A6',f:'400'}};
+var STY={'Noche Dubái':{v:'../media/burj-hero.mp4',c:'#FFCB45',f:'700'},'Neón ciudad':{v:'../media/luces.mp4',c:'#7CF7FF',f:'700'},'Minimal oro':{v:'',c:'#FFCB45',f:'300'},'Lujo':{v:'../media/burj-b.mp4',c:'#E9D8A6',f:'400'}};
 var ST={negocio:'',tema:'',ciudad:'',estilo:'Noche Dubái',obj:'Vender',seed:0};
 function freeLeft(){var d=new Date().toISOString().slice(0,10),o={};try{o=JSON.parse(localStorage.getItem('kalifai_std')||'{}')}catch(x){}if(o.d!==d)o={d:d,n:3};return o}
 function useFree(){var o=freeLeft();o.n=Math.max(0,o.n-1);try{localStorage.setItem('kalifai_std',JSON.stringify(o))}catch(x){}return o.n}
 function fill(t){return t.replace(/{tema}/g,ST.tema||'tu servicio').replace(/{negocio}/g,ST.negocio||'tu negocio').replace(/{ciudad}/g,ST.ciudad||'tu ciudad')}
-function hook(){var L=HOOKS[ST.obj];return fill(L[ST.seed%L.length])}
-function caption(){var tags=['#'+(ST.tema||'negocio').replace(/\s+/g,''),'#'+(ST.ciudad||'españa').replace(/\s+/g,''),'#emprendedores','#tendencia2026','#hechoconIA'];
+function hook(){var L=ST.ai&&ST.ai.length?ST.ai:HOOKS[ST.obj];return fill(L[ST.seed%L.length])}
+function caption(){if(ST.cap)return hook()+'\n\n'+ST.cap+'\n\n'+(ST.tags||[]).join(' ');var tags=['#'+(ST.tema||'negocio').replace(/\s+/g,''),'#'+(ST.ciudad||'españa').replace(/\s+/g,''),'#emprendedores','#tendencia2026','#hechoconIA'];
  return hook()+'\n\n'+fill(['En {negocio} lo hacemos fácil: escríbenos y te lo explicamos sin compromiso.','Guarda este post y compártelo con quien lo necesite.','Comenta "INFO" y te enviamos todos los detalles.'][ST.seed%3])+'\n\n'+tags.join(' ')}
 function wrap(x,t,maxw){var w=t.split(' '),lines=[],l='';w.forEach(function(p){var tt=l?l+' '+p:p;if(x.measureText(tt).width>maxw&&l){lines.push(l);l=p}else l=tt});lines.push(l);return lines}
 function render(cv,wm,cb){var x=cv.getContext('2d'),W=1080,H=1920,st=STY[ST.estilo];cv.width=W;cv.height=H;
@@ -512,7 +525,7 @@ function render(cv,wm,cb){var x=cv.getContext('2d'),W=1080,H=1920,st=STY[ST.esti
  v.addEventListener('loadeddata',function(){try{v.currentTime=Math.min(2+ST.seed%5,(v.duration||6)-.5)}catch(e){paint(v)}},{once:true});
  v.addEventListener('seeked',function(){paint(v)},{once:true});v.addEventListener('error',function(){paint(null)},{once:true});
  setTimeout(function(){if(!v.readyState)paint(null)},4000)}
-function paywall(why){var b='<p class="lead">'+why+' Con el plan <b style="color:#F2AE3D">Creador</b> desbloqueas todo el estudio.</p><div class="plan hot"><small>7 días gratis</small><h3>Creador</h3><div class="pz">9,90 €<span> /MES</span></div><ul><li>Creaciones ilimitadas y sin marca de agua</li><li>Exporta tus reels en vídeo</li><li>Kit de marca: tus colores, logo y tipografía</li><li>100 ideas virales al mes para tu sector</li><li>Calendario de publicaciones</li></ul><a class="btn" style="background:#FBBA25;border-color:#FBBA25" href="'+WA+encodeURIComponent('Hola Kalifai, quiero probar el plan Creador 7 días gratis. Negocio: '+(ST.negocio||''))+'" target="_blank" rel="noopener">Probar 7 días gratis <span>&rarr;</span></a></div><p style="color:#8a8a8a;font-size:13px;margin-top:12px">Menos que la mayoría de herramientas de diseño del mercado. Cancela cuando quieras. Precio sin IVA.</p><button class="btn o" type="button" data-pl>Ver todos los planes <span>&rarr;</span></button><button class="btn o" type="button" data-close>Seguir creando gratis <span>&larr;</span></button>';
+function paywall(why){var b='<p class="lead">'+why+' Con el plan <b style="color:#FFCB45">Creador</b> desbloqueas todo el estudio.</p><div class="plan hot"><small>7 días gratis</small><h3>Creador</h3><div class="pz">9,90 €<span> /MES</span></div><ul><li>Creaciones ilimitadas y sin marca de agua</li><li>Exporta tus reels en vídeo</li><li>Kit de marca: tus colores, logo y tipografía</li><li>100 ideas virales al mes para tu sector</li><li>Calendario de publicaciones</li></ul><a class="btn" style="background:#FFD54F;border-color:#FFD54F" href="'+WA+encodeURIComponent('Hola Kalifai, quiero probar el plan Creador 7 días gratis. Negocio: '+(ST.negocio||''))+'" target="_blank" rel="noopener">Probar 7 días gratis <span>&rarr;</span></a></div><p style="color:#8a8a8a;font-size:13px;margin-top:12px">Menos que la mayoría de herramientas de diseño del mercado. Cancela cuando quieras. Precio sin IVA.</p><button class="btn o" type="button" data-pl>Ver todos los planes <span>&rarr;</span></button><button class="btn o" type="button" data-close>Seguir creando gratis <span>&larr;</span></button>';
  var w=push({head:'<div class="lbl">Desbloquea el estudio</div><h2>Pásate a Creador</h2>',body:b});w.querySelector('[data-close]').onclick=closeTop;w.querySelector('[data-pl]').onclick=plans}
 function studio(){var o=freeLeft();
  var body='<p class="lead">Crea en segundos una publicación de tendencia para tus redes, con tu marca. Gratis.</p><div class="stdbox">'+
@@ -521,7 +534,8 @@ function studio(){var o=freeLeft();
  '<div class="fld" style="margin:0"><span>Objetivo</span><div class="chips" id="sO">'+Object.keys(HOOKS).map(function(k){return '<button type="button" class="'+(k===ST.obj?'on':'')+'">'+k+'</button>'}).join('')+'</div></div>'+
  '<div class="fld" style="margin:0"><span>Estilo</span><div class="chips" id="sS">'+Object.keys(STY).map(function(k){return '<button type="button" class="'+(k===ST.estilo?'on':'')+'">'+k+'</button>'}).join('')+'</div></div>'+
  '<div class="cvwrap"><canvas id="sCv"></canvas><div class="reel" id="sR"><video muted loop playsinline></video><div class="rt" id="r1"></div><div class="rt" id="r2"></div><div class="rt" id="r3"></div><div class="wm">HECHO CON KALIFAI</div></div></div>'+
- '<button class="btn" type="button" id="sNew" style="background:#FBBA25;border-color:#FBBA25">Nueva versión <span>&#10022;</span></button>'+
+ '<button class="btn" type="button" id="sAI" style="background:#FFD54F;border-color:#FFD54F">Crear con IA <span>&#10022;</span></button><div class="left" id="sAIL">IA real · '+aiLeft('hooks').n+' creaciones con IA gratis hoy</div>'+
+ '<button class="btn o" type="button" id="sNew">Nueva versión <span>&#8635;</span></button>'+
  '<button class="btn o" type="button" id="sReel">Ver como reel <span>&#9655;</span></button>'+
  '<div class="cap" id="sCap"></div><button class="btn o" type="button" id="sCopy">Copiar texto y hashtags <span>&#10697;</span></button>'+
  '<button class="btn" type="button" id="sDl">Descargar gratis <span>&darr;</span></button><div class="left" id="sLeft">Te quedan '+o.n+' descargas gratis hoy</div>'+
@@ -536,6 +550,10 @@ function studio(){var o=freeLeft();
  var tm;['#sN','#sT'].forEach(function(id){w.querySelector(id).oninput=function(){clearTimeout(tm);tm=setTimeout(upd,350)}});
  [['#sO','obj'],['#sS','estilo']].forEach(function(z){var el=w.querySelector(z[0]);el.querySelectorAll('button').forEach(function(b){b.onclick=function(){ST[z[1]]=b.textContent;el.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});upd()}})});
  w.querySelector('#sNew').onclick=function(){ST.seed++;upd()};
+ ['#sN','#sT'].forEach(function(id){w.querySelector(id).addEventListener('input',function(){ST.ai=null;ST.cap=''})});
+ w.querySelector('#sAI').onclick=function(){var me=this,L=w.querySelector('#sAIL');upd();if(!ST.tema){L.textContent='Escribe primero de qué quieres hablar';w.querySelector('#sT').focus();return}
+  me.disabled=true;me.firstChild.textContent='Creando con IA… ';
+  ai('hooks',{negocio:ST.negocio,tema:ST.tema,ciudad:ST.ciudad,obj:ST.obj}).then(function(r){if(r.hooks&&r.hooks.length){ST.ai=r.hooks;ST.cap=r.caption;ST.tags=r.hashtags;ST.seed=0}upd();L.textContent='IA real · '+aiLeft('hooks').n+' creaciones con IA gratis hoy · pulsa Nueva versión para ver las '+((r.hooks||[]).length)+' ideas'},function(er){L.textContent=er.msg;if(er.limite)paywall('Has usado tus creaciones con IA gratis de hoy.')}).then(function(){me.disabled=false;me.firstChild.textContent='Crear con IA '})};
  w.querySelector('#sCopy').onclick=function(){var me=this;try{navigator.clipboard.writeText(caption())}catch(x){}me.querySelector('span').textContent='Copiado'};
  w.querySelector('#sReel').onclick=function(){var R=w.querySelector('#sR'),v=R.querySelector('video'),st=STY[ST.estilo];if(R.classList.contains('on')){R.classList.remove('on');v.pause();return}
   v.src=st.v||'../media/burj-a.mp4';v.play().catch(function(){});R.classList.add('on');var t=[['GANCHO',hook()],['IDEA',fill('{negocio} lo hace fácil')],['ACCIÓN','Escríbenos hoy']];
@@ -547,7 +565,7 @@ function studio(){var o=freeLeft();
 document.getElementById('stdGo').onclick=studio;
 // plan Gratis y Creador al principio de los planes
 PLANS.unshift({id:'Creador',tag:'Estudio sin límites',m:9.9,f:['Creaciones ilimitadas sin marca de agua','Reels en vídeo','Kit de marca','100 ideas virales al mes','7 días gratis']});
-PLANS.unshift({id:'Gratis',tag:'Para siempre',m:0,f:['Estudio Kalifai: 3 descargas al día','Tu empleado IA de demostración','Índice IA compartible','Programa IA de 7 semanas']});
+PLANS.unshift({id:'Gratis',tag:'Para siempre',m:0,f:['Estudio Kalifai: 3 descargas al día','Tu empleado IA: 15 preguntas al día con IA real','Estudio con IA: 10 creaciones al día','Índice IA compartible','Programa IA de 7 semanas']});
 if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 })();
 </script>
