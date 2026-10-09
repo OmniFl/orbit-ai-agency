@@ -40,7 +40,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .ctrl{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 92px);display:flex;justify-content:center;gap:14px;z-index:6}
 .ctrl button{width:52px;height:52px;border:1px solid var(--line2);background:rgba(0,0,0,.6);font-size:20px}
 .ctrl .open{width:auto;padding:0 26px;background:var(--amber);border-color:var(--amber);color:#000;font:700 12px var(--mono);letter-spacing:.3em;text-transform:uppercase}
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);background:rgba(0,0,0,.85);backdrop-filter:blur(10px);padding-bottom:env(safe-area-inset-bottom)}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);background:rgba(0,0,0,.85);backdrop-filter:blur(10px);padding-bottom:env(safe-area-inset-bottom)}
 .dock a{padding:18px 6px;text-align:center;font:500 10px var(--mono);letter-spacing:.25em;text-transform:uppercase;color:#cfcfcf;border-right:1px solid var(--line)}.dock a:last-child{border-right:0}.dock a b{display:block;color:var(--gold);font-size:16px;margin-bottom:4px;font-weight:500}
 /* Ventanas 3D */
 .wins{position:fixed;inset:0;z-index:40;pointer-events:none;perspective:1400px}
@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .win.out{opacity:0;transform:translateX(30%) rotateY(-30deg)}
 .win .hd{position:relative;height:46vh;min-height:300px;overflow:hidden}
 .win .hd video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) contrast(1.1)}
-.win .hd::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 40%,#000)}
+.win .hd.nov::after{display:none}.win .hd::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 40%,#000)}
 .win .hd .t{position:absolute;left:22px;right:22px;bottom:22px;z-index:2}
 .win h2{margin:12px 0 0;font:700 clamp(30px,8vw,56px)/1 var(--sans);text-transform:uppercase}
 .win .x{position:fixed;top:calc(env(safe-area-inset-top) + 14px);right:16px;z-index:5;height:46px;padding:0 16px;border:1px solid var(--line2);background:rgba(0,0,0,.7);font:500 11px var(--mono);letter-spacing:.3em}
@@ -67,6 +67,70 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 .price{margin:26px 0;padding:22px;border:1px solid var(--gold)}.price b{display:block;font:700 30px var(--sans)}.price span{font:500 11px var(--mono);letter-spacing:.3em;color:var(--gold)}
 .btn{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:14px;padding:20px 22px;border:1px solid #fff;background:#fff;color:#000;font:700 12px var(--mono);letter-spacing:.3em;text-transform:uppercase}
 .btn.o{background:transparent;color:#fff;border-color:var(--line2)}
+/* Crea tu empleado IA */
+.emp{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin:10px 0 0 8px;height:42px;padding:0 18px;border:1px solid #fff;background:#fff;color:#000;font:700 11px var(--mono);letter-spacing:.3em;text-transform:uppercase}
+.mine{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 156px);max-width:560px;margin:0 auto;z-index:7;display:none;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--gold);background:rgba(0,0,0,.85);font:500 11px/1.5 var(--mono);letter-spacing:.15em}
+.mine.on{display:flex}.mine b{color:var(--gold)}.mine button{margin-left:auto;border:1px solid var(--gold);background:none;color:var(--gold);padding:8px 10px;font:500 10px var(--mono);letter-spacing:.2em}
+.fld{display:block;margin:0 0 22px}.fld span{display:block;font:500 10px var(--mono);letter-spacing:.35em;color:#9b9b9b;text-transform:uppercase;margin-bottom:10px}
+.fld input,.fld select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line2);color:#fff;font:400 20px var(--sans);padding:6px 0 12px;outline:none;border-radius:0;-webkit-appearance:none;appearance:none}.fld select option{background:#000}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips button{border:1px solid var(--line2);background:#070707;padding:12px 14px;font:500 11px var(--mono);letter-spacing:.15em;text-transform:uppercase}.chips button.on{border-color:var(--gold);color:var(--gold)}
+.rng{width:100%;accent-color:#F2AE3D}
+.chat{border:1px solid var(--line2);background:#050505;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:300px}
+.chat .m{max-width:84%;padding:12px 14px;font-size:16px;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}.chat .m.on{opacity:1;transform:none}
+.chat .u{align-self:flex-end;background:#1b1b1b}.chat .a{align-self:flex-start;border:1px solid var(--gold);background:rgba(242,174,61,.06)}
+.chat .a small{display:block;font:500 9px var(--mono);letter-spacing:.3em;color:var(--gold);margin-bottom:6px}
+.big{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 24px}.big div{border:1px solid var(--line2);padding:18px}.big b{display:block;font:700 34px var(--sans);color:var(--gold)}.big span{font:500 10px var(--mono);letter-spacing:.25em;color:#bdbdbd;text-transform:uppercase}
+.badge{display:block;width:100%;max-width:420px;margin:0 auto 18px;border:1px solid var(--line2)}
+.weeks{border-top:1px solid var(--line2);margin-bottom:20px}.weeks div{display:grid;grid-template-columns:70px 1fr;padding:14px 0;border-bottom:1px solid var(--line2)}.weeks em{font:500 10px var(--mono);letter-spacing:.2em;color:var(--gold);font-style:normal}
+/* Viaje cinematográfico IMAGINA */
+.imag{pointer-events:auto;display:inline-flex;align-items:center;gap:12px;margin-top:16px;height:42px;padding:0 18px;border:1px solid var(--gold);background:rgba(0,0,0,.5);color:var(--gold);font:500 11px var(--mono);letter-spacing:.32em;text-transform:uppercase}
+.imag i{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.cine{overflow:hidden!important}
+.cine .bg{position:absolute;inset:0;overflow:hidden}
+.cine .bg video{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;filter:brightness(.42) contrast(1.15) saturate(1.1);animation:kb2 14s ease-out forwards}
+@keyframes kb2{from{transform:scale(1.15) translateY(2%)}to{transform:scale(1)}}
+.cine .bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(0,0,0,0) 0%,rgba(0,0,0,.75) 100%)}
+.cine .bars2::before,.cine .bars2::after{content:"";position:absolute;left:0;right:0;height:9vh;background:#000;z-index:3}
+.cine .bars2::before{top:0}.cine .bars2::after{bottom:0}
+.cine .ct{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:4;padding:0 26px;max-width:860px;margin:0 auto}
+.cine .ch{font:500 10px var(--mono);letter-spacing:.45em;color:var(--gold);text-transform:uppercase;opacity:0;animation:up .9s .3s forwards}
+.cine h2{margin:16px 0 0;font:700 clamp(32px,9vw,76px)/.98 var(--sans);text-transform:uppercase}
+.cine h2 span{display:inline-block;opacity:0;transform:translateY(40%);animation:up .8s forwards}
+.cine p{margin:22px 0 0;color:#d6d6d6;font-size:clamp(17px,4.4vw,22px);max-width:40ch;opacity:0;animation:up 1s 1.4s forwards}
+.cine .how{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up 1s 1.9s forwards}
+.cine .how span{border:1px solid var(--line2);padding:8px 10px;font:500 10px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#cfcfcf;background:rgba(0,0,0,.4)}
+@keyframes up{to{opacity:1;transform:none}}
+.cine .ft{position:absolute;left:0;right:0;bottom:calc(9vh + 16px);z-index:5;display:flex;justify-content:space-between;align-items:center;padding:0 22px}
+.cine .ft small{font:500 10px var(--mono);letter-spacing:.35em;color:#9b9b9b}
+.cine .nx{height:52px;padding:0 22px;border:1px solid #fff;background:#fff;color:#000;font:700 11px var(--mono);letter-spacing:.3em;text-transform:uppercase}
+.cine textarea{width:100%;min-height:110px;margin-top:22px;background:rgba(0,0,0,.6);border:1px solid var(--line2);color:#fff;font:400 18px var(--sans);padding:16px;resize:none;outline:none;opacity:0;animation:up 1s 1.6s forwards}
+.cine textarea:focus{border-color:var(--gold)}
+/* Vídeo explicativo animado */
+.exp{position:relative;height:min(68vh,560px);border:1px solid var(--line2);overflow:hidden;background:#000;margin-bottom:18px}
+.exp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.28) contrast(1.1)}
+.exp .bars{position:absolute;top:14px;left:14px;right:14px;display:flex;gap:6px;z-index:3}.exp .bars i{flex:1;height:2px;background:rgba(255,255,255,.2);overflow:hidden}.exp .bars i b{display:block;height:100%;width:0;background:var(--gold)}
+.exp .sc{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:40px 22px;opacity:0;transform:translateY(16px) scale(.98);transition:opacity .6s,transform .6s}
+.exp .sc.on{opacity:1;transform:none}
+.exp .sc small{font:500 10px var(--mono);letter-spacing:.35em;color:var(--gold);text-transform:uppercase}
+.exp .sc h4{margin:10px 0 30px;font:700 clamp(20px,5vw,30px)/1.15 var(--sans);text-transform:uppercase}
+.flow{display:flex;align-items:center;gap:0}
+.flow .nd{flex:0 0 auto;min-width:0;max-width:30%;padding:12px 10px;border:1px solid var(--line2);background:rgba(0,0,0,.6);font:500 10px/1.3 var(--mono);letter-spacing:.15em;text-transform:uppercase;text-align:center;opacity:0;transform:scale(.8);transition:opacity .5s,transform .5s,border-color .5s}
+.exp .sc.on .nd{opacity:1;transform:none}.exp .sc.on .nd.hl{border-color:var(--gold);color:var(--gold);box-shadow:0 0 30px rgba(242,174,61,.25)}
+.flow .ln{position:relative;flex:1;height:1px;background:var(--line2);min-width:14px}
+.flow .ln::after{content:"";position:absolute;top:-3px;left:0;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:dot 1.4s linear infinite}
+@keyframes dot{to{left:calc(100% - 7px)}}
+.exp .nav{position:absolute;inset:0;z-index:4;display:grid;grid-template-columns:1fr 1fr}.exp .nav button{background:none;border:0}
+.exp .pp{position:absolute;right:14px;bottom:14px;z-index:5;height:40px;padding:0 14px;border:1px solid var(--line2);background:rgba(0,0,0,.6);font:500 10px var(--mono);letter-spacing:.3em}
+/* Galería */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gi{position:relative;aspect-ratio:3/4;border:1px solid var(--line2);overflow:hidden;background:#050505;padding:0;text-align:left}
+.gi video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+.gi span{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;font:500 10px/1.5 var(--mono);letter-spacing:.25em;text-transform:uppercase}
+.lb{position:fixed;inset:0;z-index:90;background:#000;display:flex;align-items:center;justify-content:center}
+.lb video{max-width:100%;max-height:100%}
+.lb p{position:absolute;left:20px;right:20px;bottom:calc(env(safe-area-inset-bottom) + 24px);margin:0;font:500 11px/1.8 var(--mono);letter-spacing:.3em;color:#ddd;text-transform:uppercase;text-align:center}
+@media (min-width:900px){.gal{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:900px){.tiles{grid-template-columns:repeat(4,1fr)}.tile.wide{grid-column:span 4}}
 @media (prefers-reduced-motion:reduce){.win{transition:opacity .3s}}
 </style>
@@ -77,10 +141,10 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
   <svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#E08A1E"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#0b0b0b" stroke="#2a2a2a" stroke-width="2"/><path d="M38 26 V74 M38 52 L62 28 M45 46 L64 72" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-28 50 50)" fill="none" stroke="url(#g)" stroke-width="4"/><circle cx="83" cy="33" r="6" fill="url(#g)"/></svg>
   <b>KALIFAI</b><span class="sp"></span><a class="web" href="../">WEB</a>
 </header>
-<div class="hero"><div class="lbl">Kalifai · App</div><h1>Elige tu inteligencia</h1><p>Desliza · toca para abrir</p></div>
+<div class="hero"><div class="lbl">Kalifai · App</div><h1>Elige tu inteligencia</h1><p>Desliza · toca para abrir</p><button class="imag" type="button" id="imagina"><i></i>Imagina lo imposible</button><button class="emp" type="button" id="crearEmp">Crea tu empleado IA gratis</button></div><div class="mine" id="mine"></div>
 <div class="stage" id="stage"><div class="ring" id="ring"></div></div>
 <div class="ctrl"><button type="button" id="prev" aria-label="Anterior">&larr;</button><button type="button" class="open" id="open">Abrir</button><button type="button" id="next" aria-label="Siguiente">&rarr;</button></div>
-<nav class="dock"><a href="../"><b>&#9675;</b>Web</a><a href="https://wa.me/34614057443" target="_blank" rel="noopener"><b>&#9711;</b>WhatsApp</a><a href="herramientas.html"><b>&#9634;</b>Herramientas</a></nav>
+<nav class="dock"><a href="../"><b>&#9675;</b>Web</a><a href="#" id="dockVid"><b>&#9655;</b>Vídeo</a><a href="https://wa.me/34614057443" target="_blank" rel="noopener"><b>&#9711;</b>WhatsApp</a><a href="herramientas.html"><b>&#9634;</b>Herramientas</a></nav>
 <div class="wins" id="wins"></div>
 
 <script>
@@ -110,6 +174,15 @@ var S=[
  f:[['Tu propio modelo','Entrenado con tu conocimiento y tus datos.'],['Privacidad total','El código y los datos son siempre tuyos.'],['Integración','Dentro de tus sistemas actuales.']],
  c:[['Industria','Predicción de averías.'],['Educación','Tutor con tu metodología.'],['Salud','Triaje y organización de agenda.']]},
 {t:'Herramientas Kalifai',k:'Todo en tu móvil',d:'',p:'',tools:1}];
+var STORY=[
+[['Llega un correo, un pedido o un formulario',['Correo','Formulario','Pedido'],1],['La IA lo lee y entiende qué hay que hacer',['Entrada','IA Kalifai','Decisión'],1],['Se ejecuta la tarea en tus herramientas',['IA','CRM','Factura'],2],['Tu equipo solo revisa el resultado',['Tarea hecha','Informe','Tu equipo'],2]],
+[['Un cliente escribe por WhatsApp o en tu web',['Cliente','WhatsApp','Web'],1],['El asistente responde al momento, en su idioma',['Pregunta','Asistente IA','Respuesta'],1],['Detecta si está listo para comprar',['Conversación','Cualificación','Cliente listo'],2],['Agenda la cita y te avisa',['Calendario','Cita','Aviso a ti'],1]],
+[['Diseñamos tu web a medida',['Marca','Diseño','Web'],2],['Integramos pagos y reservas',['Visita','Reserva','Pago'],2],['Posicionamos en Google y en las IA',['Google','ChatGPT','Gemini'],0],['Clientes que te encuentran y compran',['Búsqueda','Tu web','Venta'],2]],
+[['Reunimos los datos que ya tienes',['Ventas','Clientes','Stock'],1],['La IA detecta patrones',['Datos','Modelo','Patrones'],1],['Predice lo que viene',['Hoy','Mañana','Próximo mes'],2],['Lo ves en un panel claro',['Panel','Alertas','Decisiones'],2]],
+[['Una cámara o una foto',['Cámara','Foto','Vídeo'],0],['La IA reconoce lo que ve',['Imagen','IA Visión','Objeto'],1],['Detecta defectos o cuenta',['Revisión','Defecto','Conteo'],1],['Te avisa al instante',['Alerta','Informe','Acción'],0]],
+[['Documentos dispersos por todas partes',['PDF','Correos','Hojas'],0],['La IA los lee, extrae y ordena',['Lectura','Extracción','Orden'],1],['Una base de conocimiento propia',['Base','Búsqueda','Respuesta'],0],['Preguntas y respondes en segundos',['Pregunta','IA','Respuesta'],2]],
+[['Escuchamos tu reto',['Reto','Análisis','Plan'],2],['Entrenamos con tus datos',['Tus datos','Modelo propio','Pruebas'],1],['Lo integramos en tus sistemas',['Modelo','Sistemas','Equipo'],1],['Mejora cada mes',['Medición','Ajustes','Resultados'],2]]];
+var GAL=[['../media/burj-hero.mp4','Dubái · Burj Khalifa · donde nace la marca'],['../media/burj-a.mp4','Estructura y precisión'],['../media/luces.mp4','Datos en movimiento'],['../media/dubai-noche.mp4','Ciudades que no duermen'],['../media/shanghai.mp4','Shanghái · escala global'],['../media/singapur.mp4','Singapur · innovación'],['../media/nueva-york.mp4','Nueva York · negocio 24 horas'],['../media/burj-b.mp4','Tu negocio, a otra altura'],['../media/burj-c.mp4','Inteligencia a medida']];
 var steps=[['Diagnóstico','Analizamos cómo trabajáis y dónde la IA ahorra más.'],['Construcción','Diseñamos e integramos la solución con vuestras herramientas.'],['Lanzamiento','La ponemos en marcha y formamos a tu equipo.'],['Medición mensual','Revisamos resultados y optimizamos cada mes.']];
 
 /* ---------- Carrusel 3D ---------- */
@@ -140,16 +213,20 @@ addEventListener('keydown',function(e){if(e.key==='ArrowLeft')target+=step;if(e.
 var wins=document.getElementById('wins'),stack=[];
 function push(html,video){
  var w=document.createElement('section');w.className='win';
- w.innerHTML=(video?'<div class="hd"><video muted loop playsinline autoplay src="'+video+'"></video><div class="t">'+html.head+'</div></div>':'<div class="hd" style="height:auto;min-height:0;padding:calc(env(safe-area-inset-top) + 90px) 22px 10px"><div class="t" style="position:static">'+html.head+'</div></div>')+'<button class="x" type="button">'+(stack.length?'&larr; Volver':'Cerrar')+'</button><div class="bd">'+html.body+'</div>';
+ w.innerHTML=(video?'<div class="hd"><video muted loop playsinline autoplay src="'+video+'"></video><div class="t">'+html.head+'</div></div>':'<div class="hd nov" style="height:auto;min-height:0;padding:calc(env(safe-area-inset-top) + 90px) 22px 10px"><div class="t" style="position:static">'+html.head+'</div></div>')+'<button class="x" type="button">'+(stack.length?'&larr; Volver':'Cerrar')+'</button><div class="bd">'+html.body+'</div>';
  wins.appendChild(w);if(stack.length)stack[stack.length-1].classList.add('back');stack.push(w);
  requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})});
  w.querySelector('.x').onclick=closeTop;auto=false;return w}
 function closeTop(){var w=stack.pop();if(!w)return;w.classList.remove('in');w.classList.add('out');setTimeout(function(){w.remove()},600);if(stack.length)stack[stack.length-1].classList.remove('back');else{t0=Date.now();setTimeout(function(){auto=true},3000)}}
 function openWin(i){var s=S[i];if(s.tools){location.href='herramientas.html';return}
- var w=push({head:'<div class="lbl">0'+(i+1)+' · '+s.k+'</div><h2>'+s.t+'</h2>',body:'<p class="lead">'+s.d+'</p><div class="tiles"><button class="tile" data-w="f"><span>01</span><b>Qué hacemos</b></button><button class="tile" data-w="c"><span>02</span><b>Casos reales</b></button><button class="tile" data-w="p"><span>03</span><b>Cómo trabajamos</b></button><button class="tile" data-w="$"><span>04</span><b>Precio y plazos</b></button><button class="tile wide" data-w="wa"><span>Hablar ahora</span><b>Pedir por WhatsApp &rarr;</b></button></div>'},V[i%V.length]);
+ var w=push({head:'<div class="lbl">0'+(i+1)+' · '+s.k+'</div><h2>'+s.t+'</h2>',body:'<p class="lead">'+s.d+'</p><div class="tiles"><button class="tile wide" data-w="v" style="background:#fff;border-color:#fff"><span>Vídeo explicativo</span><b>&#9655; Ver cómo funciona</b></button><button class="tile" data-w="f"><span>01</span><b>Qué hacemos</b></button><button class="tile" data-w="c"><span>02</span><b>Casos reales</b></button><button class="tile" data-w="p"><span>03</span><b>Cómo trabajamos</b></button><button class="tile" data-w="$"><span>04</span><b>Precio y plazos</b></button><button class="tile" data-w="g"><span>05</span><b>Galería</b></button><button class="tile" data-w="k"><span>06</span><b>Vídeo Kalifai</b></button><button class="tile" data-w="i" style="border-color:var(--gold)"><span>07</span><b>Imagina lo imposible</b></button><button class="tile wide" data-w="wa"><span>Hablar ahora</span><b>Pedir por WhatsApp &rarr;</b></button></div>'},V[i%V.length]);
  w.querySelectorAll('[data-w]').forEach(function(b){b.onclick=function(){sub(i,b.dataset.w)}})}
 function sub(i,k){var s=S[i],msg=encodeURIComponent('Hola Kalifai, me interesa '+s.t);
  if(k==='wa'){window.open(WA+msg,'_blank','noopener');return}
+ if(k==='v'){explainer(i);return}
+ if(k==='g'){gallery();return}
+ if(k==='k'){kvideo();return}
+ if(k==='i'){scene(0);return}
  var head,body;
  if(k==='f'){head='<div class="lbl">'+s.t+'</div><h2>Qué hacemos</h2>';body='<div class="list">'+s.f.map(function(x,j){return '<div><em>0'+(j+1)+'</em><section><b>'+x[0]+'</b><p>'+x[1]+'</p></section></div>'}).join('')+'</div>'}
  if(k==='c'){head='<div class="lbl">'+s.t+'</div><h2>Casos reales</h2>';body='<div class="tiles">'+s.c.map(function(x,j){return '<button class="tile" data-j="'+j+'"><span>'+x[0]+'</span><b>'+x[1]+'</b></button>'}).join('')+'</div>'}
@@ -158,6 +235,124 @@ function sub(i,k){var s=S[i],msg=encodeURIComponent('Hola Kalifai, me interesa '
  body+='<a class="btn" href="'+WA+msg+'" target="_blank" rel="noopener">Pedir por WhatsApp <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
  var w=push({head:head,body:body});w.querySelector('[data-close]').onclick=closeTop;
  w.querySelectorAll('[data-j]').forEach(function(b){b.onclick=function(){var x=s.c[+b.dataset.j];var w2=push({head:'<div class="lbl">Caso real · '+x[0]+'</div><h2>'+s.t+'</h2>',body:'<p class="lead">'+x[1]+'</p><div class="list">'+steps.map(function(y,j){return '<div><em>0'+(j+1)+'</em><section><b>'+y[0]+'</b><p>'+y[1]+'</p></section></div>'}).join('')+'</div><a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, quiero algo como el caso de '+x[0]+' ('+s.t+')')+'" target="_blank" rel="noopener">Quiero algo así <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>'});w2.querySelector('[data-close]').onclick=closeTop}})}
+function explainer(i){var s=S[i],st=STORY[i],msg=encodeURIComponent('Hola Kalifai, he visto el vídeo de '+s.t+' y me interesa');
+ var html='<div class="exp"><video muted loop playsinline autoplay src="'+V[i%V.length]+'"></video><div class="bars">'+st.map(function(){return '<i><b></b></i>'}).join('')+'</div>'+
+ st.map(function(x,j){return '<div class="sc"><small>Paso '+(j+1)+' de '+st.length+'</small><h4>'+x[0]+'</h4><div class="flow">'+x[1].map(function(n,q){return (q?'<span class="ln"></span>':'')+'<span class="nd'+(q===x[2]?' hl':'')+'" style="transition-delay:'+(q*.35)+'s">'+n+'</span>'}).join('')+'</div></div>'}).join('')+
+ '<div class="nav"><button type="button" aria-label="Anterior"></button><button type="button" aria-label="Siguiente"></button></div><button class="pp" type="button">Pausa</button></div>'+
+ '<p class="lead">'+s.d+'</p><a class="btn" href="'+WA+msg+'" target="_blank" rel="noopener">Lo quiero para mi negocio <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+ var w=push({head:'<div class="lbl">Vídeo explicativo</div><h2>'+s.t+'</h2>',body:html});w.querySelector('[data-close]').onclick=closeTop;
+ var scs=w.querySelectorAll('.sc'),bars=w.querySelectorAll('.bars b'),cur=0,t=0,play=true,D=4200,last=performance.now();
+ function show(n){cur=(n+scs.length)%scs.length;t=0;scs.forEach(function(x,j){x.classList.toggle('on',j===cur)});bars.forEach(function(b,j){b.style.width=j<cur?'100%':'0'})}
+ show(0);
+ function tick(now){if(!w.isConnected)return;var dt=now-last;last=now;if(play){t+=dt;bars[cur].style.width=Math.min(100,t/D*100)+'%';if(t>=D)show(cur+1)}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+ var nb=w.querySelectorAll('.nav button');nb[0].onclick=function(){show(cur-1)};nb[1].onclick=function(){show(cur+1)};
+ var pp=w.querySelector('.pp');pp.onclick=function(){play=!play;pp.textContent=play?'Pausa':'Seguir'}}
+function gallery(){var html='<p class="lead">Las ciudades que inspiran Kalifai. Toca una imagen para verla a pantalla completa.</p><div class="gal">'+GAL.map(function(g,j){return '<button class="gi" type="button" data-g="'+j+'"><video muted loop playsinline autoplay preload="none" src="'+g[0]+'"></video><span>'+g[1]+'</span></button>'}).join('')+'</div><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+ var w=push({head:'<div class="lbl">Imágenes y vídeos</div><h2>Galería Kalifai</h2>',body:html});w.querySelector('[data-close]').onclick=closeTop;
+ w.querySelectorAll('[data-g]').forEach(function(b){b.onclick=function(){var g=GAL[+b.dataset.g],lb=document.createElement('div');lb.className='lb';lb.innerHTML='<video autoplay loop muted playsinline src="'+g[0]+'"></video><p>'+g[1]+'</p><button class="x" type="button" style="position:fixed">Cerrar</button>';document.body.appendChild(lb);lb.onclick=function(){lb.remove()}}})}
+function kvideo(){var w=push({head:'<div class="lbl">Kalifai en 1 minuto</div><h2>Lo que hacemos</h2>',body:'<div class="exp" style="height:auto"><video controls playsinline preload="metadata" poster="../orbit-servicios-poster.jpg" src="../orbit-servicios.mp4" style="position:static;filter:none;height:auto;max-height:70vh"></video></div><p class="lead">Webs, asistentes y automatizaciones con IA para empresas de España y del mundo, en 8 idiomas.</p><a class="btn" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20he%20visto%20vuestro%20v%C3%ADdeo" target="_blank" rel="noopener">Hablar con Kalifai <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>'});w.querySelector('[data-close]').onclick=closeTop}
+document.getElementById('dockVid').onclick=function(e){e.preventDefault();kvideo()};
+var FILM=[
+['Prólogo','Imagina','Todo lo que tu mente logre imaginar, podemos crearlo con inteligencia artificial. El límite lo pones tú.',[],'../media/burj-hero.mp4'],
+['Escena 01','Un recepcionista que nunca duerme','Son las 3 de la madrugada en Dubái. Un cliente japonés llama a tu restaurante. Una voz con tu estilo le atiende en su idioma, reserva mesa y le envía la confirmación. Tú duermes.',['Voz con IA','8 idiomas','Reservas 24 h'],'../media/dubai-noche.mp4'],
+['Escena 02','Tu catálogo convertido en campaña','Subes diez fotos de tus productos. Al día siguiente tienes vídeos de campaña, textos para redes y anuncios listos, con la estética de una marca de lujo.',['Vídeo con IA','Redes sociales','Anuncios'],'../media/luces.mp4'],
+['Escena 03','Una obra que se presupuesta sola','Haces una foto a una cocina antigua y grabas un audio de lo que quieres. En minutos recibes presupuesto, mediciones, materiales y calendario de obra.',['Visión artificial','Presupuestos','Planificación'],'../media/burj-a.mp4'],
+['Escena 04','Un gemelo digital de tu negocio','Antes de abrir un local nuevo, subir precios o contratar, lo pruebas en una copia virtual de tu empresa que predice el resultado.',['Analítica predictiva','Simulación','Decisiones'],'../media/shanghai.mp4'],
+['Escena 05','Tu voz hablando japonés','Grabas un vídeo en español. La IA lo convierte en japonés, chino o inglés, con tu propia voz y movimiento de labios. Tu marca, en todo el mundo.',['Doblaje con IA','Tu voz','Alcance global'],'../media/singapur.mp4'],
+['Escena 06','Un experto en el bolsillo de cada cliente','Tus clientes preguntan a cualquier hora por su expediente, su pedido o su contrato, y reciben una respuesta exacta basada en tus documentos.',['Asistente experto','Tus documentos','Privado'],'../media/nueva-york.mp4'],
+['Escena 07','Ventas que ves antes de que ocurran','La IA cruza tu historial, el tiempo y el calendario, y te avisa de qué vas a vender la semana que viene y cuánto stock necesitas.',['Predicción','Stock','Rentabilidad'],'../media/burj-b.mp4'],
+['Escena 08','Una app como esta, para ti','Esta misma experiencia, con tu marca, tus servicios y tus clientes. En tu móvil y en el de ellos.',['App propia','Tu marca','iPhone y Android'],'../media/burj-c.mp4'],
+['Epílogo','Lo que nunca imaginaste','Nosotros lo haremos por ti. Cuéntanos tu idea, por imposible que parezca.',[],'../media/burj-hero.mp4','final']];
+function words(t,d){return t.split(' ').map(function(w,i){return '<span style="animation-delay:'+(d+i*.12)+'s">'+w+'</span>'}).join(' ')}
+function scene(k){var f=FILM[k],w=document.createElement('section');w.className='win cine';
+ var last=f[5]==='final';
+ w.innerHTML='<div class="bg"><video muted loop playsinline autoplay src="'+f[4]+'"></video></div><div class="bars2"></div><button class="x" type="button">Salir</button>'+
+  '<div class="ct"><div class="ch">'+f[0]+'</div><h2>'+words(f[1],.6)+'</h2><p>'+f[2]+'</p>'+(f[3].length?'<div class="how">'+f[3].map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>':'')+
+  (last?'<textarea placeholder="Escribe aquí lo que imaginas para tu negocio..."></textarea>':'')+'</div>'+
+  '<div class="ft"><small>'+(k+1)+' / '+FILM.length+'</small><button class="nx" type="button">'+(last?'Enviar mi idea &rarr;':(k===0?'Empezar &rarr;':'Siguiente &rarr;'))+'</button></div>';
+ wins.appendChild(w);if(stack.length)stack[stack.length-1].classList.add('back');stack.push(w);
+ requestAnimationFrame(function(){requestAnimationFrame(function(){w.classList.add('in')})});auto=false;
+ w.querySelector('.x').onclick=function(){while(stack.length)closeTop()};
+ w.querySelector('.nx').onclick=function(){
+  if(last){var t=w.querySelector('textarea').value.trim();window.open(WA+encodeURIComponent('Hola Kalifai, esto es lo que imagino para mi negocio: '+(t||'quiero contaros una idea')),'_blank','noopener');return}
+  var prev=stack.pop();prev.classList.remove('in');prev.classList.add('out');setTimeout(function(){prev.remove()},700);scene(k+1)};
+}
+document.getElementById('imagina').onclick=function(){scene(0)};
+/* ================= CREA TU EMPLEADO IA (gratis) =================
+   Herramienta exclusiva Kalifai: en 60 segundos el negocio obtiene su propio "empleado IA" de demostración,
+   su ahorro anual, su Índice IA compartible y un programa gratis de 7 semanas por WhatsApp (suscripción). */
+var SEC={
+ 'Construcción y reformas':{tasks:['Presupuestos','Seguimiento de obra','Llamadas de clientes','Facturas'],q:[['¿Cuánto cuesta reformar un baño de 5 m²?','Para un baño de 5 m² la horquilla habitual es de {a} a {b} €. Si me envías dos fotos te preparo un presupuesto orientativo hoy mismo y te propongo visita técnica.'],['¿Cuándo podéis empezar?','Ahora mismo tenemos hueco a partir de la semana que viene. ¿Te reservo una visita el martes o el jueves por la mañana?']],ab:[3500,7000],aut:['Presupuesto desde foto y audio','Avisos automáticos de avance de obra','Cobros y facturas sin papeles']},
+ 'Inmobiliaria':{tasks:['Responder a interesados','Agendar visitas','Fichas de inmuebles','Seguimiento'],q:[['¿El piso de la calle Mayor sigue disponible?','Sí, sigue disponible. Tiene 3 dormitorios y terraza. ¿Te viene bien visitarlo mañana a las 18:00 o el sábado a las 11:00?'],['¿Admiten mascotas?','Sí, el propietario acepta mascotas pequeñas. Te envío ahora el dossier con fotos y gastos de comunidad.']],aut:['Cualificación de interesados 24 h','Agenda de visitas automática','Fichas y anuncios generados con IA']},
+ 'Despacho o asesoría':{tasks:['Consultas de clientes','Documentación','Plazos y avisos','Facturación'],q:[['¿Qué documentos necesito para la renta?','Necesitas tu DNI, el borrador de Hacienda, los certificados del banco y las facturas deducibles. Puedes enviármelos aquí y los dejo preparados para el asesor.'],['¿Cómo va mi expediente?','Tu expediente está en revisión y el próximo paso es la firma. Te aviso por aquí en cuanto esté listo.']],aut:['Recogida de documentos por WhatsApp','Avisos de plazos a clientes','Respuestas basadas en tus expedientes']},
+ 'Restaurante o cafetería':{tasks:['Reservas','Preguntas por teléfono','Reseñas','Pedidos'],q:[['¿Tenéis mesa para 4 esta noche?','Sí, tenemos mesa para 4 a las 21:00 o a las 22:15. ¿A qué nombre la reservo?'],['¿Tenéis opciones sin gluten?','Sí, tenemos varios platos sin gluten marcados en la carta. Te la envío ahora.']],aut:['Reservas 24 h en 8 idiomas','Respuesta a reseñas con tu estilo','Pedidos por WhatsApp']},
+ 'Clínica o salud':{tasks:['Citas','Recordatorios','Preguntas frecuentes','Seguimiento'],q:[['Quiero pedir cita para la semana que viene','Claro. Tengo hueco el lunes a las 10:30 o el miércoles a las 17:00. ¿Cuál prefieres?'],['¿Cuánto dura la primera consulta?','La primera consulta dura unos 45 minutos. Te enviaré un recordatorio el día anterior.']],aut:['Citas y recordatorios automáticos','Menos ausencias con confirmación','Preguntas frecuentes resueltas al instante']},
+ 'Tienda o comercio':{tasks:['Atención al cliente','Stock','Pedidos','Redes sociales'],q:[['¿Tenéis esta talla en negro?','Sí, nos quedan 2 unidades en negro en tu talla. ¿Te la reservo para recoger hoy o te la enviamos a casa?'],['¿Hacéis envíos?','Sí, enviamos en 24-48 h. El envío es gratis a partir de 50 €.']],aut:['Atención y ventas por WhatsApp','Alertas de stock inteligentes','Publicaciones para redes con IA']},
+ 'Turismo y alojamiento':{tasks:['Reservas','Preguntas de huéspedes','Check-in','Reseñas'],q:[['Do you have a room for this weekend?','Yes, we have a double room available Friday and Saturday. Shall I book it for you? I can also recommend dinner nearby.'],['¿A qué hora es el check-in?','El check-in es a partir de las 15:00. Te enviaré el código de acceso el mismo día.']],aut:['Atención a huéspedes en 8 idiomas','Check-in y avisos automáticos','Respuesta a reseñas']},
+ 'Otro sector':{tasks:['Atención al cliente','Tareas repetitivas','Documentos','Agenda'],q:[['¿Qué servicios ofrecéis?','Te cuento en un minuto lo que hacemos y te propongo el servicio que mejor encaja contigo. ¿Me dices qué necesitas?'],['¿Tenéis disponibilidad esta semana?','Sí, tengo hueco el jueves por la mañana. ¿Te lo reservo?']],aut:['Atención automática 24 h','Tareas repetitivas automatizadas','Documentos generados con IA']}};
+var P=null;try{P=JSON.parse(localStorage.getItem('kalifai_emp')||'null')}catch(x){}
+function saveP(){try{localStorage.setItem('kalifai_emp',JSON.stringify(P))}catch(x){}}
+var TIPS=['Responde a tus 3 preguntas más repetidas con un mensaje guardado: ahorras 20 minutos al día.','Pide a tu empleado IA que resuma tus correos de la mañana en 5 líneas.','Activa recordatorios automáticos de citas: las ausencias bajan hasta la mitad.','Convierte tus fotos de trabajos en publicaciones con un texto generado por IA.','Usa un formulario único para presupuestos: la IA lo ordena por urgencia.','Graba un audio con la tarea y deja que la IA lo convierta en lista de pasos.','Revisa cada viernes cuántas horas te ha ahorrado tu empleado IA.'];
+function mine(){var el=document.getElementById('mine');if(!P){el.classList.remove('on');return}
+ var d=Math.floor(Date.now()/864e5),tip=TIPS[d%TIPS.length];
+ el.innerHTML='<div><b>'+P.emp+'</b> · tu empleado IA<br>Idea de hoy: '+tip+'</div><button type="button" id="verEmp">Ver</button>';el.classList.add('on');
+ document.getElementById('verEmp').onclick=function(){result()}}
+function score(){var t=(P.tasks||[]).length,h=+P.hours;return Math.min(98,Math.round(38+t*9+Math.min(h,20)*1.4))}
+function wizard(){var sel={sector:P&&P.sector||'',tasks:P&&P.tasks||[]};
+ var body='<p class="lead">En 60 segundos creamos tu propio empleado de inteligencia artificial, calculamos cuánto te ahorra y te damos tu Índice IA. Gratis y sin registro.</p>'+
+ '<label class="fld"><span>Nombre de tu negocio</span><input id="eN" placeholder="Ej. Reformas Luz" value="'+(P?P.biz:'')+'"></label>'+
+ '<label class="fld"><span>Ciudad</span><input id="eC" placeholder="Ej. Córdoba" value="'+(P?P.city:'')+'"></label>'+
+ '<div class="fld"><span>Sector</span><div class="chips" id="eS">'+Object.keys(SEC).map(function(k){return '<button type="button" class="'+(sel.sector===k?'on':'')+'">'+k+'</button>'}).join('')+'</div></div>'+
+ '<div class="fld"><span>¿Qué te quita más tiempo?</span><div class="chips" id="eT"></div></div>'+
+ '<label class="fld"><span>Horas a la semana en tareas repetitivas: <b id="eHv" style="color:#F2AE3D">'+(P?P.hours:10)+'</b></span><input class="rng" id="eH" type="range" min="2" max="40" value="'+(P?P.hours:10)+'"></label>'+
+ '<button class="btn" type="button" id="eGo" style="background:#FBBA25;border-color:#FBBA25">Crear mi empleado IA <span>&rarr;</span></button><small id="eMsg" style="display:block;margin-top:12px;color:#F2AE3D"></small>';
+ var w=push({head:'<div class="lbl">Herramienta exclusiva Kalifai</div><h2>Crea tu empleado IA</h2>',body:body});
+ var eS=w.querySelector('#eS'),eT=w.querySelector('#eT');
+ function tasks(){var k=sel.sector||'Otro sector';eT.innerHTML=SEC[k].tasks.map(function(t){return '<button type="button" class="'+(sel.tasks.indexOf(t)>-1?'on':'')+'">'+t+'</button>'}).join('');
+  eT.querySelectorAll('button').forEach(function(b){b.onclick=function(){var i=sel.tasks.indexOf(b.textContent);if(i>-1)sel.tasks.splice(i,1);else sel.tasks.push(b.textContent);b.classList.toggle('on')}})}
+ tasks();
+ eS.querySelectorAll('button').forEach(function(b){b.onclick=function(){sel.sector=b.textContent;sel.tasks=[];eS.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});tasks()}});
+ var eH=w.querySelector('#eH');eH.oninput=function(){w.querySelector('#eHv').textContent=eH.value};
+ w.querySelector('#eGo').onclick=function(){var n=w.querySelector('#eN').value.trim(),c=w.querySelector('#eC').value.trim();
+  if(!n||!sel.sector){w.querySelector('#eMsg').textContent='Escribe el nombre de tu negocio y elige un sector.';return}
+  if(!sel.tasks.length)sel.tasks=SEC[sel.sector].tasks.slice(0,2);
+  var names=['Aura','Nova','Lía','Alma','Iris','Vega','Luma'];
+  P={biz:n,city:c||'tu ciudad',sector:sel.sector,tasks:sel.tasks,hours:+eH.value,emp:(P&&P.emp)||names[Math.floor(Math.random()*names.length)],date:Date.now()};saveP();mine();
+  closeTop();setTimeout(result,450)}}
+function result(){var sec=SEC[P.sector],hY=Math.round(P.hours*0.6*46),eur=hY*22,sc=score();
+ var q=sec.q.map(function(x){return [x[0],x[1].replace('{a}',(sec.ab||[0,0])[0].toLocaleString('es-ES')).replace('{b}',(sec.ab||[0,0])[1].toLocaleString('es-ES'))]});
+ var body='<p class="lead">Así trabajaría <b style="color:#F2AE3D">'+P.emp+'</b> en '+P.biz+'. Esto es una demostración: tu empleado real se entrena con tu información.</p>'+
+ '<div class="chat" id="cht"></div>'+
+ '<div class="tiles" style="margin-top:16px"><button class="tile" data-r="a"><span>01</span><b>Tu ahorro</b></button><button class="tile" data-r="i"><span>02</span><b>Tu Índice IA</b></button><button class="tile wide" data-r="s"><span>Gratis · 7 semanas</span><b>Activar mi programa IA &rarr;</b></button></div>'+
+ '<button class="btn o" type="button" data-r="e">Editar datos <span>&#9998;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+ var w=push({head:'<div class="lbl">'+P.biz+' · '+P.city+'</div><h2>Hola, soy '+P.emp+'</h2>',body:body});
+ w.querySelector('[data-close]').onclick=closeTop;
+ var ch=w.querySelector('#cht'),seq=[];q.forEach(function(x){seq.push(['u',x[0]]);seq.push(['a',x[1]])});
+ seq.forEach(function(m,i){setTimeout(function(){if(!w.isConnected)return;var d=document.createElement('div');d.className='m '+m[0];d.innerHTML=(m[0]==='a'?'<small>'+P.emp.toUpperCase()+' · IA DE '+P.biz.toUpperCase()+'</small>':'')+m[1];ch.appendChild(d);requestAnimationFrame(function(){d.classList.add('on')})},600+i*1300)});
+ w.querySelector('[data-r="a"]').onclick=function(){var b='<div class="big"><div><b>'+hY+' h</b><span>Horas recuperadas al año</span></div><div><b>'+eur.toLocaleString('es-ES')+' €</b><span>Valor de ese tiempo</span></div></div><p class="lead">Calculado con tus '+P.hours+' horas semanales en tareas repetitivas, automatizando el 60 % y valorando la hora a 22 €.</p><div class="list">'+sec.aut.map(function(x,j){return '<div><em>0'+(j+1)+'</em><section><b>'+x+'</b><p>Lo que '+P.emp+' haría por ti desde el primer mes.</p></section></div>'}).join('')+'</div><a class="btn" href="'+WA+encodeURIComponent('Hola Kalifai, soy '+P.biz+' ('+P.sector+', '+P.city+'). Mi ahorro estimado es de '+hY+' horas al año. Quiero mi empleado IA real.')+'" target="_blank" rel="noopener">Quiero mi empleado IA real <span>&rarr;</span></a><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+  var w2=push({head:'<div class="lbl">'+P.biz+'</div><h2>Tu ahorro</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop};
+ w.querySelector('[data-r="i"]').onclick=function(){var b='<canvas class="badge" id="bdg" width="1080" height="1350"></canvas><p class="lead">Tu Índice IA es de <b style="color:#F2AE3D">'+sc+'/100</b>: mide cuánto puede ganar tu negocio con inteligencia artificial. Compártelo y reta a otros negocios de '+P.city+'.</p><button class="btn" type="button" id="shr">Compartir mi Índice IA <span>&rarr;</span></button><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+  var w2=push({head:'<div class="lbl">Certificado Kalifai</div><h2>Tu Índice IA</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop;
+  var cv=w2.querySelector('#bdg');drawBadge(cv,sc);
+  w2.querySelector('#shr').onclick=function(){cv.toBlob(function(bl){var f=new File([bl],'indice-ia-kalifai.png',{type:'image/png'}),txt=P.biz+' tiene un Índice IA de '+sc+'/100. ¿Y tu negocio? Calcúlalo gratis en ai-agency-orbit.com/app';
+   if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:txt}).catch(function(){});else{var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='indice-ia-kalifai.png';a.click()}})}};
+ w.querySelector('[data-r="s"]').onclick=function(){var wk=['Tu asistente responde las 5 preguntas más repetidas','Recordatorios automáticos para clientes','Presupuestos o fichas generados con IA','Tus publicaciones de redes en 10 minutos','Resumen diario de correos y mensajes','Tu panel de horas ahorradas','Tu plan de IA a 12 meses'];
+  var b='<p class="lead">Cada lunes, durante 7 semanas, recibes en tu WhatsApp una automatización lista para tu sector ('+P.sector+'), con instrucciones paso a paso. Gratis y te das de baja cuando quieras.</p><div class="weeks">'+wk.map(function(x,j){return '<div><em>SEMANA '+(j+1)+'</em><span>'+x+'</span></div>'}).join('')+'</div><a class="btn" style="background:#FBBA25;border-color:#FBBA25" href="'+WA+encodeURIComponent('Hola Kalifai, quiero activar el programa IA gratis de 7 semanas. Negocio: '+P.biz+' · Sector: '+P.sector+' · Ciudad: '+P.city+' · Índice IA: '+sc+'/100')+'" target="_blank" rel="noopener">Activar gratis por WhatsApp <span>&rarr;</span></a><p style="color:#8a8a8a;font-size:14px;margin-top:14px">Al activarlo nos envías tus datos por WhatsApp para recibir el programa. Solo los usamos para eso.</p><button class="btn o" type="button" data-close>Volver <span>&larr;</span></button>';
+  var w2=push({head:'<div class="lbl">Gratis · 7 semanas</div><h2>Programa IA para '+P.biz+'</h2>',body:b});w2.querySelector('[data-close]').onclick=closeTop};
+ w.querySelector('[data-r="e"]').onclick=function(){closeTop();setTimeout(wizard,450)}}
+function drawBadge(cv,sc){var x=cv.getContext('2d'),W=cv.width,H=cv.height;x.fillStyle='#000';x.fillRect(0,0,W,H);
+ x.strokeStyle='rgba(255,255,255,.08)';for(var i=1;i<4;i++){x.beginPath();x.moveTo(W*i/4,0);x.lineTo(W*i/4,H);x.stroke()}
+ x.strokeStyle='#F2AE3D';x.lineWidth=3;x.strokeRect(40,40,W-80,H-80);
+ x.fillStyle='#F2AE3D';x.font='500 30px Menlo,monospace';x.textAlign='center';x.fillText('KALIFAI · ÍNDICE IA 2026',W/2,150);
+ x.lineWidth=26;x.strokeStyle='#1d1d1d';x.beginPath();x.arc(W/2,560,260,0,Math.PI*2);x.stroke();
+ x.strokeStyle='#F2AE3D';x.beginPath();x.arc(W/2,560,260,-Math.PI/2,-Math.PI/2+Math.PI*2*sc/100);x.stroke();
+ x.fillStyle='#fff';x.font='700 220px Helvetica Neue,Helvetica,Arial';x.fillText(sc,W/2,630);x.font='500 34px Menlo,monospace';x.fillStyle='#9b9b9b';x.fillText('/ 100',W/2,700);
+ x.fillStyle='#fff';x.font='700 64px Helvetica Neue,Helvetica,Arial';x.fillText(P.biz.toUpperCase().slice(0,24),W/2,960);
+ x.fillStyle='#bdbdbd';x.font='500 32px Menlo,monospace';x.fillText((P.sector+' · '+P.city).toUpperCase().slice(0,44),W/2,1020);
+ x.fillStyle='#F2AE3D';x.font='500 30px Menlo,monospace';x.fillText('Empleado IA: '+P.emp.toUpperCase(),W/2,1090);
+ x.fillStyle='#8a8a8a';x.font='500 28px Menlo,monospace';x.fillText('Calcula el tuyo gratis: ai-agency-orbit.com/app',W/2,1240)}
+document.getElementById('crearEmp').onclick=function(){if(P)result();else wizard()};
+mine();
 if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 })();
 </script>
