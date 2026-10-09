@@ -1,4 +1,4 @@
-const C='kalifai-v11', M='kalifai-mapas-v1';
+const C='kalifai-v13', M='kalifai-mapas-v1';
 const CORE=['./','index.html','herramientas.html','zona.html','mapa.html','qrcode.js','kalifai-sonido.mp3','manifest.webmanifest','icon-192.png','icon-512.png','lib/maplibre-gl.js','lib/maplibre-gl.css'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(CORE)).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C&&x!==M).map(x=>caches.delete(x)))));self.clients.claim()});
