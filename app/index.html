@@ -477,13 +477,15 @@ document.getElementById('uX').onclick=function(){uni.classList.remove('on');uRun
 document.getElementById('wins').style.zIndex=65;
 
 /* ================= MÚSICA MIENTRAS NAVEGAS ================= */
-var bgm=new Audio(),bOn=false,bHas=false,sb3=document.getElementById('snd3');bgm.loop=true;bgm.volume=0;
-try{bOn=localStorage.getItem('kalifai_app_musica')!=='off'}catch(x){bOn=true}
-fetch('../hero/musica.mp3',{method:'HEAD'}).then(function(r){if(r.ok){bHas=true;bgm.src='../hero/musica.mp3';sb3.classList.add('has');sb3.classList.toggle('off',!bOn)}}).catch(function(){});
-function bFade(to){var t=setInterval(function(){var v=bgm.volume+(to>bgm.volume?.03:-.05);if(Math.abs(v-to)<.05){v=to;clearInterval(t);if(!to)bgm.pause()}bgm.volume=Math.max(0,Math.min(1,v))},90)}
-function bStart(){if(!bHas||!bOn)return;bgm.play().then(function(){bFade(.35)}).catch(function(){})}
-['pointerdown','touchstart','keydown'].forEach(function(ev){addEventListener(ev,function h(){removeEventListener(ev,h,true);if(bgm.paused)bStart()},true)});
-sb3.onclick=function(e){e.stopPropagation();bOn=!bOn;try{localStorage.setItem('kalifai_app_musica',bOn?'on':'off')}catch(x){}sb3.classList.toggle('off',!bOn);if(bOn)bStart();else bFade(0)};
+var bgm=new Audio(),bOn=true,bHas=true,sb3=document.getElementById('snd3'),KEY='kalifai_musica';bgm.loop=true;bgm.volume=0;bgm.preload='auto';
+try{bOn=localStorage.getItem(KEY)!=='off'}catch(x){}
+bgm.src='../hero/musica.mp3';sb3.classList.add('has');sb3.classList.toggle('off',!bOn);bgm.onerror=function(){bHas=false;sb3.classList.remove('has')};
+var bT;function bFade(to){clearInterval(bT);bT=setInterval(function(){var v=bgm.volume+(to>bgm.volume?.03:-.05);if(Math.abs(v-to)<.05){v=to;clearInterval(bT);if(!to)bgm.pause()}bgm.volume=Math.max(0,Math.min(1,v))},90)}
+function bStart(){if(!bHas||!bOn)return;try{var t=+localStorage.getItem(KEY+'_t');if(t&&!bgm.currentTime)bgm.currentTime=t}catch(x){}bgm.play().then(function(){bFade(.35)}).catch(function(){})}
+var bEV=['pointerdown','touchend','click','keydown'];function bG(e){if(e.target&&e.target.closest&&e.target.closest('#snd3'))return;bEV.forEach(function(ev){removeEventListener(ev,bG,true)});if(bgm.paused)bStart()}
+bEV.forEach(function(ev){addEventListener(ev,bG,true)});
+sb3.onclick=function(e){e.stopPropagation();bEV.forEach(function(ev){removeEventListener(ev,bG,true)});bOn=!bOn;try{bOn?localStorage.removeItem(KEY):localStorage.setItem(KEY,'off')}catch(x){}sb3.classList.toggle('off',!bOn);if(bOn)bStart();else bFade(0)};
+setInterval(function(){if(!bgm.paused)try{localStorage.setItem(KEY+'_t',bgm.currentTime.toFixed(1))}catch(x){}},2000);
 document.addEventListener('visibilitychange',function(){if(document.hidden)bgm.pause();else if(bOn&&bHas&&bgm.currentTime>0)bgm.play().catch(function(){})});
 /* ================= PLANES Y PRECIOS (sistema escalado) ================= */
 var PLANS=[

@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://ai-agency-orbit.com/">
 <link rel="icon" href="kalifai-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://ai-agency-orbit.com/#kalifai","name":"Kalifai","url":"https://ai-agency-orbit.com/",
 "description":"Agencia de inteligencia artificial: automatización con IA, chatbots y asistentes de WhatsApp, páginas web con IA, analítica predictiva, visión por computadora, procesamiento de datos e IA personalizada.",
@@ -32,7 +32,9 @@
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"IA personalizada"}}]}}
 </script>
 <style>
-:root{--gold:#FFCB45;--amber:#FFD54F;--ink:#fff;--muted:#9b9b9b;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:'Helvetica Neue',Helvetica,'Inter Tight',Arial,sans-serif}
+:root{--gold:#FFCB45;--amber:#FFD54F;--ink:#fff;--muted:#9b9b9b;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--sans:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;--metal:linear-gradient(100deg,#8e8e8e 0%,#d9d9d9 22%,#ffffff 42%,#bdbdbd 62%,#f4f4f4 82%,#9a9a9a 100%);--silver:linear-gradient(100deg,#b9b9b9 0%,#f2f2f2 30%,#f7f7f7 55%,#cfcfcf 80%,#a9a9a9 100%)}
+.mt{background:var(--metal);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sh 9s ease-in-out infinite alternate}
+@keyframes sh{from{background-position:0% 0}to{background-position:100% 0}}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:#000;color:#fff;font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
@@ -46,7 +48,7 @@ a{color:inherit;text-decoration:none}
 .hdr{position:fixed;inset:0 0 auto 0;z-index:60;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .hdr .wrap{display:flex;align-items:center;gap:22px;height:84px}
 .brand{display:flex;align-items:center;gap:14px}
-.brand svg{width:42px;height:42px}
+.brand svg{width:42px;height:42px;flex:none}
 .brand b{font:700 22px/1 var(--sans);letter-spacing:.3em}
 .nav{display:flex;gap:clamp(18px,2.6vw,44px);margin-left:clamp(20px,5vw,80px)}
 .nav a{font:500 12px var(--mono);letter-spacing:.32em;text-transform:uppercase;color:#cfcfcf;transition:color .2s}.nav a:hover{color:#fff}
@@ -59,16 +61,23 @@ a{color:inherit;text-decoration:none}
 .lang li button:hover,.lang li button[aria-current="true"]{color:var(--gold)}.lang li button span{color:#666}
 .cta{display:inline-flex;align-items:center;gap:18px;height:58px;padding:0 28px;background:#fff;color:#000;font:700 13px var(--mono);letter-spacing:.3em;text-transform:uppercase;transition:background .2s}
 .cta:hover{background:var(--gold)}
-.burger{display:none;background:none;border:1px solid var(--line2);color:#fff;height:48px;width:48px;cursor:pointer;font:500 18px var(--mono)}
+.burger{display:none;flex:none;background:none;border:0;height:48px;width:52px;cursor:pointer;padding:0;position:relative}.burger i{position:absolute;left:6px;right:6px;height:1.5px;background:#fff;transition:transform .3s}.burger i:first-child{top:18px}.burger i:last-child{top:29px}
+.burger.x i:first-child{transform:translateY(5.5px) rotate(45deg)}.burger.x i:last-child{transform:translateY(-5.5px) rotate(-45deg)}
+.hs{flex:none;height:48px;width:56px;display:grid;place-items:center;background:transparent;border:1px solid var(--gold);cursor:pointer;padding:0}.hs .eq{height:18px}.hs .eq i{width:3px}
+.eq i:nth-child(1){height:6px}.eq i:nth-child(2){height:10px}.eq i:nth-child(3){height:14px}.eq i:nth-child(4){height:8px}
+.hs:not(.on) .eq i{height:3px!important;animation:none!important;opacity:.6}
+.hs.on .eq i{animation:eq .9s infinite ease-in-out}.hs.on .eq i:nth-child(2){animation-delay:.2s}.hs.on .eq i:nth-child(3){animation-delay:.4s}.hs.on .eq i:nth-child(4){animation-delay:.6s}
 /* Botones */
-.btn{display:inline-flex;align-items:center;gap:18px;height:68px;padding:0 38px;font:700 14px var(--mono);letter-spacing:.3em;text-transform:uppercase;border:1px solid #fff;transition:background .25s,color .25s}
-.btn.w{background:#fff;color:#000}.btn.w:hover{background:transparent;color:#fff}
+.btn{display:inline-flex;align-items:center;gap:18px;height:68px;padding:0 38px;font:700 14px var(--sans);letter-spacing:.3em;text-transform:uppercase;border:1px solid #fff;transition:background .25s,color .25s}
+.btn.w{background:var(--silver);background-size:220% 100%;color:#000;border:0;animation:sh 6s ease-in-out infinite alternate}.btn.w:hover{filter:brightness(1.08)}
 .btn.o{color:#fff;background:transparent;border-color:rgba(255,255,255,.4)}.btn.o:hover{background:#fff;color:#000}
-.btn.g{background:var(--amber);border-color:var(--amber);color:#000}.btn.g:hover{background:#fff;border-color:#fff}
+.btn.g{background:var(--amber);border-color:var(--amber);color:#000;justify-content:center}.btn.g:hover{background:#fff;border-color:#fff}
 /* Etiquetas */
 .lbl{display:flex;align-items:center;gap:22px;font:500 13px var(--mono);letter-spacing:.38em;text-transform:uppercase;color:#bdbdbd;margin:0 0 26px}
 .lbl::before{content:"";width:54px;height:1px;background:var(--gold)}
-.H{margin:0;font:700 clamp(40px,5.6vw,88px)/.98 var(--sans);text-transform:uppercase;letter-spacing:-.01em}
+.H{margin:0;font:700 clamp(40px,5.6vw,88px)/.98 var(--sans);text-transform:uppercase;letter-spacing:-.035em}
+.H,.hero h1,.hero h2,.card h3,.feat h3,.list h3,.step h3,.media .cap b,.plan h3,.plan .pz b,.crow b,.need h3,.win h3{background:var(--metal);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sh 9s ease-in-out infinite alternate}
+.lead,.hero p,.card p,.step p,.list p,.feat p,.note,.plan li,.win p{background:linear-gradient(100deg,#8a8a8a,#c9c9c9 45%,#9d9d9d);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .lead{color:#a9a9a9;font-size:clamp(17px,1.35vw,21px);max-width:62ch;margin:26px 0 0}
 section{position:relative;z-index:2}
 /* Vídeo/imagen de fondo en movimiento */
@@ -81,12 +90,12 @@ section{position:relative;z-index:2}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.15) 100%),linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,0) 30%,rgba(0,0,0,.85));z-index:1}
 .hero .hin{position:relative;z-index:2;width:100%}
 .place{font:500 13px var(--mono);letter-spacing:.38em;color:var(--gold);text-transform:uppercase}
-.kick{font:500 13px var(--mono);letter-spacing:.38em;color:#bdbdbd;text-transform:uppercase;margin:30px 0 0}
-.hero h1{margin:6px 0 0;font:700 clamp(78px,15.5vw,250px)/.86 var(--sans);letter-spacing:-.03em}
-.hero h2{margin:22px 0 0;font:400 clamp(22px,3.2vw,48px)/1.1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#e6e6e6}
+.kick{font:500 13px/1.9 var(--mono);letter-spacing:.42em;color:#9b9b9b;text-transform:uppercase;margin:0}
+.hero h1{margin:18px 0 0;font:700 clamp(84px,15.5vw,250px)/.9 var(--sans);letter-spacing:-.045em}
+.hero h2{margin:34px 0 0;font:700 clamp(25px,3.2vw,48px)/1.45 var(--sans);letter-spacing:.12em;text-transform:uppercase}
 .hero p{color:#bdbdbd;font-size:clamp(17px,1.45vw,22px);max-width:56ch;margin:30px 0 0}
 .row{display:flex;gap:22px;flex-wrap:wrap;margin-top:42px}
-.snd{width:max-content;margin-top:60px;display:inline-flex;align-items:center;gap:16px;height:56px;padding:0 22px;background:transparent;border:1px solid var(--gold);color:#e9e9e9;font:500 12px var(--mono);letter-spacing:.34em;text-transform:uppercase;cursor:pointer}
+.snd{width:max-content;margin-top:110px;display:inline-flex;align-items:center;gap:20px;height:62px;padding:0 26px;background:transparent;border:1px solid var(--gold);color:var(--gold);font:500 13px var(--mono);letter-spacing:.42em;text-transform:uppercase;cursor:pointer}.snd:not(.on){opacity:.75}
 .eq{display:inline-flex;gap:3px;align-items:flex-end;height:16px}.eq i{width:3px;height:5px;background:var(--gold)}
 .snd.on .eq i{animation:eq .9s infinite ease-in-out}.snd.on .eq i:nth-child(2){animation-delay:.2s}.snd.on .eq i:nth-child(3){animation-delay:.4s}.snd.on .eq i:nth-child(4){animation-delay:.6s}
 @keyframes eq{0%,100%{height:4px}50%{height:16px}}
@@ -103,12 +112,24 @@ section{position:relative;z-index:2}
 .card{position:relative;min-height:600px;padding:clamp(28px,3vw,46px);border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);overflow:hidden;display:flex;flex-direction:column;isolation:isolate}
 .card:nth-child(4n){border-right:0}.card:nth-child(n+5){border-bottom:0}
 .card .vid{z-index:-2}
-.card .vid video{filter:brightness(.62) contrast(1.08) saturate(1.05);object-fit:cover;transition:filter .6s,transform 1.2s;animation:none;transform:scale(1.04)}
-.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.2) 45%,rgba(0,0,0,.8) 100%);transition:opacity .6s}
+.card .vid video{filter:brightness(.3) contrast(1.1) saturate(.7) sepia(.35);object-fit:cover;transition:filter .6s,transform 1.2s;animation:none;transform:scale(1.04)}
+.card::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 45%,rgba(255,203,69,.06),rgba(0,0,0,0) 60%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.85) 100%);transition:opacity .6s}
+.card{cursor:pointer;background:#050505}.card .ring{position:absolute;left:50%;top:50%;width:min(62%,280px);aspect-ratio:1;border:1.5px solid rgba(255,203,69,.32);border-radius:50%;transform:translate(-50%,-50%) scale(.62);z-index:-1;transition:transform .7s cubic-bezier(.2,.8,.2,1),border-color .7s;pointer-events:none}
+.card .ring.r2{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+.card:hover .ring,.card.act .ring{transform:translate(-50%,-50%) scale(1.05);border-color:rgba(255,203,69,.75)}.card:hover .ring.r2,.card.act .ring.r2{opacity:1;transform:translate(-50%,-50%) scale(.72);border-color:rgba(255,203,69,.55)}
+.card .open{display:flex;align-items:center;gap:20px;margin-top:34px;font:500 13px var(--mono);letter-spacing:.38em;color:var(--gold);text-transform:uppercase;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.card:hover .open,.card.act .open{opacity:1;transform:none}
+.hint{margin:46px 0 0;font:500 13px var(--mono);letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
+#win{position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.84);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px)}#win.open{display:flex}
+.win{position:relative;width:100%;max-width:620px;max-height:calc(100svh - 32px);overflow:auto;background:#191919;border:1px solid rgba(255,203,69,.4);animation:wi .5s cubic-bezier(.2,.8,.2,1)}@keyframes wi{from{opacity:0;transform:scale(.96)}}
+.win .wv{position:relative;height:clamp(240px,34vh,340px);overflow:hidden;background:#000}.win .wv video{width:100%;height:100%;object-fit:cover;filter:brightness(.42) sepia(.55) saturate(1.3) contrast(1.1)}.win .wv::before{content:"";position:absolute;left:50%;top:50%;width:min(58%,240px);aspect-ratio:1;border:2px solid rgba(255,203,69,.7);border-radius:50%;transform:translate(-50%,-50%);z-index:2}.win .wv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,#191919)}
+.win .wv span{position:absolute;left:clamp(24px,5vw,50px);bottom:22px;z-index:3;font:500 15px var(--mono);letter-spacing:.3em;color:var(--gold)}
+.win .wb{padding:clamp(28px,5vw,50px);padding-top:30px}.win .x{position:absolute;right:clamp(16px,4vw,32px);top:calc(clamp(240px,34vh,340px) + 20px);width:56px;height:56px;background:transparent;border:1px solid var(--line2);color:#fff;font:300 26px var(--sans);cursor:pointer;z-index:3}
+.win small{display:block;font:500 13px var(--mono);letter-spacing:.42em;color:var(--gold);text-transform:uppercase;padding-right:70px}.win h3{margin:24px 0 26px;font:700 clamp(30px,4vw,40px)/1.05 var(--sans);text-transform:uppercase;letter-spacing:-.025em}.win p{margin:0;font-size:clamp(18px,1.6vw,21px);line-height:1.6;padding-bottom:40px;border-bottom:1px solid var(--line2)}
+.win em{display:block;font:500 13px var(--mono);font-style:normal;letter-spacing:.42em;color:#9b9b9b;text-transform:uppercase;margin-top:40px}.win b.pz{display:block;margin:22px 0 40px;font:700 clamp(32px,4.4vw,44px)/1 var(--sans);color:var(--amber);text-transform:uppercase;letter-spacing:-.02em}.win .btn{width:100%;height:76px;justify-content:center;gap:clamp(14px,4vw,40px);letter-spacing:clamp(.18em,1vw,.3em);padding:0 18px;white-space:nowrap}
 .card:hover .vid video{filter:brightness(.82) contrast(1.12) saturate(1.15);transform:scale(1.1)}
 .card:hover::after{opacity:.75}
 .card .n{font:500 14px var(--mono);letter-spacing:.3em;color:var(--gold)}
-.card h3{margin:64px 0 26px;font:700 clamp(24px,2vw,32px)/1.12 var(--sans);text-transform:uppercase}
+.card h3{margin:64px 0 26px;font:700 clamp(22px,1.75vw,32px)/1.12 var(--sans);text-transform:uppercase;letter-spacing:-.02em;hyphens:auto}
 .card p{margin:0;color:#c8c8c8;font-size:18px;line-height:1.6}
 .card .pr{margin-top:auto;padding-top:60px;font:500 14px var(--mono);letter-spacing:.32em;text-transform:uppercase;color:#e6e6e6}
 .card.help{background:#171717}.card.help .vid,.card.help::after{display:none}
@@ -158,10 +179,21 @@ section{position:relative;z-index:2}
 #appdlg .box{max-width:520px;width:100%;background:#070707;border:1px solid var(--line2);padding:40px}
 #appdlg h3{margin:0 0 24px;font:700 26px var(--sans);text-transform:uppercase}#appdlg ol{margin:0 0 20px;padding-left:22px;color:#cfcfcf;font-size:17px;line-height:1.8}#appdlg p{font:500 12px var(--mono);letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin:26px 0 10px}
 @media (max-width:900px){.appwrap{grid-template-columns:1fr}.qrbox{display:none}.appfeat{grid-template-columns:1fr}}
+/* Planes */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line2);margin-top:70px}
+.plan{position:relative;padding:clamp(34px,4vw,58px) clamp(26px,3.6vw,56px);border-right:1px solid var(--line2);display:flex;flex-direction:column;background:#030303}.plan:last-child{border-right:0}
+.plan.hot{background:#141414}.plan .tag{position:absolute;right:0;top:0;padding:10px 18px;background:linear-gradient(90deg,#FFC21A,#D9A01C);color:#000;font:500 13px var(--mono);letter-spacing:.32em;text-transform:uppercase}
+.plan h3{margin:28px 0 0;font:700 clamp(30px,2.6vw,38px)/1 var(--sans);text-transform:uppercase;letter-spacing:-.025em}.plan small{display:block;margin-top:26px;font:500 13px var(--mono);letter-spacing:.38em;color:#a9a9a9;text-transform:uppercase}
+.plan .pz{display:flex;align-items:baseline;gap:18px;margin:56px 0 0;padding-bottom:50px;border-bottom:1px solid var(--line2)}.plan .pz b{font:700 clamp(64px,6vw,88px)/1 var(--sans);letter-spacing:-.04em}.plan.hot .pz b{background:none;color:var(--amber);-webkit-text-fill-color:var(--amber);animation:none}.plan .pz span{font:500 14px var(--mono);letter-spacing:.3em;color:#9b9b9b;text-transform:uppercase}
+.plan ul{list-style:none;margin:40px 0 50px;padding:0;flex:1}.plan li{position:relative;padding-left:62px;margin-bottom:24px;font-size:clamp(18px,1.5vw,21px);line-height:1.5}.plan li::before{content:"";position:absolute;left:0;top:.75em;width:34px;height:2px;background:var(--gold)}
+.plan .btn{width:100%;height:76px;justify-content:center}
+.pnote{margin:60px 0 0;font-size:clamp(17px,1.4vw,20px);color:#9b9b9b;max-width:70ch}.psec{margin:24px 0 0;font:500 13px/2 var(--mono);letter-spacing:.38em;color:#7d7d7d;text-transform:uppercase}
+.need{margin-top:80px;padding-top:80px;border-top:1px solid var(--line2)}.need h3{margin:0 0 44px;font:700 clamp(28px,3vw,44px)/1.25 var(--sans);text-transform:uppercase;letter-spacing:-.025em}
+@media (max-width:1100px){.plans{grid-template-columns:1fr}.plan{border-right:0;border-bottom:1px solid var(--line2)}.plan:last-child{border-bottom:0}}
 /* Contacto */
 .crow{display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--line2)}
 .crow span{font:500 13px var(--mono);letter-spacing:.38em;color:#9b9b9b;text-transform:uppercase}
-.crow b{font:700 clamp(18px,1.6vw,24px) var(--sans)}
+.crow b{font:700 clamp(20px,1.9vw,26px) var(--sans);letter-spacing:-.01em}
 .langs{margin-top:40px;font:500 13px/2.2 var(--mono);letter-spacing:.34em;color:#8a8a8a;text-transform:uppercase}
 .form{border:1px solid var(--line2);padding:clamp(28px,3.6vw,56px);background:rgba(0,0,0,.6)}
 .form .g2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
@@ -197,10 +229,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
 @media (prefers-reduced-motion:reduce){.vid video{animation:none}#intro *{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}.rv{opacity:1;transform:none}.tape .tr{animation:none}}
 /* Móvil */
 @media (max-width:1100px){.cards{grid-template-columns:1fr 1fr}.card:nth-child(4n){border-right:1px solid var(--line2)}.card:nth-child(2n){border-right:0}.card:nth-child(n+5){border-bottom:1px solid var(--line2)}.card:nth-child(n+7){border-bottom:0}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line2)}}
-@media (max-width:900px){.nav,.hdr .cta{display:none}.burger{display:block}.hdr .wrap{height:70px}.brand b{font-size:17px}.brand svg{width:34px;height:34px}
- .nav.open{display:flex;position:fixed;top:70px;left:0;right:0;flex-direction:column;gap:0;margin:0;background:#000;border-bottom:1px solid var(--line2)}.nav.open a{padding:22px clamp(16px,2.4vw,34px);border-top:1px solid var(--line);font-size:13px}
- .two,.fg{grid-template-columns:1fr}.media{min-height:520px}.sticky{position:relative;top:0}.form .g2{grid-template-columns:1fr;gap:0}.grid-bg div{grid-template-columns:repeat(2,1fr)}.btn{height:60px;padding:0 24px;font-size:12px}}
-@media (max-width:600px){.cards,.steps,.feats{grid-template-columns:1fr}.card{min-height:440px;border-right:0!important;border-bottom:1px solid var(--line2)!important}.step{border-right:0!important;border-bottom:1px solid var(--line2)}.feat{border-left:0;border-bottom:1px solid var(--line2);padding:34px 0}.crow{flex-direction:column;gap:8px}.lang ul{width:220px}.tape span{gap:40px;padding-left:40px;font-size:12px}}
+@media (max-width:900px){.nav,.hdr .cta{display:none}.burger{display:block}.hdr .wrap{height:84px;gap:clamp(8px,2.6vw,22px)}.brand{min-width:0;gap:clamp(10px,4vw,26px)}.brand b{font-size:clamp(16px,4.8vw,22px);letter-spacing:.36em}.brand svg{width:30px;height:30px}.lang>button{height:48px;min-width:0;width:clamp(64px,16vw,88px);padding:0}.hs{width:clamp(44px,11vw,56px)}.burger{width:44px}.burger i{left:4px;right:4px}
+ .nav.open{display:flex;position:fixed;top:84px;left:0;right:0;flex-direction:column;gap:0;margin:0;background:#000;border-bottom:1px solid var(--line2)}.nav.open a{padding:22px clamp(16px,2.4vw,34px);border-top:1px solid var(--line);font-size:13px}
+ .two,.fg{grid-template-columns:1fr}.media{min-height:520px}.sticky{position:relative;top:0}.form .g2{grid-template-columns:1fr;gap:0}.grid-bg div{grid-template-columns:repeat(2,1fr)}.btn{height:64px;padding:0 36px;font-size:13px}.hero .row{flex-direction:column;align-items:flex-start;gap:22px}.hero .btn.w{min-width:min(100%,280px)}}
+@media (max-width:600px){.cards,.steps,.feats{grid-template-columns:1fr}.card{min-height:440px;border-right:0!important;border-bottom:1px solid var(--line2)!important}.step{border-right:0!important;border-bottom:1px solid var(--line2)}.feat{border-left:0;border-bottom:1px solid var(--line2);padding:34px 0}.crow{flex-wrap:wrap;gap:8px 16px}.crow b{margin-left:auto}.lang ul{width:220px}.tape span{gap:40px;padding-left:40px;font-size:12px}}
 [hidden]{display:none!important}
 .goog-te-banner-frame,.skiptranslate>iframe,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}body{top:0!important}
 </style>
@@ -219,8 +251,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
 
 <header class="hdr"><div class="wrap">
   <a class="brand notranslate" href="#inicio" aria-label="Kalifai, inicio"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="gL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset="1" stop-color="#FFB83D"/></linearGradient></defs><circle cx="50" cy="50" r="46" fill="#0b0b0b" stroke="#2a2a2a" stroke-width="2"/><path d="M38 26 V74 M38 52 L62 28 M45 46 L64 72" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(-28 50 50)" fill="none" stroke="url(#gL)" stroke-width="4"/><circle cx="83" cy="33" r="6" fill="url(#gL)"/></svg><b>KALIFAI</b></a>
-  <nav class="nav" id="nav"><a href="#servicios">Servicios</a><a href="#para-quien">Para quién</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a></nav>
+  <nav class="nav" id="nav"><a href="#servicios">Servicios</a><a href="#para-quien">Para quién</a><a href="#proceso">Proceso</a><a href="#planes">Planes</a><a href="#contacto">Contacto</a></nav>
   <span class="sp"></span>
+  <button class="hs" id="hsnd" type="button" aria-label="Música" aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span></button>
   <div class="lang notranslate" id="lang"><button type="button" id="langBtn" aria-haspopup="true" aria-expanded="false"><span id="langCur">ES</span> &#9662;</button>
     <ul role="menu">
       <li><button data-l="es">Español <span>ES</span></button></li><li><button data-l="en">English <span>EN</span></button></li>
@@ -229,20 +262,19 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
       <li><button data-l="ja">日本語 <span>JA</span></button></li><li><button data-l="zh-CN">中文 <span>ZH</span></button></li>
     </ul></div>
   <a class="cta" href="#contacto">Hablemos <span>&rarr;</span></a>
-  <button class="burger" id="burger" type="button" aria-label="Menú">&#9776;</button>
+  <button class="burger" id="burger" type="button" aria-label="Menú"><i></i><i></i></button>
 </div></header>
 
 <main>
 <section class="hero" id="inicio">
   <div class="vid hv" id="hv"><video data-h data-l="Tu mente lo imagina · Nosotros lo hacemos real" class="on" autoplay muted loop playsinline preload="auto" src="media/burj-hero.mp4"></video><video data-h data-l="Shanghái · Shanghai Tower" muted loop playsinline preload="none" data-src="media/shanghai.mp4"></video><video data-h data-l="Tu mente lo imagina · Nosotros lo hacemos real" muted loop playsinline preload="none" data-src="media/burj-a.mp4"></video><video data-h data-l="Singapur · Marina Bay" muted loop playsinline preload="none" data-src="media/singapur.mp4"></video><video data-h data-l="Dubái · Downtown" muted loop playsinline preload="none" data-src="media/luces.mp4"></video><video data-h data-l="Nueva York · One World" muted loop playsinline preload="none" data-src="media/nueva-york.mp4"></video><video data-h data-l="Tu mente lo imagina · Nosotros lo hacemos real" muted loop playsinline preload="none" data-src="media/burj-b.mp4"></video><video data-h data-l="Dubái · Ciudad que no duerme" muted loop playsinline preload="none" data-src="media/dubai-noche.mp4"></video></div>
   <div class="hin wrap">
-    <div class="place rv" id="place" style="transition:opacity .5s">Tu mente lo imagina · Nosotros lo hacemos real</div>
     <div class="kick rv">Agencia de inteligencia artificial · Córdoba, España</div>
     <h1 class="rv notranslate">KALIFAI</h1>
     <h2 class="rv">Inteligencia artificial a medida</h2>
     <p class="rv">Diseñamos webs, asistentes y automatizaciones para pymes y despachos de toda España y del mundo. Trabajan mientras tú no estás, en 8 idiomas.</p>
     <div class="row rv"><a class="btn w" href="#servicios">Ver servicios <span>&rarr;</span></a><a class="btn o" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener">WhatsApp <span>&rarr;</span></a></div>
-    <button class="snd rv" id="snd" type="button" aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Activar sonido</span></button>
+    <button class="snd rv" id="snd" type="button" aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndT">Sonido activado</span></button>
   </div>
 </section>
 
@@ -252,6 +284,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
   <p class="lbl rv">Servicios</p>
   <h2 class="H rv">Módulos de inteligencia listos para tu negocio</h2>
   <p class="lead rv">Empezamos por lo que más tiempo te quita. Precios cerrados, sin cuotas ocultas, y el código siempre en tus manos.</p>
+  <p class="hint rv">Pulsa una ventana para abrirla</p>
   <div class="cards" id="cards"></div>
 </div></section>
 
@@ -315,6 +348,16 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
   <button class="btn w" type="button" id="appClose" style="margin-top:14px">Entendido</button>
 </div></div>
 
+<section class="sec" id="planes" style="padding-top:0"><div class="wrap">
+  <p class="lbl rv">Planes</p>
+  <h2 class="H rv">Suscripciones que crecen contigo</h2>
+  <p class="lead rv">Elige un nivel y empieza este mes. Sin permanencia y con el código siempre en tus manos.</p>
+  <div class="plans"><div class="plan hot rv"><span class="tag">Más elegido</span><h3>Órbita</h3><small>Para negocios que ya venden</small><div class="pz"><b>79 €</b><span>/mes</span></div><ul><li>3 proyectos al mes: webs, apps o juegos</li><li>Automatizaciones y flujos sin límite</li><li>8 publicaciones al mes para redes</li><li>Analítica predictiva mensual</li><li>Soporte prioritario en 24 h</li></ul><a class="btn w" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20quiero%20suscribirme%20al%20plan%20%C3%93rbita%20%2879%20%E2%82%AC/mes%29" target="_blank" rel="noopener" data-plan="Órbita">Suscribirme</a></div><div class="plan rv"><h3>Constelación</h3><small>Apps, juegos y campañas</small><div class="pz"><b>199 €</b><span>/mes</span></div><ul><li>8 proyectos al mes, con juegos 2D y 3D</li><li>Marketing multi-idioma en 7 redes</li><li>Visión por computadora y datos</li><li>Un interlocutor dedicado</li><li>Formación mensual para tu equipo</li></ul><a class="btn w" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20quiero%20suscribirme%20al%20plan%20Constelaci%C3%B3n%20%28199%20%E2%82%AC/mes%29" target="_blank" rel="noopener" data-plan="Constelación">Suscribirme</a></div><div class="plan rv"><h3>Singularidad</h3><small>Tu socio técnico completo</small><div class="pz"><b>499 €</b><span>/mes</span></div><ul><li>Proyectos ilimitados en cola prioritaria</li><li>IA personalizada y modelos a medida</li><li>Squad dedicado: diseño, código y marketing</li><li>Respuesta en 4 h y reporte semanal</li><li>Roadmap conjunto cada trimestre</li></ul><a class="btn w" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20quiero%20suscribirme%20al%20plan%20Singularidad%20%28499%20%E2%82%AC/mes%29" target="_blank" rel="noopener" data-plan="Singularidad">Suscribirme</a></div></div>
+  <p class="pnote rv">Precios en euros al mes, impuestos aparte. Puedes cancelar cuando quieras desde el correo de tu compra.</p>
+  <p class="psec rv">Pago seguro · Tarjeta y métodos locales</p>
+  <div class="need rv"><h3>¿Necesitas algo que no encaja en ningún nivel?</h3><a class="btn o" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20necesito%20algo%20que%20no%20encaja%20en%20ning%C3%BAn%20plan" target="_blank" rel="noopener">Hablar por WhatsApp <span>&rarr;</span></a></div>
+</div></section>
+
 <section class="sec" id="contacto" style="padding-top:0"><div class="wrap two">
   <div>
     <p class="lbl rv">Contacto</p>
@@ -346,6 +389,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line2);padding:110
   </div>
   <div class="legal"><span>© 2026 Kalifai · Córdoba, España</span><span><a href="legal.html">Aviso legal y privacidad</a> &nbsp; &nbsp; Servicios desde 997 €</span></div>
 </div></footer>
+<div id="win" role="dialog" aria-modal="true" aria-label="Módulo"><div class="win"><div class="wv"><video muted loop playsinline preload="none"></video><span id="wN">01</span></div><button class="x" type="button" id="wX" aria-label="Cerrar">&times;</button><div class="wb"><small>Ventana interdimensional</small><h3 id="wT"></h3><p id="wD"></p><em>Inversión</em><b class="pz" id="wP"></b><a class="btn g" id="wB" target="_blank" rel="noopener">Quiero este módulo <span>&rarr;</span></a></div></div></div>
 <div id="google_translate_element" hidden></div>
 
 <script>
@@ -359,8 +403,20 @@ var S=[['Automatización con IA','Procesos, avisos y seguimiento automático. Tu
 ['Procesamiento de datos','Documentos, correos y hojas dispersas convertidos en información ordenada y consultable.','Desde 1.297 €','media/burj-c.mp4','50% 15%'],
 ['IA personalizada','Modelos a medida para procesos que no se resuelven con una herramienta estándar.','A consultar','media/burj-hero.mp4','50% 60%']];
 var cards=document.getElementById('cards');
-cards.innerHTML=S.map(function(s,i){return '<article class="card rv"><div class="vid"><video muted loop playsinline preload="none" data-src="'+s[3]+'" style="object-position:'+s[4]+'"></video></div><span class="n">0'+(i+1)+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p><span class="pr">'+s[2]+'</span></article>'}).join('')+
+cards.innerHTML=S.map(function(s,i){return '<article class="card rv"><div class="vid"><video muted loop playsinline preload="none" data-src="'+s[3]+'" style="object-position:'+s[4]+'"></video></div><span class="n">0'+(i+1)+'</span><i class="ring"></i><i class="ring r2"></i><h3>'+s[0]+'</h3><p>'+s[1]+'</p><span class="pr">'+s[2]+'</span><span class="open">&#8599; Pulsa una ventana para abrirla</span></article>'}).join('')+
  '<article class="card help rv"><span class="n">08</span><h3>¿No sabes cuál necesitas?</h3><p>Cuéntanos cómo trabajáis y te decimos por dónde empezar, sin compromiso.</p><a class="btn g" href="https://wa.me/34614057443?text=Hola%20Kalifai%2C%20no%20s%C3%A9%20qu%C3%A9%20servicio%20necesito" target="_blank" rel="noopener">Hablar por WhatsApp <span>&rarr;</span></a></article>';
+
+/* ---------- Ventana interdimensional de cada módulo ---------- */
+var win=document.getElementById('win'),wv=win.querySelector('video');
+[].slice.call(cards.querySelectorAll('.card:not(.help)')).forEach(function(c,i){var s=S[i];c.tabIndex=0;c.setAttribute('role','button');
+ function op(){document.getElementById('wN').textContent='0'+(i+1);document.getElementById('wT').textContent=s[0];document.getElementById('wD').textContent=s[1];document.getElementById('wP').textContent=s[2].replace(/^Desde /,'Desde ');
+  document.getElementById('wB').href='https://wa.me/34614057443?text='+encodeURIComponent('Hola Kalifai, quiero el módulo «'+s[0]+'» ('+s[2]+')');
+  wv.src=s[3];wv.style.objectPosition=s[4];var p=wv.play();if(p&&p.catch)p.catch(function(){});win.classList.add('open');document.body.style.overflow='hidden'}
+ c.onclick=op;c.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();op()}}});
+function cw(){win.classList.remove('open');wv.pause();document.body.style.overflow=''}
+document.getElementById('wX').onclick=cw;win.onclick=function(e){if(e.target===win)cw()};document.addEventListener('keydown',function(e){if(e.key==='Escape')cw()});
+/* En el móvil se ilumina la ventana que está en el centro de la pantalla */
+if('IntersectionObserver' in window){var oc=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('act',e.isIntersecting)})},{rootMargin:'-42% 0px -42% 0px'});[].forEach.call(cards.querySelectorAll('.card:not(.help)'),function(c){oc.observe(c)})}
 
 /* ---------- Vídeos: se cargan y reproducen solo cuando se ven ---------- */
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,slow=navigator.connection&&navigator.connection.saveData;
@@ -382,7 +438,7 @@ if('IntersectionObserver' in window){var o2=new IntersectionObserver(function(es
 var pg=document.getElementById('prog');addEventListener('scroll',function(){var h=document.documentElement;pg.style.height=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
 
 /* ---------- Menú móvil ---------- */
-var nav=document.getElementById('nav');document.getElementById('burger').onclick=function(){nav.classList.toggle('open')};nav.onclick=function(){nav.classList.remove('open')};
+var nav=document.getElementById('nav'),bg=document.getElementById('burger');bg.onclick=function(){bg.classList.toggle('x',nav.classList.toggle('open'))};nav.onclick=function(){nav.classList.remove('open');bg.classList.remove('x')};
 
 /* ---------- Idiomas (8) ---------- */
 var L=document.getElementById('lang'),lb=document.getElementById('langBtn');
@@ -407,19 +463,24 @@ var dlg=document.getElementById('appdlg');document.getElementById('appInst').onc
 var intro=document.getElementById('intro'),jingle=new Audio('kalifai-sonido.mp3'),amb=new Audio();amb.loop=true;amb.preload='none';amb.volume=0;
 function hide(){intro.classList.add('out');setTimeout(function(){intro.remove()},900)}
 setTimeout(hide,reduce?600:2800);intro.onclick=hide;
-var sb=document.getElementById('snd'),st=document.getElementById('sndT'),off=false,started=false,has=false,fadeT;
-try{off=localStorage.getItem('kalifai_musica')==='off'}catch(x){}
-function ui(on){sb.classList.toggle('on',on);sb.setAttribute('aria-pressed',on?'true':'false');st.textContent=on?'Sonido activado':'Activar sonido'}
+/* Música deep house mientras navegas: suena por defecto desde el primer toque (el navegador no deja antes),
+   se apaga y enciende con los botones de sonido, y continúa donde iba al pasar de la web a la app */
+var sb=document.getElementById('snd'),hs=document.getElementById('hsnd'),st=document.getElementById('sndT'),off=false,started=false,has=false,fadeT,KEY='kalifai_musica',VOL=.4;
+try{off=localStorage.getItem(KEY)==='off'}catch(x){}
+function ui(on){[sb,hs].forEach(function(b){b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});st.textContent=on?'Sonido activado':'Activar sonido'}
+ui(!off);
 function fade(to){clearInterval(fadeT);fadeT=setInterval(function(){var v=amb.volume+(to>amb.volume?.03:-.05);if(Math.abs(to-v)<.05){v=to;clearInterval(fadeT);if(to===0)amb.pause()}amb.volume=Math.max(0,Math.min(1,v))},90)}
-function startMusic(){if(!has)return;var p=amb.play();(p&&p.then?p:Promise.resolve()).then(function(){fade(.4);ui(true)}).catch(function(){})}
+function startMusic(){if(!has||off)return;if(!amb.paused&&amb.volume>0)return;try{var t=+localStorage.getItem(KEY+'_t');if(t&&!amb.currentTime)amb.currentTime=t}catch(x){}var p=amb.play();(p&&p.then?p:Promise.resolve()).then(function(){fade(VOL);ui(true)}).catch(function(){})}
 function stopMusic(){fade(0);ui(false)}
-/* Música de fondo de la página: empieza al primer toque (el navegador no deja antes), suena en bucle suave y se apaga con el botón */
-function gesture(e){rm();var onBtn=e&&e.target&&e.target.closest&&e.target.closest('#snd');if(!started){started=true;try{jingle.volume=.45;jingle.play().catch(function(){})}catch(x){}}if(!off&&!onBtn)setTimeout(startMusic,1200)}
-var EV=['pointerdown','touchstart','keydown'];function rm(){EV.forEach(function(ev){removeEventListener(ev,gesture,true)})}
+function gesture(e){var onBtn=e&&e.target&&e.target.closest&&e.target.closest('#snd,#hsnd');if(onBtn)return;rm();if(!started){started=true;try{jingle.volume=.45;jingle.play().catch(function(){})}catch(x){}}if(!off)setTimeout(startMusic,900)}
+var EV=['pointerdown','touchend','click','keydown'];function rm(){EV.forEach(function(ev){removeEventListener(ev,gesture,true)})}
 try{jingle.volume=.45;var jp=jingle.play();if(jp&&jp.then)jp.then(function(){started=true},function(){})}catch(x){}
 EV.forEach(function(ev){addEventListener(ev,gesture,true)});
-sb.style.display='none';fetch('hero/musica.mp3',{method:'HEAD'}).then(function(r){if(r.ok){has=true;amb.src='hero/musica.mp3';amb.preload='auto';sb.style.display=''}}).catch(function(){});
-sb.onclick=function(){rm();if(!started){started=true}if(amb.paused||amb.volume===0){off=false;try{localStorage.removeItem('kalifai_musica')}catch(x){}startMusic()}else{off=true;try{localStorage.setItem('kalifai_musica','off')}catch(x){}stopMusic()}};
+amb.src='hero/musica.mp3';amb.preload='auto';has=true;amb.onerror=function(){has=false;sb.style.display='none';hs.style.display='none'};
+function toggle(e){if(e)e.stopPropagation();rm();started=true;if(amb.paused||amb.volume===0||off){off=false;try{localStorage.removeItem(KEY)}catch(x){}startMusic()}else{off=true;try{localStorage.setItem(KEY,'off')}catch(x){}stopMusic()}}
+sb.onclick=toggle;hs.onclick=toggle;
+setInterval(function(){if(!amb.paused)try{localStorage.setItem(KEY+'_t',amb.currentTime.toFixed(1))}catch(x){}},2000);
+addEventListener('pagehide',function(){try{if(!amb.paused)localStorage.setItem(KEY+'_t',amb.currentTime.toFixed(1))}catch(x){}});
 /* Si cambias de pestaña se pausa y al volver sigue */
 document.addEventListener('visibilitychange',function(){if(document.hidden){if(!amb.paused){amb.pause();amb._w=1}}else if(amb._w&&!off){amb._w=0;amb.play().catch(function(){})}});
 })();
